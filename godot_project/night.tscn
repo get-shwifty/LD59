@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b8iemk8ujahii"]
+
+[ext_resource type="Script" uid="uid://cmipciygdv668" path="res://night.gd" id="1_duiv2"]
+[ext_resource type="Texture2D" uid="uid://c44ukuq06orl7" path="res://assets/images/Dredge.jpg" id="1_mol8p"]
+[ext_resource type="PackedScene" uid="uid://c3pek7x4rjfxy" path="res://tools/clock.tscn" id="2_h0nnu"]
+
+[node name="Night" type="Node2D" unique_id=722676467]
+script = ExtResource("1_duiv2")
+
+[node name="Dredge" type="Sprite2D" parent="." unique_id=340391364]
+position = Vector2(575, 324.5)
+scale = Vector2(3.84, 3.8630953)
+texture = ExtResource("1_mol8p")
+
+[node name="Clock" parent="." unique_id=2042308701 instance=ExtResource("2_h0nnu")]
+
+[node name="NextDay" type="Button" parent="." unique_id=2061017221]
+visible = false
+offset_left = 882.0
+offset_top = 590.0
+offset_right = 1138.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 28
+text = "GO TO NEXT DAY ?"
+
+[connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
