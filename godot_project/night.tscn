@@ -1,20 +1,39 @@
 [gd_scene format=3 uid="uid://b8iemk8ujahii"]
 
 [ext_resource type="Script" uid="uid://cmipciygdv668" path="res://night.gd" id="1_duiv2"]
-[ext_resource type="Texture2D" uid="uid://c44ukuq06orl7" path="res://assets/images/Dredge.jpg" id="1_mol8p"]
 [ext_resource type="PackedScene" uid="uid://c3pek7x4rjfxy" path="res://tools/clock.tscn" id="2_h0nnu"]
+[ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h0nnu"]
+load_path = "res://.godot/imported/Dredge.jpg-3e0794e4757b455552f56ba1cdd2586e.ctex"
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")
 
-[node name="Dredge" type="Sprite2D" parent="." unique_id=340391364]
-position = Vector2(575, 324.5)
-scale = Vector2(3.84, 3.8630953)
-texture = ExtResource("1_mol8p")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=996101138]
+position = Vector2(639, 360)
 
-[node name="Clock" parent="." unique_id=2042308701 instance=ExtResource("2_h0nnu")]
+[node name="Parallax" type="Parallax2D" parent="." unique_id=1967555113]
+scroll_scale = Vector2(1, 0)
+repeat_size = Vector2(5120, 0)
+repeat_times = 3
 
-[node name="NextDay" type="Button" parent="." unique_id=2061017221]
+[node name="Landscape" type="Sprite2D" parent="Parallax" unique_id=483139179]
+position = Vector2(-44, 361)
+texture = ExtResource("4_lrvaf")
+
+[node name="UI" type="Parallax2D" parent="." unique_id=1979713735]
+scroll_scale = Vector2(0, 0)
+
+[node name="Cabin" type="Sprite2D" parent="UI" unique_id=340391364]
+visible = false
+position = Vector2(641.50006, 360)
+scale = Vector2(4.2833333, 4.285714)
+texture = SubResource("CompressedTexture2D_h0nnu")
+
+[node name="Clock" parent="UI" unique_id=2042308701 instance=ExtResource("2_h0nnu")]
+
+[node name="NextDay" type="Button" parent="UI" unique_id=2061017221]
 visible = false
 offset_left = 882.0
 offset_top = 590.0
@@ -23,4 +42,22 @@ offset_bottom = 637.0
 theme_override_font_sizes/font_size = 28
 text = "GO TO NEXT DAY ?"
 
-[connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
+[node name="LeftButton" type="Button" parent="UI" unique_id=609557662]
+offset_left = -1.0
+offset_top = 625.0
+offset_right = 53.0
+offset_bottom = 688.0
+theme_override_font_sizes/font_size = 40
+text = "<="
+
+[node name="RightButton" type="Button" parent="UI" unique_id=1428286049]
+offset_left = 1230.0
+offset_top = 623.0
+offset_right = 1284.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 40
+text = "=>"
+
+[connection signal="pressed" from="UI/NextDay" to="." method="_on_next_day_pressed"]
+[connection signal="pressed" from="UI/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="UI/RightButton" to="." method="_on_right_button_pressed"]

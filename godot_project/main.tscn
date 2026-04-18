@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cakpghrdmqs3n"]
 
 [ext_resource type="Script" uid="uid://chk2v8iy1yj0w" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://dkcrdbgwicjqq" path="res://assets/images/Test.jpg" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1612713448]
-scale = Vector2(0.67844516, 0.678534)
-texture = ExtResource("1_ig7tw")
-centered = false
+[node name="Background" type="Sprite2D" parent="." unique_id=1815380359]
+position = Vector2(641.00006, 360.25)
+scale = Vector2(0.66562504, 0.6662037)
+texture = ExtResource("2_0xm2m")
 
 [node name="StartGame" type="Button" parent="." unique_id=698899587]
 visible = false
@@ -36,10 +36,10 @@ offset_bottom = 636.0
 text = "END OF THE DAY"
 
 [node name="DayNumber" type="Label" parent="." unique_id=116528633]
-offset_left = 519.0
-offset_top = 1.0
-offset_right = 578.0
-offset_bottom = 40.0
+offset_left = 594.0
+offset_top = 4.0
+offset_right = 653.0
+offset_bottom = 43.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "Day "
