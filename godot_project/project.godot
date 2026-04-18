@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="ld59"
+run/main_scene="uid://cakpghrdmqs3n"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 
