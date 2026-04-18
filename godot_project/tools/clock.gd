@@ -1,0 +1,42 @@
+extends Node2D
+
+################################## On Ready
+@onready var minutes_lab = $Minute
+@onready var hours_lab = $Hour
+
+################################## Const
+const START_NIGHT = 21
+const NIGHT_DURATION_HOURS = 1
+const HALF_HOUR_DURATION_SECS = 2
+
+################################## Var
+var timer = null
+var total_minutes = START_NIGHT * 2 * 30 # On veut commencer la nuit à une heure donnée
+var total_hours = 0
+
+################################## Signals
+signal end_night
+
+func _ready() -> void:
+	timer = Timer.new()
+	add_child(timer)
+	timer.set_one_shot(false)
+	timer.set_wait_time(HALF_HOUR_DURATION_SECS)
+	timer.connect("timeout", _on_timeout)
+	timer.start()
+
+func _on_timeout() -> void:
+	total_minutes += 30
+	var hours = floor(total_minutes / 60) % 24
+	var minutes = total_minutes % 60
+	total_hours = (total_minutes /60) - START_NIGHT
+	
+	hours_lab.text = "%02d" % [hours]
+	minutes_lab.text = "%02d" % [minutes]
+	
+	if total_hours >= NIGHT_DURATION_HOURS:
+		timer.stop()
+		emit_signal("end_night")
+	else:
+		timer.start()
+		

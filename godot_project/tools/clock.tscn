@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c3pek7x4rjfxy"]
+
+[ext_resource type="Script" uid="uid://01norawswf6k" path="res://tools/clock.gd" id="1_sdd0f"]
+
+[node name="Clock" type="Node2D" unique_id=2042308701]
+script = ExtResource("1_sdd0f")
+
+[node name="Hour" type="Label" parent="." unique_id=21472827]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1059.0
+offset_top = 10.0
+offset_right = 1091.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "21"
+
+[node name="_" type="Label" parent="." unique_id=1347608252]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1092.0
+offset_top = 8.0
+offset_right = 1132.0
+offset_bottom = 63.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = ":"
+
+[node name="Minute" type="Label" parent="." unique_id=1600487379]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1103.0
+offset_top = 10.0
+offset_right = 1135.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "00"
