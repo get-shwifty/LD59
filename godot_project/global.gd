@@ -1,4 +1,4 @@
 extends Node
 
 var game_started = false
-var day_number = 9
+var day_number = 1
