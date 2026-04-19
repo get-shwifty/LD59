@@ -25,3 +25,5 @@ offset_bottom = 352.0
 script = ExtResource("4_7mycd")
 ink_file = ExtResource("5_272bh")
 metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1291100322]

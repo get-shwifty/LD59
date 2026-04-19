@@ -4,6 +4,12 @@ extends Node2D
 @onready var game_dialogue: DialogeUI = $"DialogueUi"
 @onready var dialogue = game_dialogue
 
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+
+const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
+const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
+const FADE_DURATION = 1
+
 func _ready() -> void:
 	Global.game_started = true
 	game_dialogue.listener = self
@@ -17,6 +23,8 @@ func _process(delta: float) -> void:
 func _story_loaded(successfully: bool):
 	if !successfully:
 		return
+	music_player.stream = MUSIC_DAY
+	music_player.play()
 	_continue_story()
 
 func select_choice(index: int):
@@ -60,6 +68,13 @@ func _continue_story():
 			print("The End")
 	print(_ink_player.can_continue)
 
+func play_music(new_stream: AudioStream) -> void:
+	var tween = create_tween()
+	tween.tween_property(music_player, "volume_db", -99, FADE_DURATION)
+	await tween.finished
+	music_player.stream = new_stream
+	music_player.volume_db = 0
+	music_player.play()
 
 func end_of_day():
 	game_dialogue.visible = false
@@ -69,6 +84,7 @@ func end_of_day():
 	
 	$Night.visible = true
 	game_dialogue.visible = true
+	play_music(MUSIC_NIGHT)
 
 func start_of_day():
 	game_dialogue.visible = false
@@ -77,3 +93,4 @@ func start_of_day():
 	
 	$Day.visible = true
 	game_dialogue.visible = true
+	play_music(MUSIC_DAY)
