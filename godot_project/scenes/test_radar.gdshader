@@ -11,7 +11,7 @@ void fragment() {
     vec2 uv = UV;
     
     if (rand(vec2(TIME, 0.0)) < shake) {
-        uv.x += rand(vec2(TIME, uv.y)) * 0.01;
+        uv.r += rand(vec2(TIME, uv.y)) * 0.0;
     }
 
     float r = texture(TEXTURE, uv + vec2(0.003, 0.0)).r;
