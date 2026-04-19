@@ -17,6 +17,7 @@ func _ready() -> void:
 	var vision_pct = 360 / VISION_ANGLE
 	landscape_pct = landscape.texture.get_width()/ vision_pct
 	clock.connect("end_night", _on_end_night)
+	print($UI/Radar/Cone.rotation_degrees)
 
 func _process(delta: float) -> void:
 	pass
@@ -31,7 +32,11 @@ func _on_left_button_pressed() -> void:
 	print(camera)
 	camera.position.x -= landscape_pct / INCREMENT_DIVIDOR
 	$UI/Radar/Cone.rotation_degrees -= VISION_ANGLE / INCREMENT_DIVIDOR
+	print($UI/Radar/Cone.rotation_degrees)
+	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
 
 func _on_right_button_pressed() -> void:
 	camera.position.x += landscape_pct / INCREMENT_DIVIDOR
 	$UI/Radar/Cone.rotation_degrees += VISION_ANGLE / INCREMENT_DIVIDOR
+	print($UI/Radar/Cone.rotation_degrees)
+	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)

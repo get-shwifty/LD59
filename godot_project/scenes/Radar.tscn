@@ -8,6 +8,14 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28otr"]
 shader = ExtResource("1_m041l")
+shader_parameter/shake = 0.04400000209
+shader_parameter/ai_takeover = 0.0
+shader_parameter/cone_angle = 225.0000106875
+shader_parameter/cone_width = 90.000004275
+shader_parameter/cone_radius = 0.50000002375
+shader_parameter/cone_origin = Vector2(0.5, 0.5)
+shader_parameter/GLOW_TEXTURE = ExtResource("3_28otr")
+shader_parameter/BASE_TEXTURE = ExtResource("1_v55ak")
 
 [node name="Radar" type="Node2D" unique_id=192683704]
 
@@ -17,7 +25,8 @@ position = Vector2(0, 1)
 texture = ExtResource("1_v55ak")
 offset = Vector2(0, -1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=617832835]
+[node name="glow" type="Sprite2D" parent="." unique_id=617832835]
+visible = false
 texture = ExtResource("3_28otr")
 
 [node name="PlayerPos" type="ColorRect" parent="." unique_id=817115918]
