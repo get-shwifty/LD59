@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bsxclnl8iekis"]
+
+[ext_resource type="Script" uid="uid://dxdo33c6lhs74" path="res://dialogue/dialogue_option_list.gd" id="1_ifead"]
+
+[node name="DialogueOptionList" type="PanelContainer" unique_id=840064675]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1260.0
+offset_bottom = -719.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ifead")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1968717806]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1237903518]
+layout_mode = 2
+theme_override_constants/separation = 4
