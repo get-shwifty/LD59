@@ -6,7 +6,6 @@ extends Node2D
 
 
 func _ready():
-	dialogue.clear()
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 

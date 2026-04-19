@@ -19,7 +19,7 @@ func select_option(option):
 	listener.select_option(option)
 	#queue_free()
 	await get_tree().physics_frame
-	visible = false
+	#visible = false
 	#var children = $MarginContainer/VBoxContainer.get_children()
 	#for c in children:
 		#if c != option:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ld59"
-run/main_scene="uid://cakpghrdmqs3n"
+run/main_scene="uid://d0bygh6ofrj4i"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 

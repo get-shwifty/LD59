@@ -67,8 +67,11 @@ func write_text_from_buffer():
 	dial.center_all = center_all
 	dial.tags = text_req[2]
 	tag_buffer = text_req[2]
+	dial.visible = true 
 	
 	$VBoxContainer.add_child(dial)
+	
+	print("HELLO !")
 	text_buffer.pop_front()
 	
 func write_options_from_buffer():
