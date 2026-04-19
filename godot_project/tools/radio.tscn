@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://db3k2jjescd58"]
+
+[ext_resource type="Script" uid="uid://v1iw8kmc0bg6" path="res://tools/radio.gd" id="1_polgl"]
+[ext_resource type="Texture2D" uid="uid://c8hdtdkf4jicq" path="res://assets/images/radio.png" id="2_8q18p"]
+[ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="3_polgl"]
+[ext_resource type="Texture2D" uid="uid://betuoa80b4plt" path="res://assets/images/radio_button_off.png" id="4_goecq"]
+
+[node name="Radio" type="Node2D" unique_id=848813022]
+script = ExtResource("1_polgl")
+
+[node name="Radio" type="Sprite2D" parent="." unique_id=643481337]
+position = Vector2(418, 594)
+texture = ExtResource("2_8q18p")
+
+[node name="Button1HAUT" type="TextureButton" parent="." unique_id=1480233506]
+offset_left = 286.0
+offset_top = 485.0
+offset_right = 318.0
+offset_bottom = 501.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
+
+[node name="Button1BAS" type="TextureButton" parent="." unique_id=966281323]
+offset_left = 288.0
+offset_top = 613.0
+offset_right = 320.0
+offset_bottom = 629.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+
+[node name="ButtonHAUT2" type="TextureButton" parent="." unique_id=2125682301]
+offset_left = 346.0
+offset_top = 486.0
+offset_right = 378.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
+
+[node name="ButtonBAS2" type="TextureButton" parent="." unique_id=1871672128]
+offset_left = 346.0
+offset_top = 614.0
+offset_right = 378.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+
+[node name="ButtonHAUT3" type="TextureButton" parent="." unique_id=636378459]
+offset_left = 402.0
+offset_top = 486.0
+offset_right = 434.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
+
+[node name="ButtonBAS3" type="TextureButton" parent="." unique_id=478125311]
+offset_left = 404.0
+offset_top = 614.0
+offset_right = 436.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+
+[node name="ButtonHAUT4" type="TextureButton" parent="." unique_id=488018383]
+offset_left = 460.0
+offset_top = 486.0
+offset_right = 492.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
+
+[node name="ButtonBAS4" type="TextureButton" parent="." unique_id=463950707]
+offset_left = 462.0
+offset_top = 614.0
+offset_right = 494.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+
+[node name="Label1" type="Label" parent="." unique_id=1851371511]
+offset_left = 283.0
+offset_top = 527.0
+offset_right = 323.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 50
+text = "A"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=505936806]
+offset_left = 341.0
+offset_top = 526.0
+offset_right = 381.0
+offset_bottom = 595.0
+theme_override_font_sizes/font_size = 50
+text = "B"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1506048222]
+offset_left = 402.0
+offset_top = 524.0
+offset_right = 442.0
+offset_bottom = 593.0
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=649816519]
+offset_left = 459.0
+offset_top = 525.0
+offset_right = 499.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 50
+text = "2"
+horizontal_alignment = 1
+
+[node name="CallButton" type="TextureButton" parent="." unique_id=1097868155]
+offset_left = 545.0
+offset_top = 565.0
+offset_right = 585.0
+offset_bottom = 605.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_goecq")
+
+[connection signal="pressed" from="Button1HAUT" to="." method="_on_button_pressed" binds= [NodePath("Button1HAUT"), 1]]
+[connection signal="pressed" from="Button1BAS" to="." method="_on_button_pressed" binds= [NodePath("Button1BAS"), 1]]
+[connection signal="pressed" from="ButtonHAUT2" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT2"), 2]]
+[connection signal="pressed" from="ButtonBAS2" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS2"), 2]]
+[connection signal="pressed" from="ButtonHAUT3" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT3"), 3]]
+[connection signal="pressed" from="ButtonBAS3" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS3"), 3]]
+[connection signal="pressed" from="ButtonHAUT4" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT4"), 4]]
+[connection signal="pressed" from="ButtonBAS4" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS4"), 4]]
+[connection signal="pressed" from="CallButton" to="." method="_on_call_button_pressed"]
