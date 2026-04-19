@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://ckvfkususnm01"]
+
+[ext_resource type="Script" uid="uid://blnm2kbuh7o2e" path="res://day.gd" id="1_uj21n"]
+[ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_up1jf"]
+[ext_resource type="Texture2D" uid="uid://bwjo61mfxng88" path="res://assets/icon.svg" id="3_wf5ll"]
+[ext_resource type="AudioStream" uid="uid://dw5amljkc1tj2" path="res://assets/music/Ludum59_ThemeJour_V1.mp3" id="4_wf5ll"]
+[ext_resource type="Script" path="res://fade_out.gd" id="5_ncttb"]
+
+[sub_resource type="Animation" id="Animation_kek77"]
+resource_name = "Game_title"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("GameTitle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 14.928544),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameTitle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(645, -79), Vector2(645, 322)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameTitle:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameTitle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameTitle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(616, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameTitle:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncttb"]
+_data = {
+&"Game_title": SubResource("Animation_kek77"),
+&"RESET": SubResource("Animation_4c57u")
+}
+
+[node name="Day" type="Node2D" unique_id=1492088320]
+script = ExtResource("1_uj21n")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1750307732]
+position = Vector2(641.00006, 360.25)
+scale = Vector2(0.66562504, 0.6662037)
+texture = ExtResource("2_up1jf")
+
+[node name="DayNumber" type="Label" parent="." unique_id=1854039835]
+offset_left = 594.0
+offset_top = 4.0
+offset_right = 653.0
+offset_bottom = 43.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+
+[node name="GameTitle" type="Sprite2D" parent="." unique_id=1859356610]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(616, 64)
+texture = ExtResource("3_wf5ll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16669965]
+libraries/ = SubResource("AnimationLibrary_ncttb")
+
+[node name="MusicDay" type="AudioStreamPlayer" parent="." unique_id=2075184008]
+stream = ExtResource("4_wf5ll")
+autoplay = true
+parameters/looping = true
+
+[node name="FadeOut" type="Node" parent="MusicDay" unique_id=203129801]
+script = ExtResource("5_ncttb")

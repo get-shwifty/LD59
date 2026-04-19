@@ -1,37 +1,18 @@
 extends Node2D
 
-@onready var start_game_button = $StartGame
-@onready var end_day_button = $EndDay
-@onready var day_number = $DayNumber
 @onready var _ink_player: InkPlayer = $InkPlayer
 @onready var game_dialogue: DialogeUI = $"DialogueUi"
 @onready var dialogue = game_dialogue
 
 func _ready() -> void:
-	if Global.game_started == false:
-		start_game_button.visible = false  # A retirer si on n'en a plus besoin
-		Global.game_started = true
-	else:
-		Global.day_number += 1 
-		start_game_button.visible = false  # A retirer si on n'en a plus besoin
-		start_day()
+	Global.game_started = true
 	game_dialogue.listener = self
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 
 func _process(delta: float) -> void:
-	day_number.text = "Day %0*d" % [2, Global.day_number]
-
-func _on_start_game_pressed() -> void:
-	start_game_button.visible = false
-	start_day()
+	pass
 	
-func start_day() -> void:
-	end_day_button.visible = true
-
-func _on_end_day_pressed() -> void:
-	get_tree().change_scene_to_file("res://night.tscn")
-
 
 func _story_loaded(successfully: bool):
 	if !successfully:
@@ -44,9 +25,13 @@ func select_choice(index: int):
 	_continue_story()
 
 func execute_tags(tags):
-	for t in tags:
-		pass
-	# TO DO : écrire le code pour chaque type de tag
+	for tag in tags:
+		if tag == "title_screen":
+			$Day.display_game_title(game_dialogue)
+		if tag == "day_end":
+			end_of_day()
+		if tag == "day_begin":
+			start_of_day()
 
 func _continue_story():
 	while _ink_player.can_continue:
@@ -74,3 +59,21 @@ func _continue_story():
 			# This code runs when the story reaches it's end.
 			print("The End")
 	print(_ink_player.can_continue)
+
+
+func end_of_day():
+	game_dialogue.visible = false
+	game_dialogue.clear()
+	$Day.visible = false
+	$Day.next_day()
+	
+	$Night.visible = true
+	game_dialogue.visible = true
+
+func start_of_day():
+	game_dialogue.visible = false
+	game_dialogue.clear()
+	$Night.visible = false
+	
+	$Day.visible = true
+	game_dialogue.visible = true
