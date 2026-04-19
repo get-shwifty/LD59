@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bmqij2eo673ex"]
+
+[ext_resource type="Script" uid="uid://bm5kpng3ohny7" path="res://alexis/spectrum_analyzer.gd" id="1_hfffp"]
+[ext_resource type="Shader" uid="uid://5a1fv8lxe4bo" path="res://alexis/spectrum_analyzer.gdshader" id="2_fd0uj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lf58a"]
+shader = ExtResource("2_fd0uj")
+shader_parameter/background_color = Vector3(0.09, 0.15, 0.18)
+shader_parameter/display_color = Vector3(0.86, 0.67, 0.02)
+shader_parameter/freq_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="SpectrumAnalyzer" type="Node2D" unique_id=1105494842]
+script = ExtResource("1_hfffp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=965702174]
+material = SubResource("ShaderMaterial_lf58a")
+offset_right = 200.0
+offset_bottom = 100.0
+color = Color(0.08627451, 0.14901961, 0.18039216, 1)
