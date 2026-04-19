@@ -73,7 +73,7 @@
         Eric, welcome on the show ! #rro
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_03
-    *   {light_buddies_03} [Turn off radio]
+    *   {light_buddies_03} [Turn off radio ]
 -
 ->->
 
@@ -127,8 +127,8 @@
     -> hub
 
 == Title_Sequence ==
-    GAME TITLE
-    *   [continue]
+    #title_screen
+    *   [continue] #day_end
 -   ->->
 
 == Night_01 ==
@@ -138,7 +138,7 @@
 -   (hub)
     +   [BA45] -> Ship_Dialog("BA45", BA45) ->
     +   [AE34] -> Ship_Dialog("AE34", AE34) -> 
-    *   [Finish Night] ->->
+    *   [Finish Night] #day_begin ->->
 -   -> hub
 
 == Day_02 ==
@@ -153,7 +153,7 @@
         Eric, welcome on the show ! #rro
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_02
-    *   {light_buddies_02} [Turn off radio]
+    *   {light_buddies_02} [Turn off radio] #day_end
 -
 ->->
 
@@ -208,7 +208,7 @@
     +   [BA45] -> Ship_Dialog("BA45", BA45) ->
     +   [DB67] -> Ship_Dialog("DB67", DB67) ->
     *   [22h] -> call_02 ->
-    *   [Finish Night] ->->
+    *   [Finish Night] #day_begin ->->
 -   -> hub
 
 = call_02
@@ -236,7 +236,7 @@
         It's 6pm, you're listening to Roquebrise Ra ...
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_03
-    *   {light_buddies_03} [Turn off radio]
+    *   {light_buddies_03} [Turn off radio] #day_end
 -
 ->->
 
@@ -283,7 +283,7 @@
 -   (hub)
     +   [BA45] -> Ship_Dialog("BA45", BA45) ->
     +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
-    *   [Finish Night] ->->
+    *   [Finish Night] #day_begin ->->
 -   -> hub
 
 
