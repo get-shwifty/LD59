@@ -11,6 +11,18 @@ var option_buffer = []
 var is_writing = false
 var tag_buffer = []
 
+@onready var audio_player: AudioStreamPlayer = $SoundsPlayer
+
+const TAG_SOUNDS: Dictionary = {
+	"rf": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
+	"rro": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
+	"rbr": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
+	"rre": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
+	"a": "res://assets/soundEffects/voices/Alain/Alain_Voice",
+	"b": "res://assets/soundEffects/voices/Bernard/B_Voice",
+	"c": "res://assets/soundEffects/voices/Charles/Charles"
+}
+
 func _ready(): 
 	scrollbar.changed.connect(handle_scrollbar_changed)
 	max_scroll_length = scrollbar.max_value
@@ -107,7 +119,20 @@ func write_text_from_buffer():
 				speaker_name = "Bernard"
 				background_color = Color(0.574, 0.567, 0.077, 0.588)
 				border_color = Color(0.769, 0.863, 0.145)
-			
+			if TAG_SOUNDS.has(tag):
+				var longueur = text.length()
+				var suffixe: String
+				if longueur < 40:
+					suffixe = "_trescourt.mp3"
+				elif longueur < 80:
+					suffixe = "_court.mp3"
+				elif longueur < 120:
+					suffixe = "_moyen.mp3"
+				else:
+					suffixe = "_long.mp3"
+				audio_player.stream = load(TAG_SOUNDS[tag] + suffixe)
+				audio_player.play()
+				
 			dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
 			dial.change_dialog_look(border_color, background_color, content_left_margin)
 
