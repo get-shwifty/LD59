@@ -73,7 +73,7 @@
         Eric, welcome on the show ! #rro
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_03
-    *   {light_buddies_03} [Turn off radio ]
+    *   {light_buddies_03} [Turn off radio]
 -
 ->->
 
