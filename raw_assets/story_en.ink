@@ -17,15 +17,29 @@
 -> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
+
 -> Day_02 ->
 -> Night_02 ->
+
 -> Day_03 ->
 -> Night_03 ->
+
+-> Day_04 ->
+-> Night_04 ->
+
+-> Day_05 ->
+-> Night_05 ->
+
+-> Day_06 ->
+-> Night_06 ->
+
+-> Epilogue ->
+
 -> END
 
 == Ship_Dialog (ship_transponder, ref ship_call_count) ==
     ~ ship_call_count ++
-    Hello ship {ship_transponder}, this is lighthouse Peruchet, calling for the {ship_call_count} time.
+    Hello ship {ship_transponder}, this is the lighthouse of La Peyro, calling for the {ship_call_count} time.
     +   [N] Head North.
     +   [S] Head South.
     +   [E] Head East.
@@ -36,28 +50,6 @@
     +   [SW] Head South West.
     +   [Keep on] Please keep on.
 -   Copy that. 
-    +   [Hang up.]
--   ->->
-
-== Night_Example ==
-~ temp BA45 = 0
-~ temp DB67 = 0
-
--   (hub)
-    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
-    +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
-    *   [21h] -> call_01 ->
-    *   {BA45} [22h] -> call_02 ->
-    *   [Finish Night] ->->
--   -> hub
-
-= call_01
-    this is a mysterious call
-    +   [Hang up.]
--   ->->
-
-= call_02
-    this is a mysterious conditional call
     +   [Hang up.]
 -   ->->
 
@@ -73,7 +65,7 @@
         Eric, welcome on the show ! #rro
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_03
-    *   {light_buddies_03} [Turn off radio ]
+    *   {light_buddies_03} [Turn off radio ] #day_end
 -
 ->->
 
@@ -91,6 +83,29 @@
     *   [Keep listening]
 -   
     -> hub
+
+== Night_Example ==
+~ temp BA45 = 0
+~ temp DB67 = 0
+
+-   (hub)
+    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
+    +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
+    *   [21h] -> call_01 ->
+    *   {BA45} [22h] -> call_02 ->
+    *   [Finish Night] #day_begin ->->
+-   -> hub
+
+= call_01
+    this is a mysterious call
+    +   [Hang up.]
+-   ->->
+
+= call_02
+    this is a mysterious conditional call
+    +   [Hang up.]
+-   ->->
+
 
 == Day_01 ==
     *   [Turn on the radio]
@@ -140,6 +155,8 @@
     +   [AE34] -> Ship_Dialog("AE34", AE34) -> 
     *   [Finish Night] #day_begin ->->
 -   -> hub
+
+
 
 == Day_02 ==
     *   [Turn on the radio]
@@ -223,6 +240,8 @@
         ->->
 -   ->call_hub
 
+
+
 == Day_03 ==
     *   [Turn on the radio]
 -   ... then as I chanted the name of the weaving rune, it happened ! #rro
@@ -242,7 +261,7 @@
 
 = light_buddies_03
     ... not event respond to my gen call on AA00. #a
-    Okay, I'll file a report immediately. #b
+    Okay, I'll file a report. #b
 -   (report)
     *   Did that ever work ?
         I'm just following protocol Charles. Don't get me started about that, again. #b
@@ -256,7 +275,7 @@
         -> transponder
     *   (prevent) How can we prevent that ?
         File a report apparently. #a
-        First, try to reach them on the general bay channel. Then we'll file a report. If needed. #b
+        First, try to reach them on the general bay channel. Then, yes, we'll file a report. If needed. #b
         -> transponder
     *   {prevent || seen} How can I join the general bay channel ?
         Input transpoder code AAOO from your cabin. Every boat in the area will receive your ... #b
@@ -267,23 +286,199 @@
         --  __Oui oui c'est ça_ #b
             -> transponder
     *   (seen) I think I saw them too last night.
-        
-    
-    
-        
+        Ah ! Did they do anything suspicious ? #a 
+        **  Nothing in particular.
+        **  They disappeared near Cape Ybara.
+            That's intriguing ... #a 
+        **  I have no idea.
+            __Comment ça_ you have no idea ? #a
+        --  Let's not get ahead of ourselves. It's probably an honest mistake. #b 
+            -> transponder
+-   I sure hope they wont call us out if one of those __inconscients_ causes an accident. #a
+    No need to worry too much. Keep focused on the job. #a 
+    And if you see one of those phantom ship, contact them on AA00.
+    -> hub
 
+== Night_03 ==
+~ temp BE12 = 0
+
+-   (hub)
+    +   [BE12] -> Ship_Dialog("BE12", BE12) ->
+    *   [AA00] -> call_03_gen ->
+    *   [23h] -> call_03_alain -> 
+    *   [Finish Night] #day_begin ->->
+-   -> hub
+
+= call_03_gen
+Discussion avec une bande de fêtards qui veulent aller sur une île pour teufer.
+On leur dire, allumez le transpondeur.
+Ils repondent okay boomer tu vas faire quoi ??
+-> hub
+
+= call_03_alain
+Ptet Alain appelle dans la nuit parce qu'il en a plein le *** de son taff, de Bernard et de Jean de Chtooling.
+Il se confie un peu à nous et trouve que Bernard est bizarre ses derniers temps.
+-> hub
+
+
+
+== Day_04 ==
+    *   [Turn on the radio]
+-   radio falaise qui parle d'ado disparus en mer la nuit dernière
+-   (hub)
+    *   [Switch to Radio Rêve Oeil]
+        RRO qui recoit les parents des ados disparus et qui dit que c'est à cause du weaving c'est sur ! Ils les avaients prévenus pourtant.
+        -> hub
+    *   [Switch to the Lighthouse channel] -> light_buddies_04
+    *   {light_buddies_04} [Turn off radio ] #day_end
+-
+->->
+
+= light_buddies_04
+    ca discute un peu des gamins disparus. Est ce que c'était eux avec le transpondeur masqué ? Ptet mais il y avait deux bateaux sans transpondeur non ? Et que celui des ados qui a répondu.
+    Bon okay très bien tout ça mais c'est pas notre taff, on va faire un rapport et basta.
+    Aujourd'hui faut se concentrer sur le yacht de Leon Skum qui a une requete spéciale.
+    Faut pas que qui que ce soit s'approche trop près. Devier les autres bateaux si besoin.
+    Okay chelou c'est pas le protocole.
+    Surement un passe droit parce qu'il met plein de thunes dans Roquebrise. Rumeur sur l'achat du Cap Ybara ?
 -   
     -> hub
 
-
-== Night_03 ==
-~ temp BA45 = 0
-~ temp DB67 = 0
+== Night_04 ==
+~ temp BE93 = 0
 
 -   (hub)
-    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
-    +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
+    +   [BE93] -> Ship_Dialog("BE93", BE93) ->
+    *   [1h] -> call_04 ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
+
+= call_04
+    L'IA qui grésille au téléphone mais il y a des petits mots qu'on distingue quand même. Creepy.
+    +   [Hang up.]
+-   ->->
+
+
+
+== Day_05 ==
+    *   [Turn on the radio]
+-   radio falaise qui parle de l'arrivée de Leon Skum en ville
+-   (hub)
+    *   [Switch to Roquebrise Radio]
+        RBR parle de Chtooling et des investissement de Skum ??
+        les ados perdus en mer ont été retrouvés, mais ils se souviennent de rien à part d'un gard du phare qui les a grondé.
+        -> hub
+    *   [Switch to the Lighthouse channel] -> light_buddies_05
+    *   {light_buddies_05} [Turn off radio ] #day_end
+-
+->->
+
+= light_buddies_05
+    Jean est là a discuter sur le channel, on laisse vraiment rentrer n'importe qui sur le canal.
+    Il tente de brosser tout le monde dans le sens du poil. On capte qu'il y un truc bizarre entre Bernard et lui.
+-   
+    -> hub
+
+== Night_05 ==
+~ temp DB85 = 0
+
+-   (hub)
+    +   [DB85] -> Ship_Dialog("DB85", DB85) ->
+    *   [1h] -> call_05_IA ->
+    *   [3h] -> call_05_Ship ->
+    *   [Finish Night] #day_begin ->->
+-   -> hub
+
+= call_05_IA
+    L'IA qui commence à faire des phrase qui ont du sens, demande de l'aide, envoyer des bateaux, n'importe qui à telle position.
+    +   [Hang up.]
+-   ->->
+
+= call_05_Ship
+    Bateau qui dit que leur radar a cessé de fonctionner. Ils vont avoir besoin de guidage pour aller vers leur point de mouillage. Ptet faut hint que c'est un bon moment pour envoyer un bateau sur l'ile de l'IA ??
+    +   [Hang up.]
+-   ->->
+
+
+
+== Day_06 ==
+    *   [Turn on the radio]
+-   RBR qui parle des perturbations en mers et des baleines échouées.
+-   (hub)
+    *   [Switch to Radio Rêve Oeil]
+        RRO qui parle de weaving, dit que des gens entendent des voies dans leurs radios, les invocations fonctionnent
+        -> hub
+    *   [Switch to the Lighthouse channel] -> light_buddies_06
+    *   {light_buddies_06} [Turn off radio ] #day_end
+-
+->->
+
+= light_buddies_06
+    Ces trucs de baleine, de weaving ça inquiète un peu, c'est vrai qu'il y a plein d'interferences chelou sur les appareils en ce moment. Non mais tkt c'est juste des défaillances, Bernard a discuté un peu avec chtooling et c'est sur ils vont filer plein de thunes pour renover les phares. ils ont a bien besoin.
+    Dernière nuit avant la tempête donc profitez bien. Checkez le bateau du CEO qui va repartir, faut respecter les restrictions aussi cette fois.
+-   
+    -> hub
+
+== Night_06 ==
+~ temp CB65 = 0
+
+-   (hub)
+    +   [CB65] -> Ship_Dialog("CB65", CB65) ->
+    *   [00h] -> call_06_AI ->
+    *   [Finish Night] #day_begin ->->
+-   -> hub
+
+= call_06_AI
+    IA (ptet elle dit pas encore que c'est une IA mais juste une entité) qui parle correctement et qui discute avec nous, elle veut s'échaper, elle a besoin que quelqu'un l'embarque. Elle a pu contacter des gens, demain faudra juste faire en sorte de guider un bateau furtif. Il aura une petite lumière bleue. Il apparaitra pas sur le radar, faudra faire attention. Donc entraine toi cette nuit à voir comment fonctionne le mapping radar/vue. Le code transpondeur c'est EE99.
+    +   [Hang up.]
+-   ->->
+
+
+
+== Day_07 ==
+    *   [Turn on the radio]
+-   RRB qui parle de la tempête sa mère qui arrive cette nuit. Ptet aussi de chtooling qui investit dans les nouvelles tech sur une île.
+-   (hub)
+    *   [Switch to Radio Rêve Oeil]
+        RRO qui dit que le weaving ça marche bien dans la tempête, allez y les gars
+        -> hub
+        -> hub
+    *   [Switch to the Lighthouse channel] -> light_buddies_07
+    *   {light_buddies_07} [Turn off radio ] #day_end
+-
+->->
+
+= light_buddies_07
+    bravo bientôt la retraite c'est ton dernier jour 
+    bon par contre faut pas se relâcher, on prévoit du bordel cette nuit, évitez les collisions.
+-   
+    -> hub
+
+== Night_07 ==
+~ temp EE99 = 0
+
+-   (hub)
+    +   [EE99] -> Ship_Dialog("EE99", EE99) ->
+    *   [Finish Night] #day_begin ->->
+-   -> hub
+
+
+
+== Epilogue ==
+    *   [Turn on the radio]
+-   RBR qui parle de l'IA échapée ou pas
+-   (hub)
+    *   [Switch to Radio Rêve Oeil]
+        RRO qui dit que la prochaine temête sera la bonne
+        -> hub
+    *   [Switch to Radio Falaise]
+        RF qui parle du fait que Bernard était soudoyé par Chtooling pour cacher des trucs mystérieux.
+        -> hub
+    *   [Turn off radio ]
+-
+    *   [Enjoy __la retraite_]
+-   Thank you for playing.
+->->
+
 
 
