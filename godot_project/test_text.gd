@@ -1,12 +1,11 @@
 extends Node2D
 
 @onready var _ink_player: InkPlayer = $InkPlayer
-@onready var game_dialogue: DialogeUI = $"Dialogue UI"
+@onready var game_dialogue: DialogeUI = $"DialogueUi"
 @onready var dialogue = game_dialogue
 
 
 func _ready():
-	dialogue.clear()
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 
@@ -27,22 +26,17 @@ func _continue_story():
 		# Set the text of a Label to this value to display it in your game.
 		print('text')
 		print(text)
-
+		
 		print(_ink_player.current_tags)
 		var type = 1
 		var tags = _ink_player.current_tags
-		
 		dialogue.add_dialogue(text, type, tags)
 
 		if _ink_player.has_choices:
-			# 'current_choices' contains a list of the choices, as strings.
-			#for choice in _ink_player.current_choices:
-				#print(choice)
-
-			# '_select_choice' is a function that will take the index of
-			# your selection and continue the story by calling again
-			# `_continue_story()`.
-			_ink_player.choose_choice_index(1)
+			var choices = _ink_player.current_choices
+			for c in choices:
+				print(c.text + '   ' + str(c.tags))
+			dialogue.add_choices(choices)
 
 		else:
 			# This code runs when the story reaches it's end.

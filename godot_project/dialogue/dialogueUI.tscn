@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://4aauh7jhbykj"]
+
+[ext_resource type="Script" uid="uid://bfy63w0pcn4jq" path="res://dialogue/dialogue_ui.gd" id="1_6j5jl"]
+
+[sub_resource type="Theme" id="Theme_6j5jl"]
+
+[node name="DialogueUi" type="ScrollContainer" unique_id=1922901181]
+custom_minimum_size = Vector2(145, 120)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6j5jl")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+script = ExtResource("1_6j5jl")
+metadata/_custom_type_script = "uid://bfy63w0pcn4jq"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=694432749]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
