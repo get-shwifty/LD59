@@ -34,9 +34,12 @@ func end_selection():
 	
 
 func _on_gui_input(event):
+	print("truc")
 	if not selectable:
+		print("Non selectable")
 		return
 	if event.is_pressed():
+		print("PRESSE")
 		listener.select_option(self)
 
 
