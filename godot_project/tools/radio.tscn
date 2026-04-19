@@ -1,71 +1,84 @@
 [gd_scene format=3 uid="uid://db3k2jjescd58"]
 
-[ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="1_kgwk4"]
 [ext_resource type="Script" uid="uid://v1iw8kmc0bg6" path="res://tools/radio.gd" id="1_polgl"]
-[ext_resource type="Texture2D" uid="uid://bwjo61mfxng88" path="res://assets/icon.svg" id="2_urip8"]
+[ext_resource type="Texture2D" uid="uid://c8hdtdkf4jicq" path="res://assets/images/radio.png" id="2_8q18p"]
+[ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="3_polgl"]
+[ext_resource type="Texture2D" uid="uid://betuoa80b4plt" path="res://assets/images/radio_button_off.png" id="4_goecq"]
 
 [node name="Radio" type="Node2D" unique_id=848813022]
 script = ExtResource("1_polgl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778517621]
-position = Vector2(640, 359)
-texture = ExtResource("1_kgwk4")
+[node name="Radio" type="Sprite2D" parent="." unique_id=643481337]
+position = Vector2(418, 594)
+texture = ExtResource("2_8q18p")
 
 [node name="Button1HAUT" type="TextureButton" parent="." unique_id=1480233506]
-offset_left = 154.0
-offset_top = 369.0
-offset_right = 282.0
-offset_bottom = 497.0
-texture_normal = ExtResource("2_urip8")
+offset_left = 286.0
+offset_top = 485.0
+offset_right = 318.0
+offset_bottom = 501.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
 
 [node name="Button1BAS" type="TextureButton" parent="." unique_id=966281323]
-offset_left = 151.0
-offset_top = 603.0
-offset_right = 279.0
-offset_bottom = 731.0
-texture_normal = ExtResource("2_urip8")
+offset_left = 288.0
+offset_top = 613.0
+offset_right = 320.0
+offset_bottom = 629.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
 
-[node name="Button2HAUT" type="TextureButton" parent="." unique_id=114462849]
-offset_left = 283.0
-offset_top = 367.0
-offset_right = 411.0
-offset_bottom = 495.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonHAUT2" type="TextureButton" parent="." unique_id=2125682301]
+offset_left = 346.0
+offset_top = 486.0
+offset_right = 378.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
 
-[node name="Button2BAS" type="TextureButton" parent="." unique_id=1636503691]
-offset_left = 274.0
-offset_top = 602.0
-offset_right = 402.0
-offset_bottom = 730.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonBAS2" type="TextureButton" parent="." unique_id=1871672128]
+offset_left = 346.0
+offset_top = 614.0
+offset_right = 378.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
 
-[node name="Button3HAUT" type="TextureButton" parent="." unique_id=114309904]
-offset_left = 409.0
-offset_top = 366.0
-offset_right = 537.0
-offset_bottom = 494.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonHAUT3" type="TextureButton" parent="." unique_id=636378459]
+offset_left = 402.0
+offset_top = 486.0
+offset_right = 434.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
 
-[node name="Button3BAS" type="TextureButton" parent="." unique_id=479045408]
-offset_left = 397.0
-offset_top = 599.0
-offset_right = 525.0
-offset_bottom = 727.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonBAS3" type="TextureButton" parent="." unique_id=478125311]
+offset_left = 404.0
+offset_top = 614.0
+offset_right = 436.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
 
-[node name="Button4HAUT" type="TextureButton" parent="." unique_id=419937941]
-offset_left = 537.0
-offset_top = 366.0
-offset_right = 665.0
-offset_bottom = 494.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonHAUT4" type="TextureButton" parent="." unique_id=488018383]
+offset_left = 460.0
+offset_top = 486.0
+offset_right = 492.0
+offset_bottom = 502.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
+flip_v = true
 
-[node name="Button4BAS" type="TextureButton" parent="." unique_id=633085193]
-offset_left = 524.0
-offset_top = 600.0
-offset_right = 652.0
-offset_bottom = 728.0
-texture_normal = ExtResource("2_urip8")
+[node name="ButtonBAS4" type="TextureButton" parent="." unique_id=463950707]
+offset_left = 462.0
+offset_top = 614.0
+offset_right = 494.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_polgl")
 
 [node name="Label1" type="Label" parent="." unique_id=1851371511]
 offset_left = 283.0
@@ -102,3 +115,21 @@ offset_bottom = 594.0
 theme_override_font_sizes/font_size = 50
 text = "2"
 horizontal_alignment = 1
+
+[node name="CallButton" type="TextureButton" parent="." unique_id=1097868155]
+offset_left = 545.0
+offset_top = 565.0
+offset_right = 585.0
+offset_bottom = 605.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_goecq")
+
+[connection signal="pressed" from="Button1HAUT" to="." method="_on_button_pressed" binds= [NodePath("Button1HAUT"), 1]]
+[connection signal="pressed" from="Button1BAS" to="." method="_on_button_pressed" binds= [NodePath("Button1BAS"), 1]]
+[connection signal="pressed" from="ButtonHAUT2" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT2"), 2]]
+[connection signal="pressed" from="ButtonBAS2" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS2"), 2]]
+[connection signal="pressed" from="ButtonHAUT3" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT3"), 3]]
+[connection signal="pressed" from="ButtonBAS3" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS3"), 3]]
+[connection signal="pressed" from="ButtonHAUT4" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT4"), 4]]
+[connection signal="pressed" from="ButtonBAS4" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS4"), 4]]
+[connection signal="pressed" from="CallButton" to="." method="_on_call_button_pressed"]

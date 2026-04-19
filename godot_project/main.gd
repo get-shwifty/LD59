@@ -15,6 +15,7 @@ func _ready() -> void:
 	game_dialogue.listener = self
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
+	$Night/Radio.connect("contact_boat", _contact_boat)
 
 func _process(delta: float) -> void:
 	pass
@@ -94,3 +95,7 @@ func start_of_day():
 	$Day.visible = true
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
+
+func _contact_boat():
+	# Mettre en pause l'horloge ?
+	game_dialogue.visible = true
