@@ -6,6 +6,7 @@ extends Node2D
 
 
 func _ready():
+	game_dialogue.listener = self
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 
@@ -16,6 +17,15 @@ func _story_loaded(successfully: bool):
 
 	_continue_story()
 
+func select_choice(index: int):
+	_ink_player.choose_choice_index(index)
+	await get_tree().physics_frame
+	_continue_story()
+
+func execute_tags(tags):
+	for t in tags:
+		print(t)
+	# TO DO : écrire le code pour chaque type de tag
 
 func _continue_story():
 	while _ink_player.can_continue:

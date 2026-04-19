@@ -23,10 +23,10 @@ scale = Vector2(0.66510415, 0.64212966)
 texture = ExtResource("3_ccd1s")
 
 [node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("4_y3rhh")]
-offset_left = 350.0
-offset_top = 125.0
-offset_right = 1217.0
-offset_bottom = 577.0
+offset_left = 144.0
+offset_top = 41.0
+offset_right = 1011.0
+offset_bottom = 493.0
 
 [node name="InkPlayer" type="Node" parent="." unique_id=259117192]
 script = ExtResource("5_y3rhh")

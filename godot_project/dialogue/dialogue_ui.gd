@@ -21,7 +21,7 @@ func handle_scrollbar_changed():
 		self.scroll_vertical = max_scroll_length
 
 @onready var DIALOGUE = preload("res://dialogue/dialogueText.tscn")
-@onready var OPTIONS = preload("res://dialogue/dialogueOptions.tscn")
+@onready var OPTIONS = preload("res://dialogue/dialogueOptionList.tscn")
 
 var listener = null
 
@@ -71,7 +71,6 @@ func write_text_from_buffer():
 	
 	$VBoxContainer.add_child(dial)
 	
-	print("HELLO !")
 	text_buffer.pop_front()
 	
 func write_options_from_buffer():
