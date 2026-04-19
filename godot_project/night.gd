@@ -8,6 +8,7 @@ extends Node2D
 
 ################################## Const
 const VISION_ANGLE = 90
+const INCREMENT_DIVIDOR = 3
 
 ################################## Var
 var landscape_pct = 0.0
@@ -28,8 +29,9 @@ func _on_next_day_pressed() -> void:
 
 func _on_left_button_pressed() -> void:
 	print(camera)
-	camera.position.x -= landscape_pct / 3
-	print(camera.position.x)
+	camera.position.x -= landscape_pct / INCREMENT_DIVIDOR
+	$UI/Radar/Cone.rotation_degrees -= VISION_ANGLE / INCREMENT_DIVIDOR
 
 func _on_right_button_pressed() -> void:
-	camera.position.x += landscape_pct / 3
+	camera.position.x += landscape_pct / INCREMENT_DIVIDOR
+	$UI/Radar/Cone.rotation_degrees += VISION_ANGLE / INCREMENT_DIVIDOR
