@@ -1,1 +1,184 @@
-{"inkVersion":21,"root":[[{"->t->":"Day_01"},{"->t->":"Title_Sequence"},{"->t->":"Night_01"},{"->t->":"Day_02"},{"->t->":"Night_02"},{"->t->":"Day_03"},{"->t->":"Night_03"},"end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"Ship_Dialog":[{"temp=":"ship_call_count"},{"temp=":"ship_transponder"},["ev",{"VAR?":"ship_call_count"},1,"+",{"temp=":"ship_call_count","re":true},"/ev","^Hello ship ","ev",{"VAR?":"ship_transponder"},"out","/ev","^, this is lighthouse Peruchet, calling for the ","ev",{"VAR?":"ship_call_count"},"out","/ev","^ time.","\n","ev","str","^N","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^S","/str","/ev",{"*":".^.c-1","flg":4},"ev","str","^E","/str","/ev",{"*":".^.c-2","flg":4},"ev","str","^W","/str","/ev",{"*":".^.c-3","flg":4},"ev","str","^NE","/str","/ev",{"*":".^.c-4","flg":4},"ev","str","^SE","/str","/ev",{"*":".^.c-5","flg":4},"ev","str","^NW","/str","/ev",{"*":".^.c-6","flg":4},"ev","str","^SW","/str","/ev",{"*":".^.c-7","flg":4},"ev","str","^Keep on","/str","/ev",{"*":".^.c-8","flg":4},{"c-0":["^ Head North.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-1":["^ Head South.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-2":["^ Head East.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-3":["^ Head West.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-4":["^ Head North East.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-5":["^ Head South East.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-6":["^ Head North West.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-7":["^ Head South West.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-8":["^ Please keep on.","\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^Copy that.","\n","ev","str","^Hang up.","/str","/ev",{"*":".^.c-9","flg":4},{"c-9":["\n",{"->":".^.^.^.g-1"},{"#f":5}],"#f":5}],"g-1":["ev","void","/ev","->->",{"#f":5}]}],{"#f":1}],"Night_Example":[["ev",0,"/ev",{"temp=":"BA45"},"ev",0,"/ev",{"temp=":"DB67"},["ev","str","^BA45","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^DB67","/str","/ev",{"*":".^.c-1","flg":4},"ev","str","^21h","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^22h","/str",{"VAR?":"BA45"},"/ev",{"*":".^.c-3","flg":21},"ev","str","^Finish Night","/str","/ev",{"*":".^.c-4","flg":20},{"c-0":["^ ","ev","str","^BA45","/str",{"^var":"BA45","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["^ ","ev","str","^DB67","/str",{"^var":"DB67","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["^ ",{"->t->":".^.^.^.^.call_01"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-3":["^ ",{"->t->":".^.^.^.^.call_02"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-4":["^ ","ev","void","/ev","->->","\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"hub"}],{"g-0":[{"->":".^.^.hub"},{"#f":5}]}],{"call_01":[["^this is a mysterious call","\n","ev","str","^Hang up.","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["ev","void","/ev","->->",{"#f":5}]}],{"#f":1}],"call_02":[["^this is a mysterious conditional call","\n","ev","str","^Hang up.","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["ev","void","/ev","->->",{"#f":5}]}],{"#f":1}],"#f":1}],"Day_Example":[["ev","str","^Turn on the radio","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^... no, no, no I can't let you say that ! ","#","^rf","/#","\n","^But it's true ! This is the biggest investment Roquebrise has seen in years ! ","#","^rf","/#","\n","^Oh come on, Gustave, we both now it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! ","#","^rf","/#","\n",["ev","str","^Switch to Radio Rêve Oeil","/str","/ev",{"*":".^.c-1","flg":20},"ev","str","^Switch to the Lighthouse channel","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^Turn off radio","/str",{"CNT?":".^.^.^.^.light_buddies_03"},"/ev",{"*":".^.c-3","flg":21},{"c-1":["\n","^Open your mind with Radio Rêve Oeil, _la radio qui reveille votre âme_. ","#","^rro","/#","\n","^Today we receive Eric Esoth, a weaving specialist. He'll tell us about this ancient art and how it can improve your life. ","#","^rro","/#","\n","^Eric, welcome on the show ! ","#","^rro","/#","\n",{"->":".^.^"},{"->":".^.^.^.^.g-1"},{"#f":5}],"c-2":["^ ",{"->":".^.^.^.^.^.light_buddies_03"},"\n",{"->":".^.^.^.^.g-1"},{"#f":5}],"c-3":["\n",{"->":".^.^.^.^.g-1"},{"#f":5}],"#f":5,"#n":"hub"}],{"#f":5}],"g-1":["ev","void","/ev","->->",{"#f":5}]}],{"light_buddies_03":[["^... I'm telling you I'm tired of this shit Bernard. ","#","^a","/#","\n",["ev",{"^->":"Day_Example.light_buddies_03.0.5.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^What kind of shit ?",{"->":"$r","var":true},null]}],"ev","str","^Keep listening","/str","/ev",{"*":".^.c-1","flg":20},{"c-0":["ev",{"^->":"Day_Example.light_buddies_03.0.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.5.s"},[{"#n":"$r2"}],"\n","^Alain was just explaining to me how much he envied you. ","#","^b","/#","\n","^__Pétard Bernard !_ You know it has nothing to do with that.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-1":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^25 years on the job. ","#","^a","/#","\n","^A quarter of a century years of telling management our tech is outdated crap. ","#","^a","/#","\n","^An eternity hearing the same answer. __N'allez pas plus vite que la musique mon petit Yannick._ ","#","^a","/#","\n",["ev",{"^->":"Day_Example.light_buddies_03.0.g-0.15.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-2","flg":18},{"s":["^Who's Yannick ?",{"->":"$r","var":true},null]}],"ev","str","^Keep listening","/str","/ev",{"*":".^.c-3","flg":20},{"c-2":["ev",{"^->":"Day_Example.light_buddies_03.0.g-0.c-2.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.15.s"},[{"#n":"$r2"}],"\n","^Hell if I know ! ","#","^a","/#","\n",{"->":".^.^.^.g-1"},{"#f":5}],"c-3":["\n",{"->":".^.^.^.g-1"},{"#f":5}],"#f":5}],"g-1":[{"->":".^.^.^.^.0.g-0.hub"},{"#f":5}]}],{"#f":1}],"#f":1}],"Day_01":[["ev","str","^Turn on the radio","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^... although several citizen groups argue against the project, officials and investors assured it would be beneficial for the whole Roquebrise region in the long run. More on that later. ","#","^rbr","/#","\n","^Weaving. This hobby reminiscent of ancient craft supposed to summon occult forces becomes each day more popular among teenagers. Parents are getting worried. We'll receive Dr. Dutissage to talk about it in a few minutes. ","#","^rbr","/#","\n","^Weather. Hurricane Félix is predicted to make landfall at the end of the week. Plan ahead and stay safe. ","#","^rbr","/#","\n","^It's 6pm, you're listening to Roquebrise Radio and I'm Danielle Naujour.  ","#","^rbr","/#","\n",["ev","str","^Switch to Radio Falaise","/str","/ev",{"*":".^.c-1","flg":20},"ev","str","^Switch to the Lighthouse channel","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^Turn off radio","/str",{"CNT?":"Day_01.light_buddies_01"},"/ev",{"*":".^.c-3","flg":21},{"c-1":["\n","^__Bonsoir Roquebrise !!_ ","#","^rf","/#","\n","^I'm Eric Désinfaut and you're listening to radio Falaise, __la seule radio qui raconte pas de fadaise_. ","#","^rf","/#","\n",{"->":".^.^"},{"->":"Day_01.0.g-1"},{"#f":5}],"c-2":["^ ",{"->":"Day_01.light_buddies_01"},"\n",{"->":"Day_01.0.g-1"},{"#f":5}],"c-3":["\n",{"->":"Day_01.0.g-1"},{"#f":5}],"#f":5,"#n":"hub"}],{"#f":5}],"g-1":["ev","void","/ev","->->",{"#f":5}]}],{"light_buddies_01":[[[["ev","visit",1,"MIN","/ev","ev","du",0,"==","/ev",{"->":".^.s0","c":true},"ev","du",1,"==","/ev",{"->":".^.s1","c":true},"nop",{"s0":["pop","^You listening ",{"->":".^.^.17"},null],"s1":["pop",{"->":".^.^.17"},null],"#f":5}],"^Charles ",["ev","visit",1,"MIN","/ev","ev","du",0,"==","/ev",{"->":".^.s0","c":true},"ev","du",1,"==","/ev",{"->":".^.s1","c":true},"nop",{"s0":["pop","^?",{"->":".^.^.17"},null],"s1":["pop","^!?",{"->":".^.^.17"},null],"#f":5}],"^ ","#","^b","/#","\n",["ev",{"^->":"Day_01.light_buddies_01.0.intro.8.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^Hmm yes ...",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_01.light_buddies_01.0.intro.9.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-1","flg":18},{"s":["^Sorry, just turned on the channel.",{"->":"$r","var":true},null]}],"ev","str","^Say nothing","/str","/ev",{"*":".^.c-2","flg":20},{"c-0":["ev",{"^->":"Day_01.light_buddies_01.0.intro.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.8.s"},[{"#n":"$r2"}],"\n","^__mouais ... bon, écoutes_","\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["ev",{"^->":"Day_01.light_buddies_01.0.intro.c-1.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.9.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["^ ",{"->":".^.^"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"intro"}],{"g-0":["^As I was saying, dispatch wants us to open our eyes for BA45. ","#","^b","/#","\n","^The ship will be coming in tonight but has reported malfunctions with its localization software. ","#","^b","/#","\n","^Just make sure the boat doesn't run aground in the bay. ","#","^b","/#","\n",["ev",{"^->":"Day_01.light_buddies_01.0.g-0.15.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-3","flg":18},{"s":["^And how am I supposed to do that ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_01.light_buddies_01.0.g-0.16.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","str","^.","/str","/ev",{"*":".^.^.c-4","flg":22},{"s":["^Okay",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_01.light_buddies_01.0.g-0.17.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-5","flg":18},{"s":["^I know my job, Bernard.",{"->":"$r","var":true},null]}],{"c-3":["ev",{"^->":"Day_01.light_buddies_01.0.g-0.c-3.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.15.s"},[{"#n":"$r2"}],"\n","^Just watch for the ship with transponder code BA45 and redirect it with the radio if it ever comes too close to land. ","#","^b","/#","\n","^Ah ! I see what you did there, very funny. ","#","^b","/#","\n",{"->":".^.^.^.g-1"},{"#f":5}],"c-4":["ev",{"^->":"Day_01.light_buddies_01.0.g-0.c-4.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.16.s"},[{"#n":"$r2"}],"^, I'll keep an eye out for BA45.","\n","^Great, ","<>","\n",{"->":".^.^.^.g-1"},{"#f":5}],"c-5":["ev",{"^->":"Day_01.light_buddies_01.0.g-0.c-5.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.17.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.g-1"},{"#f":5}],"#f":5}],"g-1":["^I know it's your last week but go easy with __l'apéro_. We still need you here, the rest can wait until __la retraite_. ","#","^b","/#","\n",{"->":"Day_01.0.g-0.hub"},{"#f":5}]}],{"#f":1}],"#f":1}],"Title_Sequence":[["#","^title_screen","/#","ev","str","^continue","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["^ ","\n","#","^day_end","/#",{"->":".^.^.g-0"},{"#f":5}],"g-0":["ev","void","/ev","->->",{"#f":5}]}],{"#f":1}],"Night_01":[["ev",0,"/ev",{"temp=":"BA45"},"ev",0,"/ev",{"temp=":"AE34"},"#","^night_begin","/#",["ev","str","^BA45","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^AE34","/str","/ev",{"*":".^.c-1","flg":4},"ev","str","^Finish Night","/str","/ev",{"*":".^.c-2","flg":20},{"c-0":["^ ","ev","str","^BA45","/str",{"^var":"BA45","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["^ ","ev","str","^AE34","/str",{"^var":"AE34","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["^ ","#","^day_begin ","/#","ev","void","/ev","->->","\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"hub"}],{"g-0":[{"->":".^.^.hub"},{"#f":5}]}],{"#f":1}],"Day_02":[["ev","str","^Turn on the radio","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^... no, no, no I can't let you say that ! ","#","^rf","/#","\n","^But it's true ! This is the biggest investment Roquebrise has seen in years ! ","#","^rf","/#","\n","^Oh come on, Gustave, we both now it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! ","#","^rf","/#","\n",["ev","str","^Switch to Radio Rêve Oeil","/str","/ev",{"*":".^.c-1","flg":20},"ev","str","^Switch to the Lighthouse channel","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^Turn off radio","/str",{"CNT?":"Day_02.light_buddies_02"},"/ev",{"*":".^.c-3","flg":21},{"c-1":["\n","^Open your mind with Radio Rêve Oeil, _la radio qui reveille votre âme_. ","#","^rro","/#","\n","^Today we receive Eric Esoth, a weaving specialist. He'll tell us about this ancient art and how it can improve your life. ","#","^rro","/#","\n","^Eric, welcome on the show ! ","#","^rro","/#","\n",{"->":".^.^"},{"->":"Day_02.0.g-1"},{"#f":5}],"c-2":["^ ",{"->":"Day_02.light_buddies_02"},"\n",{"->":"Day_02.0.g-1"},{"#f":5}],"c-3":["^ ","#","^day_end","/#","\n",{"->":"Day_02.0.g-1"},{"#f":5}],"#f":5,"#n":"hub"}],{"#f":5}],"g-1":["ev","void","/ev","->->",{"#f":5}]}],{"light_buddies_02":[["^... I'm telling you I'm tired of this shit Bernard. ","#","^a","/#","\n",["ev",{"^->":"Day_02.light_buddies_02.0.5.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^What kind of shit ?",{"->":"$r","var":true},null]}],"ev","str","^Keep listening","/str","/ev",{"*":".^.c-1","flg":20},{"c-0":["ev",{"^->":"Day_02.light_buddies_02.0.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.5.s"},[{"#n":"$r2"}],"\n","^Alain was just explaining to me how much he envied you. ","#","^b","/#","\n","^__Pétard Bernard !_ You know it has nothing to do with that.","\n",{"->":".^.^.g-0"},{"#f":5}],"c-1":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^25 years on the job. ","#","^a","/#","\n","^A quarter of a century of telling management our tech is outdated crap. ","#","^a","/#","\n","^An eternity hearing the same answer. __N'allez pas plus vite que la musique mon petit Yannick._ ","#","^a","/#","\n",["ev",{"^->":"Day_02.light_buddies_02.0.g-0.15.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-2","flg":18},{"s":["^Who's Yannick ?",{"->":"$r","var":true},null]}],"ev","str","^Keep listening","/str","/ev",{"*":".^.c-3","flg":20},{"c-2":["ev",{"^->":"Day_02.light_buddies_02.0.g-0.c-2.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.15.s"},[{"#n":"$r2"}],"\n","^Hell if I know ! ","#","^a","/#","\n",{"->":".^.^.^.g-1"},{"#f":5}],"c-3":["\n",{"->":".^.^.^.g-1"},{"#f":5}],"#f":5}],"g-1":["^And now they send a boy to teach me my job ? ","#","^a","/#","\n","^Jean is not here to teach you your job. ","#","^b","/#","\n","^He's only here to make a report on possible process efficiency improvement. ","#","^b","/#","\n",[["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-4","flg":18},{"s":["^Is he the guy from Chtooling Consulting ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.1.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-5","flg":18},{"s":["^__Punaise_, you talk like them Bernard.",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.2.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-6","flg":18},{"s":["^I'm sure possible process efficiency improvements can be a good thing.",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.3.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-7","flg":18},{"s":["^Fuck Chtooling !",{"->":"$r","var":true},null]}],{"c-4":["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-4.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"\n","^He wasn't event born when I started this job ! ","#","^a","/#","\n","^He's a fine young consultant, sent by Leon Skum himself and promised to a great carreer. It can't hurt to befriend him a little. ","#","^b","/#","\n",{"->":".^.^"},{"->":".^.^.^.^.g-2"},{"#f":5}],"c-5":["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-5.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.1.s"},[{"#n":"$r2"}],"\n","^I'm only following the music guys. ","#","^b","/#","\n",{"->":".^.^"},{"->":".^.^.^.^.g-2"},{"#f":5}],"c-6":["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-6.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.2.s"},[{"#n":"$r2"}],"\n","^Yeah, sure.  Easy for you to say. ","#","^a","/#","\n",{"->":".^.^.^.^.g-2"},{"#f":5}],"c-7":["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-7.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.3.s"},[{"#n":"$r2"}],"\n","^Fuck Chtooling ! Fuck Consulting ! ","#","^a","/#","\n",[["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-7.12.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^Fuck Consulting !",{"->":"$r","var":true},null]}],"ev","str","^Say nothing","/str","/ev",{"*":".^.c-1","flg":20},{"c-0":["ev",{"^->":"Day_02.light_buddies_02.0.g-1.consulting.c-7.12.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"\n","^Fuck them ! ","#","^b","/#","\n",{"->":".^.^.g-0"},{"#f":5}],"c-1":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^__Bon bon, ca va les gars on a compris_ ","#","^b","/#","\n",{"->":".^.^.^.^.^.^.g-2"},{"#f":5}]}],{"#f":5}],"#f":5,"#n":"consulting"}],{"#f":5}],"g-2":["^Regarding more serious matters. ","#","^b","/#","\n","^We still need to look out for BA45 tonight. ","#","^b","/#","\n",[["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","str","^.","/str","/ev",{"*":".^.^.c-8","flg":22},{"s":["^Okay",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.1.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-9","flg":18},{"s":["^Didn't they fix their stuff ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.2.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-10","flg":18},{"s":["^They're leaving already ?",{"->":"$r","var":true},null]}],{"c-8":["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.c-8.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"^, I'll keep an eye out.","\n",{"->":"Day_02.0.g-0.hub"},{"#f":5}],"c-9":["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.c-9.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.1.s"},[{"#n":"$r2"}],"\n","^Are you surprised ? ","#","^a","/#","\n",{"->":".^.^"},{"#f":5}],"c-10":["ev",{"^->":"Day_02.light_buddies_02.0.g-2.BA45.c-10.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.2.s"},[{"#n":"$r2"}],"\n","^Looks like it, yes. ","#","^b","/#","\n",{"->":".^.^"},{"#f":5}],"#f":5,"#n":"BA45"}],{"#f":5}]}],{"#f":1}],"#f":1}],"Night_02":[["ev",0,"/ev",{"temp=":"BA45"},"ev",0,"/ev",{"temp=":"DB67"},["ev","str","^BA45","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^DB67","/str","/ev",{"*":".^.c-1","flg":4},"ev","str","^22h","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^Finish Night","/str","/ev",{"*":".^.c-3","flg":20},{"c-0":["^ ","ev","str","^BA45","/str",{"^var":"BA45","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["^ ","ev","str","^DB67","/str",{"^var":"DB67","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["^ ",{"->t->":"Night_02.call_02"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-3":["^ ","#","^day_begin ","/#","ev","void","/ev","->->","\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"hub"}],{"g-0":[{"->":".^.^.hub"},{"#f":5}]}],{"call_02":[[["^**",["ev","visit",4,"MIN","/ev","ev","du",0,"==","/ev",{"->":".^.s0","c":true},"ev","du",1,"==","/ev",{"->":".^.s1","c":true},"ev","du",2,"==","/ev",{"->":".^.s2","c":true},"ev","du",3,"==","/ev",{"->":".^.s3","c":true},"ev","du",4,"==","/ev",{"->":".^.s4","c":true},"nop",{"s0":["pop",{"->":".^.^.35"},null],"s1":["pop","^More ",{"->":".^.^.35"},null],"s2":["pop","^Just ",{"->":".^.^.35"},null],"s3":["pop","^A new variaty of ",{"->":".^.^.35"},null],"s4":["pop","^Crumbly and ",{"->":".^.^.35"},null],"#f":5}],"^crackling noise* ","#","^u","/#","\n",["ev",{"^->":"Night_02.call_02.0.call_hub.7.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^Hello ?",{"->":"$r","var":true},null]}],"ev","str","^Keep listening","/str","/ev",{"*":".^.c-1","flg":20},["ev",{"^->":"Night_02.call_02.0.call_hub.14.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str",{"CNT?":".^.^"},1,">","/ev",{"*":".^.^.c-2","flg":19},{"s":["^This isn't funny.",{"->":"$r","var":true},null]}],"ev","str","^Imitate crackling noise","/str",{"CNT?":".^"},1,">","/ev",{"*":".^.c-3","flg":21},"ev","str","^Hang up.","/str",{"CNT?":".^"},1,">","/ev",{"*":".^.c-4","flg":5},{"c-0":["ev",{"^->":"Night_02.call_02.0.call_hub.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.7.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["ev",{"^->":"Night_02.call_02.0.call_hub.c-2.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.14.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-3":["\n","^gzzz crch bzz crch","\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-4":["\n","ev","void","/ev","->->",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"call_hub"}],{"g-0":[{"->":".^.^.call_hub"},{"#f":5}]}],{"#f":1}],"#f":1}],"Day_03":[["ev","str","^Turn on the radio","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^... then as I chanted the name of the weaving rune, it happened ! ","#","^rro","/#","\n","^The Pattern talked to me ! ","#","^rro","/#","\n","^Fascinating ! And what did it say ? ","#","^rro","/#","\n","^I'm still not sure, it was just crackling noise on the radio but it was so intense ! ","#","^rro","/#","\n",["ev","str","^Switch to Roquebrise Radio","/str","/ev",{"*":".^.c-1","flg":20},"ev","str","^Switch to the Lighthouse channel","/str","/ev",{"*":".^.c-2","flg":20},"ev","str","^Turn off radio","/str",{"CNT?":"Day_03.light_buddies_03"},"/ev",{"*":".^.c-3","flg":21},{"c-1":["\n","^... people are getting worried. ","#","^rbr","/#","\n","^Weather. The temperature will remain constant. The perfect condition to enjoy these evening gettaway we love so much in the bay. ","#","^rbr","/#","\n","^It's 6pm, you're listening to Roquebrise Ra ...","\n",{"->":".^.^"},{"->":"Day_03.0.g-1"},{"#f":5}],"c-2":["^ ",{"->":"Day_03.light_buddies_03"},"\n",{"->":"Day_03.0.g-1"},{"#f":5}],"c-3":["^ ","#","^day_end","/#","\n",{"->":"Day_03.0.g-1"},{"#f":5}],"#f":5,"#n":"hub"}],{"#f":5}],"g-1":["ev","void","/ev","->->",{"#f":5}]}],{"light_buddies_03":[["^... not event respond to my gen call on AA00. ","#","^a","/#","\n","^Okay, I'll file a report immediately. ","#","^b","/#","\n",[["ev",{"^->":"Day_03.light_buddies_03.0.report.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^Did that ever work ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_03.light_buddies_03.0.report.1.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-1","flg":18},{"s":["^Report what ?",{"->":"$r","var":true},null]}],{"c-0":["ev",{"^->":"Day_03.light_buddies_03.0.report.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"\n","^I'm just following protocol Charles. Don't get me started about that, again. ","#","^b","/#","\n",{"->":".^.^"},{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["ev",{"^->":"Day_03.light_buddies_03.0.report.c-1.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.1.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"report"}],{"g-0":["^A ship sailing without any active transponder. ","#","^a","/#","\n",[["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str",{"CNT?":".^.^"},1,"<=","/ev",{"*":".^.^.c-2","flg":19},{"s":["^But that's illegal !",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.1.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-3","flg":18},{"s":["^How can we prevent that ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.2.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str",{"CNT?":".^.^.c-3"},{"CNT?":".^.^.c-5"},"||","/ev",{"*":".^.^.c-4","flg":19},{"s":["^How can I join the general bay channel ?",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.3.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-5","flg":18},{"s":["^I think I saw them too last night.",{"->":"$r","var":true},null]}],{"c-2":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-2.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"\n","^__Et Dangereux._ ","#","^b","/#","\n","^__Sans blagues._ ","#","^a","/#","\n",{"->":".^.^"},{"->":".^.^.^.^.g-1"},{"#f":5}],"c-3":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-3.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.1.s"},[{"#n":"$r2"}],"\n","^File a report apparently. ","#","^a","/#","\n","^First, try to reach them on the general bay channel. Then we'll file a report. If needed. ","#","^b","/#","\n",{"->":".^.^"},{"->":".^.^.^.^.g-1"},{"#f":5}],"c-4":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-4.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.2.s"},[{"#n":"$r2"}],"\n","^Input transpoder code AAOO from your cabin. Every boat in the area will receive your ... ","#","^b","/#","\n","^Okay enough, __c'est fini les conneries_, just make a gen call if you need to. ","#","^b","/#","\n",[["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-4.17.0.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-0","flg":18},{"s":["^Sorry it was just a stupid joke.",{"->":"$r","var":true},null]}],["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-4.17.1.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":".^.^.c-1","flg":18},{"s":["^You know my memory isn't as good as it was.",{"->":"$r","var":true},null]}],"ev","str","^Laugh a little","/str","/ev",{"*":".^.c-2","flg":20},{"c-0":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-4.17.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.0.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.g-0"},{"#f":5}],"c-1":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-4.17.c-1.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.1.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.g-0"},{"#f":5}],"c-2":["\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["^__Oui oui c'est ça_ ","#","^b","/#","\n",{"->":".^.^.^.^"},{"->":".^.^.^.^.^.^.g-1"},{"#f":5}]}],{"#f":5}],"c-5":["ev",{"^->":"Day_03.light_buddies_03.0.g-0.transponder.c-5.$r2"},"/ev",{"temp=":"$r"},{"->":".^.^.3.s"},[{"#n":"$r2"}],"\n",{"->":".^.^.^.^.g-1"},{"#f":5}],"#f":5,"#n":"transponder"}],{"#f":5}],"g-1":[{"->":"Day_03.0.g-0.hub"},{"#f":5}]}],{"#f":1}],"#f":1}],"Night_03":[["ev",0,"/ev",{"temp=":"BA45"},"ev",0,"/ev",{"temp=":"DB67"},["ev","str","^BA45","/str","/ev",{"*":".^.c-0","flg":4},"ev","str","^DB67","/str","/ev",{"*":".^.c-1","flg":4},"ev","str","^Finish Night","/str","/ev",{"*":".^.c-2","flg":20},{"c-0":["^ ","ev","str","^BA45","/str",{"^var":"BA45","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-1":["^ ","ev","str","^DB67","/str",{"^var":"DB67","ci":-1},"/ev",{"->t->":"Ship_Dialog"},"\n",{"->":".^.^.^.g-0"},{"#f":5}],"c-2":["^ ","#","^day_begin ","/#","ev","void","/ev","->->","\n",{"->":".^.^.^.g-0"},{"#f":5}],"#f":5,"#n":"hub"}],{"g-0":[{"->":".^.^.hub"},{"#f":5}]}],{"#f":1}],"#f":1}],"listDefs":{}}
+
+//Emplacement Baie de Roquebrise
+//Cap Ybara
+
+// #rbr Roquebrise Radio -> infos générales
+// #rf Radio Falaise -> infos conspi
+// #rro Radio Rêve Oeil -> infos ésotériques
+
+// Lighthouse buddies
+// #a Alain : Le phare Euhouet
+// #b Bernard : Le phare Andol
+// Nous Charles : Le phare de La Peyro
+
+-> Day_01 ->
+-> Title_Sequence ->
+-> Night_01 ->
+-> Day_02 ->
+-> Night_02 ->
+-> END
+
+== Ship_Dialog (ship_transponder, ref ship_call_count) ==
+    ~ ship_call_count ++
+    Hello ship {ship_transponder}, this is lighthouse Peruchet, calling for the {ship_call_count} time.
+    +   [N] Head North.
+    +   [S] Head South.
+    +   [E] Head East.
+    +   [W] Head West.
+    +   [NE] Head North East.
+    +   [SE] Head South East.
+    +   [NW] Head North West.
+    +   [SW] Head South West.
+    +   [Keep on] Please keep on.
+-   Copy that. 
+    +   [Hang up.]
+-   ->->
+
+== Night_Example ==
+~ temp BA45 = 0
+~ temp DB67 = 0
+
+-   (hub)
+    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
+    +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
+    *   [21h] -> call_01 ->
+    *   {BA45} [22h] -> call_02 ->
+    *   [Finish Night] ->->
+-   -> hub
+
+= call_01
+    this is a mysterious call
+    +   [Hang up.]
+-   ->->
+
+= call_02
+    this is a mysterious conditional call
+    +   [Hang up.]
+-   ->->
+
+
+
+== Day_01 ==
+    *   [Turn on the radio]
+-   ... although several citizen groups argue against the project, officials and investors assured it would be beneficial for the whole Roquebrise region in the long run. More on that later. #rbr
+    Weaving. This hobby reminiscent of ancient craft supposed to summon occult forces becomes each day more popular among teenagers. Parents are getting worried. We'll receive Dr. Dutissage to talk about it in a few minutes. #rbr
+    Weather. Hurricane Félix is predicted to make landfall at the end of the week. Plan ahead and stay safe. #rbr
+    It's 6pm, you're listening to Roquebrise Radio and I'm Danielle Naujour.  
+-   (hub)
+    *   [Switch to Radio Falaise]
+        __Bonsoir Roquebrise !!_ #rf
+        I'm Eric Désinfaut and you're listening to radio Falaise, __la seule radio qui raconte pas de fadaise_. #rf
+        -> hub
+    *   [Switch to the Lighthouse channel] -> light_buddies_01
+    *   {light_buddies_01} [Turn off radio]
+-   ->->
+
+= light_buddies_01
+-   (intro)
+    {You listening |}Charles {?|!?} #b 
+    *   Hmm yes ...
+        __mouais ... bon, écoutes_
+    *   Sorry, just turned on the channel.
+    *   [Say nothing] -> intro
+-   As I was saying, dispatch wants us to open our eyes for BA45. #b
+    The ship will be coming in tonight but has reported malfunctions with its localization software. #b
+    Just make sure the boat doesn't run aground in the bay. #b
+    *   And how am I supposed to do that ?
+        Just watch for the ship with transponder code BA45 and redirect it with the radio if it ever comes too close to land. #b
+        Ah ! I see what you did there, very funny. #b
+    *   Okay[.], I'll keep an eye out for BA45.
+        Great, <>
+    *   I know my job, Bernard.
+-   I know it's your last week but go easy with __l'apéro_. We still need you here, the rest can wait until __la retraite_.
+    -> hub
+
+== Title_Sequence ==
+    GAME TITLE
+    *   [continue]
+-   ->->
+
+== Night_01 ==
+~ temp BA45 = 0
+~ temp AE34 = 0
+
+-   (hub)
+    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
+    +   [AE34] -> Ship_Dialog("AE34", AE34) -> 
+    *   [Finish Night] ->->
+-   -> hub
+
+== Day_02 ==
+    *   [Turn on the radio]
+-   ... no, no, no I can't let you say that ! #rf
+    But it's true ! This is the biggest investment Roquebrise has seen in years ! #rf
+    Oh come on, Gustuve, we both now it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! #rf 
+-   (hub)
+    *   [Switch to Radio Rêve Oeil]
+        Open your mind with Radio Rêve Oeil, _la radio qui reveille votre âme_. #rro
+        Today we receive Eric Esoth, a weaving specialist. He'll tell us about this ancient art and how it can improve your life. #rro
+        Eric, welcome on the show ! #rro
+    *   [Switch to the Lighthouse channel] -> light_buddies_02
+    *   {light_buddies_02} [Turn off radio]
+-
+->->
+
+= light_buddies_02
+    ... I'm telling you I'm tired of this shit Bernard. #a
+    *   What kind of shit ?
+        Alain was just explaining to me how much he envied you. #b
+        __Pétard Bernard !_ You know it has nothing to do with that. 
+    *   [Keep listening]
+-   25 years on the job. #a
+    A quarter of a century years of telling management our tech is outdated crap. #a
+    An eternity hearing the same answer. __N'allez pas plus vite que la musique mon petit Yannick._ #a
+    *   Who's Yannick ?
+        Hell if I know ! #a
+    *   [Keep listening]
+-   And now they send a boy to teach me my job ? #a
+    Jean is not here to teach you your job. #b
+    He's only here to make a report on possible process efficiency improvement. #b
+-   (consulting)
+    *   Is he the guy from Chtooling Consulting ?
+        He wasn't event born when I started this job ! #a
+        He's a fine young consultant, sent by Leon Skum himself and promised to a great carreer. It can't hurt to befriend him a little. #b 
+        -> consulting
+    *   __Punaise_, you talk like them Bernard.
+        I'm only following the music guys. #b
+        -> consulting
+    *   I'm sure possible process efficiency improvements can be a good thing.
+        Yeah, sure.  Easy for you to say. #a
+    *   Fuck Chtooling !
+        Fuck Chtooling ! Fuck Consulting ! #a
+        **  Fuck Consulting !
+            Fuck them ! #b
+        **  [Say nothing]
+        --  __Bon bon, ca va les gars on a compris_ #b
+-   Regarding more serious matters. #b
+    We still need to look out for BA45 tonight. #b
+-   (BA45)
+    *   Okay[.], I'll keep an eye out.
+        -> hub
+    *   Didn't they fix their stuff ?
+        Are you surprised ? #a
+        -> BA45
+    *   They're leaving already ?
+        Looks like it, yes. #b
+        -> BA45
+
+== Night_02 ==
+~ temp BA45 = 0
+~ temp DB67 = 0
+
+-   (hub)
+    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
+    +   [DB67] -> Ship_Dialog("DB67", DB67) ->
+    *   [22h] -> call_02
+    *   [Finish Night] ->->
+-   -> hub
+
+= call_02
+    this is a mysterious call
+    +   [Hang up.]
+-   ->->
+
+
