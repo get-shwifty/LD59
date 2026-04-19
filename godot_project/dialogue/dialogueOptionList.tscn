@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://dxdo33c6lhs74" path="res://dialogue/dialogue_option_list.gd" id="1_ifead"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifead"]
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0.919705, 0.7910206, 0.35561457, 1)
-border_blend = true
+bg_color = Color(0.6745098, 0.9529412, 0.827451, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="DialogueOptionList" type="PanelContainer" unique_id=840064675]
 offset_right = 40.0

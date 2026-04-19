@@ -70,7 +70,47 @@ func write_text_from_buffer():
 	dial.visible = true 
 	
 	$VBoxContainer.add_child(dial)
+	if text.length() == 0:
+		dial.visible = false
 	
+	var speaker_name = ""
+	var border_color = Color(0.0, 0.0, 0.0)
+	var background_color = Color(0.106, 0.322, 0.451, 0.588)
+	var content_left_margin = -1
+		
+	# Si pas de tag, c'est nous qui parlons
+	if dial.tags.is_empty():
+		background_color = Color(0.036, 0.376, 0.871, 0.588)
+		border_color = Color(0.0, 0.216, 0.658)
+		content_left_margin = 160
+		dial.change_dialog_look(border_color, background_color, content_left_margin)
+		
+	else:
+		for tag in dial.tags:
+			if tag == "rbr":
+				speaker_name = "Roquebrise Radio"
+				background_color = Color(0.219, 0.653, 0.438, 0.588)
+				border_color = Color(0.365, 0.91, 0.776)
+			if tag == "rf":
+				speaker_name = "Radio Falaise"
+				background_color = Color(0.273, 0.401, 0.409, 0.588)
+				border_color = Color(0.391, 0.426, 0.483)
+			if tag == "rre":
+				speaker_name = "Radio Rêve Oeil"
+				background_color = Color(0.377, 0.19, 0.611, 0.588)
+				border_color = Color(0.699, 0.0, 0.666)
+			if tag == "a":
+				speaker_name = "Alain"
+				background_color = Color(0.173, 0.408, 0.192, 0.588)
+				border_color = Color(0.176, 0.753, 0.259)
+			if tag == "b":
+				speaker_name = "Bernard"
+				background_color = Color(0.574, 0.567, 0.077, 0.588)
+				border_color = Color(0.769, 0.863, 0.145)
+			
+			dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
+			dial.change_dialog_look(border_color, background_color, content_left_margin)
+
 	text_buffer.pop_front()
 	
 func write_options_from_buffer():
@@ -86,7 +126,3 @@ func add_choices(choices):
 func clear():
 	for c in $VBoxContainer.get_children():
 		c.queue_free()
-	
-
-#func scroll_bottom():
-	#ensure_control_visible()

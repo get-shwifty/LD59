@@ -14,7 +14,7 @@ func write_to_ui():
 	var res = final_text
 	if center_all:
 		res = '[center]' + final_text + '[/center]'
-	$MarginContainer/PanelContainer/MarginContainer/RichTextLabel.text = res
+	$MarginContainer/PanelContainer/MarginContainer/VBoxContainer/RichTextLabel.text = res
 
 func _ready():
 	text_buffer = text
@@ -67,3 +67,19 @@ func write_all_buffer():
 func _on_timer_timeout():
 	if text_buffer.length():
 		write_to_text()
+	else:
+		# Si jamais on n'a pas de texte, mais directement une option, il faut que l'on passe à autre chose
+		listener.notify_write_end()
+		$Timer.stop()
+
+func set_speaker_name(name: String):
+	$MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NameOfSpeaker.text = name
+	
+
+func change_dialog_look(border_color: Color, bg_color: Color, content_left_margin: int):
+	var current_style = self.get_theme_stylebox("panel")
+	var new_style = current_style.duplicate()
+	new_style.border_color = border_color
+	new_style.bg_color = bg_color
+	new_style.content_margin_left = content_left_margin
+	self.add_theme_stylebox_override("panel", new_style)

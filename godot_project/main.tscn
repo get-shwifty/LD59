@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_0xm2m"]
 [ext_resource type="AudioStream" uid="uid://dw5amljkc1tj2" path="res://assets/music/Ludum59_ThemeJour_V1.mp3" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://cnho1jr5xjbc4" path="res://fade_out.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://4aauh7jhbykj" path="res://dialogue/dialogueUI.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://b0cqw80yi5i5h" path="res://addons/inkgd/ink_player.gd" id="4_7mycd"]
+[ext_resource type="Resource" uid="uid://bk54h47btachi" path="res://assets/story_en.ink.json" id="5_272bh"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")
@@ -53,6 +56,16 @@ parameters/looping = true
 
 [node name="FadeOut" type="Node" parent="MusicDay" unique_id=541286192]
 script = ExtResource("4_1bvp3")
+[node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("3_lquwl")]
+offset_left = 249.0
+offset_top = 61.0
+offset_right = 990.0
+offset_bottom = 351.0
+
+[node name="InkPlayer" type="Node" parent="." unique_id=343049778]
+script = ExtResource("4_7mycd")
+ink_file = ExtResource("5_272bh")
+metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="EndDay" to="." method="_on_end_day_pressed"]

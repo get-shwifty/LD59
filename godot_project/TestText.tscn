@@ -5,30 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://dgm5771cicn2o" path="res://assets/images/ld59-day-middleground.png" id="3_ccd1s"]
 [ext_resource type="PackedScene" uid="uid://4aauh7jhbykj" path="res://dialogue/dialogueUI.tscn" id="4_y3rhh"]
 [ext_resource type="Script" uid="uid://b0cqw80yi5i5h" path="res://addons/inkgd/ink_player.gd" id="5_y3rhh"]
-[ext_resource type="Resource" uid="uid://dh1qdgudhgrs7" path="res://assets/spirit_weaver_fr.ink.json" id="6_v4knw"]
+[ext_resource type="Resource" uid="uid://bk54h47btachi" path="res://assets/story_en.ink.json" id="6_y3rhh"]
 
 [node name="TestText" type="Node2D" unique_id=1101607283]
 script = ExtResource("1_bqkg8")
 
 [node name="Background1" type="Sprite2D" parent="." unique_id=1369226869]
-visible = false
 position = Vector2(638, 355)
 scale = Vector2(0.6645833, 0.6611112)
 texture = ExtResource("2_83rtl")
 
 [node name="Background2" type="Sprite2D" parent="." unique_id=1083171782]
-visible = false
 position = Vector2(638.5, 376.25006)
 scale = Vector2(0.66510415, 0.64212966)
 texture = ExtResource("3_ccd1s")
 
 [node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("4_y3rhh")]
-offset_left = 144.0
-offset_top = 41.0
-offset_right = 1011.0
-offset_bottom = 493.0
+offset_left = 75.0
+offset_top = 30.0
+offset_right = 1171.0
+offset_bottom = 287.0
 
 [node name="InkPlayer" type="Node" parent="." unique_id=259117192]
 script = ExtResource("5_y3rhh")
-ink_file = ExtResource("6_v4knw")
+ink_file = ExtResource("6_y3rhh")
 metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
