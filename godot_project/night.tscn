@@ -24,7 +24,7 @@ texture = ExtResource("4_lrvaf")
 scroll_scale = Vector2(0, 0)
 
 [node name="Cabin" type="Sprite2D" parent="UI" unique_id=340391364]
-position = Vector2(1981, -206)
+position = Vector2(1985, -206)
 texture = ExtResource("3_lrvaf")
 offset = Vector2(-1345, 566)
 
