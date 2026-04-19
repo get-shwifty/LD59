@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://db3k2jjescd58"]
+
+[ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="1_kgwk4"]
+[ext_resource type="Script" uid="uid://v1iw8kmc0bg6" path="res://tools/radio.gd" id="1_polgl"]
+[ext_resource type="Texture2D" uid="uid://bwjo61mfxng88" path="res://assets/icon.svg" id="2_urip8"]
+
+[node name="Radio" type="Node2D" unique_id=848813022]
+script = ExtResource("1_polgl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778517621]
+position = Vector2(640, 359)
+texture = ExtResource("1_kgwk4")
+
+[node name="Button1HAUT" type="TextureButton" parent="." unique_id=1480233506]
+offset_left = 154.0
+offset_top = 369.0
+offset_right = 282.0
+offset_bottom = 497.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button1BAS" type="TextureButton" parent="." unique_id=966281323]
+offset_left = 151.0
+offset_top = 603.0
+offset_right = 279.0
+offset_bottom = 731.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button2HAUT" type="TextureButton" parent="." unique_id=114462849]
+offset_left = 283.0
+offset_top = 367.0
+offset_right = 411.0
+offset_bottom = 495.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button2BAS" type="TextureButton" parent="." unique_id=1636503691]
+offset_left = 274.0
+offset_top = 602.0
+offset_right = 402.0
+offset_bottom = 730.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button3HAUT" type="TextureButton" parent="." unique_id=114309904]
+offset_left = 409.0
+offset_top = 366.0
+offset_right = 537.0
+offset_bottom = 494.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button3BAS" type="TextureButton" parent="." unique_id=479045408]
+offset_left = 397.0
+offset_top = 599.0
+offset_right = 525.0
+offset_bottom = 727.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button4HAUT" type="TextureButton" parent="." unique_id=419937941]
+offset_left = 537.0
+offset_top = 366.0
+offset_right = 665.0
+offset_bottom = 494.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Button4BAS" type="TextureButton" parent="." unique_id=633085193]
+offset_left = 524.0
+offset_top = 600.0
+offset_right = 652.0
+offset_bottom = 728.0
+texture_normal = ExtResource("2_urip8")
+
+[node name="Label1" type="Label" parent="." unique_id=1851371511]
+offset_left = 283.0
+offset_top = 527.0
+offset_right = 323.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 50
+text = "A"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=505936806]
+offset_left = 341.0
+offset_top = 526.0
+offset_right = 381.0
+offset_bottom = 595.0
+theme_override_font_sizes/font_size = 50
+text = "B"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1506048222]
+offset_left = 402.0
+offset_top = 524.0
+offset_right = 442.0
+offset_bottom = 593.0
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=649816519]
+offset_left = 459.0
+offset_top = 525.0
+offset_right = 499.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 50
+text = "2"
+horizontal_alignment = 1
