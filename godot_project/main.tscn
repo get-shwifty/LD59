@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://chk2v8iy1yj0w" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://dw5amljkc1tj2" path="res://assets/music/Ludum59_ThemeJour_V1.mp3" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://cnho1jr5xjbc4" path="res://fade_out.gd" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")
@@ -43,6 +45,14 @@ offset_bottom = 43.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 text = "Day "
+
+[node name="MusicDay" type="AudioStreamPlayer" parent="." unique_id=1939990156]
+stream = ExtResource("3_h2yge")
+autoplay = true
+parameters/looping = true
+
+[node name="FadeOut" type="Node" parent="MusicDay" unique_id=541286192]
+script = ExtResource("4_1bvp3")
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="EndDay" to="." method="_on_end_day_pressed"]
