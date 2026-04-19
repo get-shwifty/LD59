@@ -14,7 +14,6 @@ func _ready():
 func _story_loaded(successfully: bool):
 	if !successfully:
 		return
-
 	_continue_story()
 
 func select_choice(index: int):
@@ -24,7 +23,7 @@ func select_choice(index: int):
 
 func execute_tags(tags):
 	for t in tags:
-		print(t)
+		pass
 	# TO DO : écrire le code pour chaque type de tag
 
 func _continue_story():
@@ -35,9 +34,10 @@ func _continue_story():
 		# This text is a line of text from the ink story.
 		# Set the text of a Label to this value to display it in your game.
 		print('text')
+		text = text.replace("__","[i]")
+		text = text.replace("_","[/i]")
 		print(text)
 		
-		print(_ink_player.current_tags)
 		var type = 1
 		var tags = _ink_player.current_tags
 		dialogue.add_dialogue(text, type, tags)

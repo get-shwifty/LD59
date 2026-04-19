@@ -3,12 +3,20 @@
 [ext_resource type="Script" uid="uid://caqss4duhngq6" path="res://dialogue/dialogue_options.gd" id="1_nxu4r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxu4r"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 2.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38431373, 0.38431373, 0.38431373, 0.75686276)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3045748, 0.9074434, 0.8429452, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 1.0
 expand_margin_right = 2.0
 
 [node name="DialogueOptions" type="PanelContainer" unique_id=1163861476]
