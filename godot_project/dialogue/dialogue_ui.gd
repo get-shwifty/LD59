@@ -14,14 +14,16 @@ var tag_buffer = []
 @onready var audio_player: AudioStreamPlayer = $SoundsPlayer
 
 const TAG_SOUNDS: Dictionary = {
-	"rf": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
+	"rf": "res://assets/soundEffects/voices/Bernard/B_voice",
 	"rro": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"rbr": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"rre": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"a": "res://assets/soundEffects/voices/Alain/Alain_Voice",
-	"b": "res://assets/soundEffects/voices/Bernard/B_Voice",
-	"c": "res://assets/soundEffects/voices/Charles/Charles"
+	"b": "res://assets/soundEffects/voices/Charles/Charles",
+	"c": "res://assets/soundEffects/voices/Bernard/B_voice"
 }
+
+const CLICK_SOUND = preload("res://assets/soundEffects/ChangementRadio.mp3")
 
 func _ready(): 
 	scrollbar.changed.connect(handle_scrollbar_changed)
@@ -41,6 +43,9 @@ var listener = null
 func select_option(option):
 	listener.select_choice(option.index)
 	if option.tags:
+		if "radio_click" in option.tags:
+			audio_player.stream = CLICK_SOUND
+			audio_player.play()
 		listener.execute_tags(option.tags)
 
 func add_dialogue(text, type, tags):
