@@ -60,16 +60,7 @@ func _continue_story():
 	while _ink_player.can_continue:
 		print('loop')
 		var text = _ink_player.continue_story()
-
-		# This text is a line of text from the ink story.
-		# Set the text of a Label to this value to display it in your game.
-		print('text')
-		text = text.replace("__","[i]")
-		text = text.replace("_","[/i]")
-		text = text.replace("**","[b]")
-		text = text.replace("*","[/b]")
-		print(text)
-		
+		text = dialogue.clean_text(text)
 		var type = 1
 		var tags = _ink_player.current_tags
 		dialogue.add_dialogue(text, type, tags)
@@ -82,6 +73,7 @@ func _continue_story():
 					isNightHub = true;
 					break;
 				print(c.text + '   ' + str(c.tags))
+				c.text = dialogue.clean_text(c.text)
 			if (!isNightHub):
 				dialogue.add_choices(choices)
 
@@ -108,6 +100,7 @@ func end_of_day():
 	
 	# Début de la nuit
 	$Night.visible = true
+	night_timer.reset_timer()
 	night_timer.start_timer()
 	play_music(MUSIC_NIGHT)
 	print("current day: ", Global.day_number)

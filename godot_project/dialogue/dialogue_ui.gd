@@ -110,7 +110,7 @@ func write_text_from_buffer():
 				speaker_name = "Radio Falaise"
 				background_color = Color(0.273, 0.401, 0.409, 0.588)
 				border_color = Color(0.391, 0.426, 0.483)
-			if tag == "rre":
+			if tag == "rro":
 				speaker_name = "Radio Rêve Oeil"
 				background_color = Color(0.377, 0.19, 0.611, 0.588)
 				border_color = Color(0.699, 0.0, 0.666)
@@ -122,6 +122,7 @@ func write_text_from_buffer():
 				speaker_name = "Bernard"
 				background_color = Color(0.574, 0.567, 0.077, 0.588)
 				border_color = Color(0.769, 0.863, 0.145)
+			
 			if TAG_SOUNDS.has(tag):
 				var longueur = text.length()
 				var suffixe: String
@@ -155,3 +156,11 @@ func add_choices(choices):
 func clear():
 	for c in $VBoxContainer.get_children():
 		c.queue_free()
+
+func clean_text(text: String):
+	text = text.replace("__","[i]")
+	text = text.replace("_","[/i]")
+	text = text.replace("**","[b]")
+	text = text.replace("*","[/b]")
+
+	return text
