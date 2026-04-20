@@ -106,7 +106,7 @@ func write_text_from_buffer():
 			speaker_name = "Radio Falaise"
 			background_color = Color(0.273, 0.401, 0.409, 0.588)
 			border_color = Color(0.391, 0.426, 0.483)
-		if tag == "rre":
+		if tag == "rro":
 			speaker_name = "Radio Rêve Oeil"
 			background_color = Color(0.377, 0.19, 0.611, 0.588)
 			border_color = Color(0.699, 0.0, 0.666)
