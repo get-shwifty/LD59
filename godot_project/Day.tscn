@@ -2,46 +2,22 @@
 
 [ext_resource type="Script" uid="uid://blnm2kbuh7o2e" path="res://day.gd" id="1_uj21n"]
 [ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_up1jf"]
-[ext_resource type="Texture2D" uid="uid://bwjo61mfxng88" path="res://assets/icon.svg" id="3_wf5ll"]
+[ext_resource type="Texture2D" uid="uid://ugajwb62s2um" path="res://assets/images/titre.png" id="3_uj21n"]
 
 [sub_resource type="Animation" id="Animation_kek77"]
 resource_name = "Game_title"
-length = 1.5
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("GameTitle:modulate")
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameTitle:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 14.928544),
+"times": PackedFloat32Array(0, 2.5, 3.5, 6.5),
+"transitions": PackedFloat32Array(1, 100, 1, 100),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameTitle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(645, -79), Vector2(645, 322)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GameTitle:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4c57u"]
@@ -49,34 +25,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameTitle:modulate")
+tracks/0/path = NodePath("GameTitle:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameTitle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(616, 64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GameTitle:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -107,8 +59,8 @@ theme_override_font_sizes/font_size = 28
 
 [node name="GameTitle" type="Sprite2D" parent="." unique_id=1859356610]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(616, 64)
-texture = ExtResource("3_wf5ll")
+position = Vector2(645, 345)
+texture = ExtResource("3_uj21n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16669965]
 libraries/ = SubResource("AnimationLibrary_ncttb")
