@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 func _process(delta: float) -> void:
 	$DayNumber.text = "Day %0*d" % [2, Global.day_number]
 
@@ -16,3 +18,15 @@ func display_game_title(game_dialogue):
 
 func next_day():
 	Global.day_number += 1
+
+func display_object(object_name: String):
+	$display_people.visible = false
+	$display_whale.visible = false
+	$display_storm.visible = false
+	if object_name == "display_whale":
+		$display_whale.visible = true
+	if object_name == "display_storm":
+		$display_whale.visible = true
+		$display_storm.visible = true
+	if object_name == "display_people":
+		$display_people.visible = true

@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 	var event_hour = 0
 	if call_event.length() > 0:
 		event_hour = int(call_event.lstrip("h"))
-		if clock.hours >= event_hour and (!clock.timer.is_paused()) :
+		if clock.total_hours >= event_hour and (!clock.timer.is_paused()) :
 			Global.event_to_call = ""
 			$UI/Radio.light_button_call(call_event)
 	
@@ -128,3 +128,14 @@ func _on_uporder_pressed():
 func reset_cone_rotation_degrees():
 	$UI/Radar/Cone.rotation_degrees = sav_rotation_degrees
 	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
+
+
+func _on_tooltip_enter(node: NodePath) -> void:
+	var child = get_node(str(node) + "/Tooltip")
+	child.scale = Vector2.ONE / get_node(str(node)).scale
+	child.visible = true
+
+func _on_tooltip_exit(node: NodePath) -> void:
+	var child = get_node(str(node) + "/Tooltip")
+	child.scale = Vector2.ONE / get_node(str(node)).scale
+	child.visible = false

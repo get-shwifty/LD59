@@ -13,7 +13,6 @@ const HALF_HOUR_DURATION_SECS = 1
 ################################## Var
 var total_minutes = START_NIGHT * 2 * 30 # On veut commencer la nuit à une heure donnée
 var total_hours = 0
-var hours = 21
 
 ################################## Signals
 signal end_night
@@ -26,7 +25,7 @@ func _ready() -> void:
 
 func _on_timeout() -> void:
 	total_minutes += 30
-	hours = floor(total_minutes / 60) % 24
+	var hours = floor(total_minutes / 60) % 24
 	var minutes = total_minutes % 60
 	total_hours = (total_minutes /60) - START_NIGHT
 	
