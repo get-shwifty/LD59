@@ -14,13 +14,13 @@ var tag_buffer = []
 @onready var audio_player: AudioStreamPlayer = $SoundsPlayer
 
 const TAG_SOUNDS: Dictionary = {
-	"rf": "res://assets/soundEffects/voices/Bernard/B_voice",
+	"rf": "res://assets/soundEffects/voices/radiofadaises/B_voice",
 	"rro": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"rbr": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"rre": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"a": "res://assets/soundEffects/voices/Alain/Alain_Voice",
-	"b": "res://assets/soundEffects/voices/Charles/Charles",
-	"c": "res://assets/soundEffects/voices/Bernard/B_voice"
+	"b": "res://assets/soundEffects/voices/bernard/b",
+	"c": "res://assets/soundEffects/voices/charles/Charles_Voice"
 }
 
 const CLICK_SOUND = preload("res://assets/soundEffects/ChangementRadio.mp3")
