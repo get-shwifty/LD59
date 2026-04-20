@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 @export var distance: int = 100
 
