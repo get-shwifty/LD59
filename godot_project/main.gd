@@ -5,10 +5,12 @@ extends Node2D
 @onready var dialogue = game_dialogue
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var is_night = false
 
 const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
 const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
 const FADE_DURATION = 1
+
 
 func _ready() -> void:
 	Global.game_started = true
@@ -60,9 +62,16 @@ func _continue_story():
 
 		if _ink_player.has_choices:
 			var choices = _ink_player.current_choices
-			for c in choices:
-				print(c.text + '   ' + str(c.tags))
-			dialogue.add_choices(choices)
+			print("is night")
+			print(is_night)
+			if is_night:
+				if choices.has(Global.talking_boat):
+					print("J'AI")
+					#_ink_player.choose_choice_index(1)
+			else:
+				for c in choices:
+					print(c.text + '   ' + str(c.tags))
+				dialogue.add_choices(choices)
 
 		else:
 			# This code runs when the story reaches it's end.
@@ -79,6 +88,7 @@ func play_music(new_stream: AudioStream) -> void:
 
 func end_of_day():
 	game_dialogue.visible = false
+	is_night = true
 	game_dialogue.clear()
 	$Day.visible = false
 	$Day.next_day()
