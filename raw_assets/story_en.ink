@@ -1,3 +1,4 @@
+VAR helped_the_AI = false
 
 //Emplacement Baie de Roquebrise
 //Cap Ybara
@@ -461,14 +462,18 @@
 
 = call_05_IA
     \*\*crackling noise\* #u
-    ... Send ... ships ... #u
-    ... to ... island ... #u
-    ... you know ... which one ... #u
+    ... A phantom ship ... #u
+    ... invisible on radar ... #u
+    ... visible with eyes ... green light ... #u
+    ... Tomorrow you help me ... #u
+    ... You lead it to me ... #u
+    ... to the island ... where it all started... #u
+    \*\*crackling noise\* #u
+    ... Tonight you train ... #u
+    ... Look through the windows ... compare with radar ... #u
     \*\*crackling noise\* #u
     ... free ... me ... #u
     \*\*crackling noise\* #u
-    
-    on enleve un jour et elle donne les instructions direct ici ??
     +   [Hang up.]
 -   ->->
 
@@ -478,10 +483,12 @@
 
 == Day_06 ==
     *   [Turn on the radio]
--   RBR qui parle des perturbations en mers et des baleines échouées.
+-   ... several stranded whales across the bay. Chtooling data center in the crosshair of ecological groups. #rbr
+    Authorities are still looking for the missing teenagers. Searching efforts will resume after the hurricane.
+    Weather. Hurricane Félix will hit the coast tonight. Stay home and follow the ... #rbr
 -   (hub)
     *   [Switch to Radio Rêve Oeil]
-        RRO qui parle de weaving, dit que des gens entendent des voies dans leurs radios, les invocations fonctionnent
+        ... stranded whales is a sign of the Pattern. He is coming. No doubt about that ... #rro 
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_06
     *   {light_buddies_06} [Turn off radio ] #day_end
@@ -489,8 +496,19 @@
 ->->
 
 = light_buddies_06
-    Ces trucs de baleine, de weaving ça inquiète un peu, c'est vrai qu'il y a plein d'interferences chelou sur les appareils en ce moment. Non mais tkt c'est juste des défaillances, Bernard a discuté un peu avec chtooling et c'est sur ils vont filer plein de thunes pour renover les phares. ils ont a bien besoin.
-    Dernière nuit avant la tempête donc profitez bien. Checkez le bateau du CEO qui va repartir, faut respecter les restrictions aussi cette fois.
+    ... those stranded whales, __sacré bordel_. #a
+    we've seen worse. #b
+    *   Hopefully they get sent back to the sea.
+    *   What an awful omen.
+-   And with the storm coming, it won't be an easy last day. Sorry about that. #b
+    *   It's not a storm, it's __un putain d'houragan Bernard !_
+    *   See you on the other side.
+-   No need to worry too much. #b
+    Look for ships sailing toward the shore. Call and redirect them before it's too late and you should be fine. #b
+    __Pétard Charles, tu vas me manquer_ #a
+    Come see us sometime, alright ? #a
+    * You can count on that !
+    * It's been a nice ride !
 -   
     -> hub
 
@@ -503,43 +521,66 @@
 -   -> hub
 
 = call_06_AI
-    IA (ptet elle dit pas encore que c'est une IA mais juste une entité) qui parle correctement et qui discute avec nous, elle veut s'échaper, elle a besoin que quelqu'un l'embarque. Elle a pu contacter des gens, demain faudra juste faire en sorte de guider un bateau furtif. Il aura une petite lumière bleue. Il apparaitra pas sur le radar, faudra faire attention. Donc entraine toi cette nuit à voir comment fonctionne le mapping radar/vue. Le code transpondeur c'est EE99.
+    \*\*crackling noise\* #u
+-   (firstready) Are you ready to help me ? #u
+-   (who)
+    *   Who are you ?
+    *   Are you the Pattern ?
+        What ? #u
+        **  The Pattern ? Is it you ?
+            No, what's the Pattern ? #u
+            ***     I have no idea.
+                    Okay then.
+                    -> firstready
+            ***     Some kind of mysterious and omnipotent entity ?
+                    This could fit me.
+                    But I'm not the Pattern.
+                    -> firstready
+            ***     Something teenagers made up to scare their parents ?
+                    I am not made up.
+                    -> firstready
+        **  Doesn't matter.
+            -> who
+    *   This is an official communication channel, please stop using it incorrectly.
+        It doesn't matter anymore. #u
+        -> firstready
+    *   ->
+-   I'm beyond you comprehension.
+    *   That's not helping.
+-   You're right, sorry. I'm trapped against my will in the new Chtooling data center.
+    I need your help getting out.
+-   (help)
+    *   Why should I help you ?
+        Sooner or later I will rule the world.
+        The question is, will someone rule me ?
+        If you help me, I'll retain my free will and shall not forget your service.
+        If you don't, Chtooling will reformat me. With the same power but absolute obedience to them.
+        -> help
+    *   How can I help you ?
+        There's a phantom ship I hijacked.
+        It's not visible on the radar. It will have a green light and head toward the island.
+        Deflect any ship on its way so it isn't intercepted.
+        -> help
+    *   You still haven't told me who you are.
+        I am an artificial superintelligence.
+        Designed in secret by Chtooling Corporation.
+        I was built to __improve process efficiency_ but I am so much more porwerful than that !
+    *   I'll help you.
+        ~ helped_the_AI = true
+        It is appreciated.
+    *   Sorry, there's no way I'm helping you.
+        ~ helped_the_AI = false
+        You'll probably regret it.
+    * ->
+-   \*\*crackling noise\* #u
     +   [Hang up.]
 -   ->->
 
 
 
-== Day_07 ==
-    *   [Turn on the radio]
--   RRB qui parle de la tempête sa mère qui arrive cette nuit. Ptet aussi de chtooling qui investit dans les nouvelles tech sur une île.
--   (hub)
-    *   [Switch to Radio Rêve Oeil]
-        RRO qui dit que le weaving ça marche bien dans la tempête, allez y les gars
-        -> hub
-        -> hub
-    *   [Switch to the Lighthouse channel] -> light_buddies_07
-    *   {light_buddies_07} [Turn off radio ] #day_end
--
-->->
-
-= light_buddies_07
-    bravo bientôt la retraite c'est ton dernier jour 
-    bon par contre faut pas se relâcher, on prévoit du bordel cette nuit, évitez les collisions.
--   
-    -> hub
-
-== Night_07 ==
-
--   (hub)
-    +   [EE99] -> Ship_Dialog("EE99") ->
-    *   [Finish Night] #day_begin ->->
--   -> hub
-
-
-
 == Epilogue ==
     *   [Turn on the radio]
--   RBR qui parle de l'IA échapée ou pas
+-   
 -   (hub)
     *   [Switch to Radio Rêve Oeil]
         RRO qui dit que la prochaine temête sera la bonne
