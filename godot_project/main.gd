@@ -22,6 +22,7 @@ func _ready() -> void:
 	_ink_player.create_story()
 	$Night/UI/Radio.connect("contact_boat", _contact_boat)
 	$Night.connect("switch_to_day",start_of_day)
+	$Night/UI/Radio.connect("call_from_ship",call_from_ship)
 	
 
 func _process(delta: float) -> void:
@@ -59,7 +60,6 @@ func execute_tags(tags):
 
 func _continue_story():
 	while _ink_player.can_continue:
-		print('loop')
 		var text = _ink_player.continue_story()
 		text = dialogue.clean_text(text)
 		var type = 1
@@ -76,15 +76,15 @@ func _continue_story():
 					isNightHub = true
 					break
 				if regex.search(c.text):
-					c.text
+					Global.event_to_call = c.text
+					break
 				c.text = dialogue.clean_text(c.text)
 			if (!isNightHub):
 				dialogue.add_choices(choices)
 
 		else:
-			# This code runs when the story reaches it's end.
-			print("The End")
-	print(_ink_player.can_continue)
+			pass
+	#print(_ink_player.can_continue)
 
 func play_music(new_stream: AudioStream) -> void:
 	var tween = create_tween()
@@ -96,6 +96,7 @@ func play_music(new_stream: AudioStream) -> void:
 
 func end_of_day():
 	# Fin du jour
+	
 	game_dialogue.visible = false
 	is_night = true
 	game_dialogue.clear()
@@ -119,6 +120,9 @@ func start_of_day():
 	$Night.visible = false
 	night_timer.stop_timer()
 	$Night/Camera2D.position = sav_position_camera
+	Global.talking_boat = ""
+	Global.event_to_call = ""
+	$Night/UI/NextDay.visible = false
 	
 	# On prépare la scène day
 	$Day.visible = true
@@ -148,6 +152,17 @@ func _contact_boat(boat_code):
 	select_choice(choice_index)
 
 func hang_up():
+	print("Hang up")
+	game_dialogue.visible = false
 	dialogue.clear()
 	night_timer.restart_timer()
-	
+
+func call_from_ship(event: String):
+	var choices = _ink_player.current_choices
+	for c in choices:
+		if c.text == event:
+			night_timer.pause_timer()
+			game_dialogue.clear()
+			game_dialogue.visible = true
+			select_choice(c.index)
+			break

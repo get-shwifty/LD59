@@ -90,6 +90,19 @@ func _process(delta: float) -> void:
 		if id not in active_ids:
 			ship_visuals[id].queue_free()
 			ship_visuals.erase(id)
+		
+	# Gestion des évènements qui arrivent selon une heure précise, lorsque le timer n'est pas en pause
+	var call_event = Global.event_to_call
+	var event_hour = 0
+	if call_event.length() > 0:
+		event_hour = int(call_event.lstrip("h"))
+		print("event hour")
+		print(event_hour)
+		print("clock.hours")
+		print(clock.hours)
+		if clock.hours >= event_hour and (!clock.timer.is_paused()) :
+			Global.event_to_call = ""
+			$UI/Radio.light_button_call(call_event)
 
 func _on_end_night() -> void:
 	next_day_button.visible = true

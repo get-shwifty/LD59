@@ -8,9 +8,11 @@ extends Node2D
 
 ################################## Var
 var indexes = {}
+var actual_call_event = ""
 
 ################################## Signal
 signal contact_boat
+signal call_from_ship
 
 func _ready():
 	for i in range(4):
@@ -37,3 +39,14 @@ func _on_call_button_pressed() -> void:
 		$CallButton.modulate = Color(0.192, 0.969, 0.0)
 		Global.talking_boat = combinaison
 		emit_signal("contact_boat", combinaison)
+
+func light_button_call(call_event: String):
+	actual_call_event = call_event
+	$AnimationPlayer.play("Calling_button")
+
+func _on_radio_button_calling_pressed() -> void:
+	$AnimationPlayer.stop()
+	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
+	call_from_ship.emit(actual_call_event)
+	
+	
