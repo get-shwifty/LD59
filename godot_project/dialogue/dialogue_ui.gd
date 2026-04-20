@@ -155,3 +155,11 @@ func add_choices(choices):
 func clear():
 	for c in $VBoxContainer.get_children():
 		c.queue_free()
+
+func clean_text(text: String):
+	text = text.replace("__","[i]")
+	text = text.replace("_","[/i]")
+	text = text.replace("**","[b]")
+	text = text.replace("*","[/b]")
+
+	return text

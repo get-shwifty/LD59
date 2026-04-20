@@ -8,7 +8,7 @@ extends Node2D
 ################################## Const
 const START_NIGHT = 21
 const NIGHT_DURATION_HOURS = 2
-const HALF_HOUR_DURATION_SECS = 1
+const HALF_HOUR_DURATION_SECS = 5
 
 ################################## Var
 var total_minutes = START_NIGHT * 2 * 30 # On veut commencer la nuit à une heure donnée
@@ -56,3 +56,11 @@ func stop_timer():
 	print("STOP")
 	timer.paused = false
 	timer.stop()
+
+func reset_timer():
+	print("RESET")
+	timer.paused = false
+	total_minutes = START_NIGHT * 2 * 30
+	total_hours = 0
+	hours_lab.text = "%02d" % [START_NIGHT]
+	minutes_lab.text = "00"
