@@ -116,7 +116,6 @@ func _process(delta: float) -> void:
 		
 		# For some reason, visual.get_node('Circle') does not work ?!
 		var ship_sprite = visual.get_children()[0]
-		print(ship.rotation)
 		var ship_texture = get_texture(ship.rotation)
 		ship_sprite.texture = ship_texture
 		
