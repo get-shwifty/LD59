@@ -15,6 +15,7 @@ signal contact_boat
 signal call_from_ship
 
 func _ready():
+	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 	for i in range(4):
 		indexes[i+1] = 0
 
@@ -57,3 +58,6 @@ func _on_tooltip_enter(node: NodePath) -> void:
 func _on_tooltip_exit(node: NodePath) -> void:
 	var child = get_node(str(node) + "/Tooltip")
 	child.visible = false
+
+func quit_call():
+	$CallButton.modulate = Color(1.0, 1.0, 1.0)

@@ -129,6 +129,7 @@ func reset_cone_rotation_degrees():
 	$UI/Radar/Cone.rotation_degrees = sav_rotation_degrees
 	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
 
+
 func _on_tooltip_enter(node: NodePath) -> void:
 	var child = get_node(str(node) + "/Tooltip")
 	child.scale = Vector2.ONE / get_node(str(node)).scale

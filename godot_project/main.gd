@@ -156,6 +156,7 @@ func hang_up():
 	game_dialogue.visible = false
 	dialogue.clear()
 	night_timer.restart_timer()
+	$Night/UI/Radio.quit_call()
 
 func call_from_ship(event: String):
 	var choices = _ink_player.current_choices
