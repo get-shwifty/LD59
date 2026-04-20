@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://bockjdp43tdjl"
+uid="uid://8nnolqnbwmch"
 path="res://.godot/imported/Charles_Voice_trescourt.mp3-3cb805b3a0b09e84ffde6fe2cfc98b60.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Charles_Voice_trescourt.mp3-3cb805b3a0b09e84f
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

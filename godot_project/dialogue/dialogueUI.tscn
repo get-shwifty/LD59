@@ -26,3 +26,5 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
 [node name="SoundsPlayer" type="AudioStreamPlayer" parent="." unique_id=1322614809]
+
+[node name="SoundsPlayer2" type="AudioStreamPlayer" parent="." unique_id=9514578]

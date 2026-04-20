@@ -13,20 +13,34 @@ var tag_buffer = []
 var listener = null
 
 @onready var audio_player: AudioStreamPlayer = $SoundsPlayer
+@onready var audio_player2: AudioStreamPlayer = $SoundsPlayer2
 @onready var DIALOGUE = preload("res://dialogue/dialogueText.tscn")
 @onready var OPTIONS = preload("res://dialogue/dialogueOptionList.tscn")
 
-const TAG_SOUNDS: Dictionary = {
+const TAG_VOICE: Dictionary = {
 	"rf": "res://assets/soundEffects/voices/radiofadaises/B_voice",
 	"rro": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"rbr": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
-	"rre": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"a": "res://assets/soundEffects/voices/Alain/Alain_Voice",
 	"b": "res://assets/soundEffects/voices/bernard/b",
 	"c": "res://assets/soundEffects/voices/charles/Charles_Voice"
 }
 
-const CLICK_SOUND = preload("res://assets/soundEffects/ChangementRadio.mp3")
+const TAG_SOUND: Dictionary = {
+	"radioon": preload("res://assets/soundEffects/Radioon-off.mp3"),
+	"radiooff": preload("res://assets/soundEffects/Radioon-off.mp3")
+}
+
+const SOUND_VOLUMES: Dictionary = {
+	"res://assets/soundEffects/voices/VoixGeneriques/Jeanne": 0.0,
+	"res://assets/soundEffects/voices/Alain/Alain_Voice": -4.0,
+	"res://assets/soundEffects/voices/bernard/b": 0,
+	"res://assets/soundEffects/voices/charles/Charles_Voice": +2.75,
+	"res://assets/soundEffects/voices/radiofadaises/B_voice": -1.4,
+	"radioon": 0.75,
+	"radiooff": 0.0
+} 
+
 
 func _ready(): 
 	scrollbar.changed.connect(handle_scrollbar_changed)
@@ -58,7 +72,14 @@ func notify_write_end():
 func execute_tags():
 	listener.execute_tags(tag_buffer)
 	tag_buffer = []
-	
+
+func play_sound(player: AudioStreamPlayer, path: String) -> void:
+	player.stream = load(path)
+	if SOUND_VOLUMES.has(path):
+		player.volume_db = SOUND_VOLUMES[path]
+	else:
+		player.volume_db = 0.0
+	player.play()
 
 func _process(delta):
 	if text_buffer.size() and not is_writing:
@@ -89,14 +110,14 @@ func write_text_from_buffer():
 	var border_color = Color(0.0, 0.0, 0.0)
 	var background_color = Color(0.106, 0.322, 0.451, 0.588)
 	var content_left_margin = -1
-		
+	
 	# Si pas de tag, c'est nous qui parlons
 	#if dial.tags.is_empty():
 		#background_color = Color(0.036, 0.376, 0.871, 0.588)
 		#border_color = Color(0.0, 0.216, 0.658)
 		#content_left_margin = 160
 		#dial.change_dialog_look(border_color, background_color, content_left_margin)
-		
+	
 	for tag in dial.tags:
 		if tag == "rbr":
 			speaker_name = "Roquebrise Radio"
@@ -122,7 +143,8 @@ func write_text_from_buffer():
 			background_color = Color(0.701, 0.21, 0.325, 0.588)
 			border_color = Color(0.742, 0.108, 0.47, 1.0)
 			content_left_margin = 160
-		if TAG_SOUNDS.has(tag):
+
+		if TAG_VOICE.has(tag):
 			var longueur = text.length()
 			var suffixe: String
 			if longueur < 40:
@@ -133,12 +155,26 @@ func write_text_from_buffer():
 				suffixe = "_moyen.mp3"
 			else:
 				suffixe = "_long.mp3"
-			audio_player.stream = load(TAG_SOUNDS[tag] + suffixe)
+			var path = TAG_VOICE[tag] + suffixe
+			audio_player.stream = load(path)
+			if SOUND_VOLUMES.has(TAG_VOICE[tag]):
+				audio_player.volume_db = SOUND_VOLUMES[TAG_VOICE[tag]]
+			else:
+				audio_player.volume_db = 0.0
 			audio_player.play()
-			
+	
 		dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
 		dial.change_dialog_look(border_color, background_color, content_left_margin)
 
+	for tagsound in dial.tags:
+		if TAG_SOUND.has(tagsound):
+			audio_player2.stream = TAG_SOUND[tagsound]
+			if SOUND_VOLUMES.has(tagsound):
+				audio_player2.volume_db = SOUND_VOLUMES[tagsound]
+			else:
+				audio_player2.volume_db = 0.0
+			audio_player2.play()
+		
 	text_buffer.pop_front()
 	
 func write_options_from_buffer():
