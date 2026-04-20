@@ -18,7 +18,6 @@ func _ready():
 
 func _on_button_pressed(extra_arg_0: NodePath,button: int) -> void:
 	var increment_index = 0
-	print(extra_arg_0.get_name(0))
 	if extra_arg_0.get_name(0).contains("BAS"):
 		increment_index = 1
 	else:

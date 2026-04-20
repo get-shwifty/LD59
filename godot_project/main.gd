@@ -68,12 +68,15 @@ func _continue_story():
 		
 		if _ink_player.has_choices:
 			var choices = _ink_player.current_choices
-			var isNightHub = false;
+			var isNightHub = false
+			var regex = RegEx.new()
+			regex.compile("\\d\\d[a-zA-Z]")
 			for c in choices:
 				if (c.text in Global.POSSIBLE_BOATS):
-					isNightHub = true;
-					break;
-				print(c.text + '   ' + str(c.tags))
+					isNightHub = true
+					break
+				if regex.search(c.text):
+					c.text
 				c.text = dialogue.clean_text(c.text)
 			if (!isNightHub):
 				dialogue.add_choices(choices)
@@ -100,6 +103,7 @@ func end_of_day():
 	$Day.next_day()
 	
 	# Début de la nuit
+	$Night.reset_cone_rotation_degrees()
 	$Night.visible = true
 	night_timer.reset_timer()
 	night_timer.start_timer()

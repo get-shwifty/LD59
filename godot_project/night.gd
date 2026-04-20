@@ -8,6 +8,7 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var landscape = $Parallax/Landscape
 @onready var radar_game = $"radar game"
+@onready var sav_rotation_degrees = $UI/Radar/Cone.rotation_degrees 
 
 ################################## Const
 const VISION_ANGLE = 90
@@ -97,3 +98,7 @@ func _on_order_sent(tag: String):
 func _on_uporder_pressed():
 	var id = ship_visuals.keys()[0]
 	$"radar game".send_order(id, Vector2.UP)
+
+func reset_cone_rotation_degrees():
+	$UI/Radar/Cone.rotation_degrees = sav_rotation_degrees
+	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)

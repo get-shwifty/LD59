@@ -155,7 +155,7 @@
     +   [AW15] #boat_choice  
     -> Ship_Dialog("AW15", BA45) ->
     +   [AX25] #boat_choice 
-    -> Ship_Dialog("AX25", AE34) -> 
+    -> Ship_Dialog("AX25", AE34) ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
