@@ -45,8 +45,8 @@ _data = {
 script = ExtResource("1_uj21n")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1750307732]
-position = Vector2(641.00006, 360.25)
-scale = Vector2(0.66562504, 0.6662037)
+position = Vector2(639.5, 360.58337)
+scale = Vector2(0.99609375, 0.99282414)
 texture = ExtResource("2_up1jf")
 
 [node name="DayNumber" type="Label" parent="." unique_id=1854039835]
