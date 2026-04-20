@@ -45,9 +45,8 @@
 
 -> END
 
-== Ship_Dialog (ship_transponder, ref ship_call_count) ==
-    ~ ship_call_count ++
-    Hello ship {ship_transponder}, this is the lighthouse of La Peyro, calling for the {ship_call_count} time.
+== Ship_Dialog (ship_transponder) ==
+    Hello ship {ship_transponder}, this is the lighthouse of La Peyro.
     +   [N] Head North.
     +   [S] Head South.
     +   [E] Head East.
@@ -93,14 +92,11 @@
     -> hub
 
 == Night_Example ==
-~ temp BA45 = 0
-~ temp DB67 = 0
-
 -   (hub)
-    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
-    +   [DB67] -> Ship_Dialog("DB67", DB67) -> 
+    +   [BA45] -> Ship_Dialog("BA45") ->
+    +   [DB67] -> Ship_Dialog("DB67") ->
     *   [21h] -> call_01 ->
-    *   {BA45} [22h] -> call_02 ->
+    *   [22h] -> call_02 ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -134,7 +130,7 @@
 -   (intro)
     {You listening |}Charles {?|!?} #b 
     *   Hmm yes ...
-        __mouais ... bon, écoutes_
+        __mouais ... bon, écoute_
     *   Sorry, just turned on the channel.
     *   [Say nothing] -> intro
 -   As I was saying, dispatch wants us to open our eyes for BA45. #b
@@ -155,12 +151,10 @@
 -   ->->
 
 == Night_01 ==
-~ temp BA45 = 0
-~ temp AE34 = 0
 
 -   (hub)
-    +   [AW15] -> Ship_Dialog("AW15", BA45) ->
-    +   [AX25] -> Ship_Dialog("AX25", AE34) -> 
+    +   [AW15] -> Ship_Dialog("AW15") ->
+    +   [AX25] -> Ship_Dialog("AX25") -> 
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -226,19 +220,17 @@
         -> BA45
 
 == Night_02 ==
-~ temp BA45 = 0
-~ temp DB67 = 0
 
 -   (hub)
-    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
-    +   [DB67] -> Ship_Dialog("DB67", DB67) ->
+    +   [BA45] -> Ship_Dialog("BA45") ->
+    +   [DB67] -> Ship_Dialog("DB67") ->
     *   [22h] -> call_02 ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
 = call_02
 -   (call_hub)
-    \*\*{|More |Just |A new variaty of |Crumbly and }crackling noise\* #u
+    \*\*{|More |Just |A new variety of |Crumbly and }crackling noise\* #u
     *   Hello ?
     *   [Keep listening]
     *   {call_hub > 1} This isn't funny.
@@ -286,7 +278,7 @@
         First, try to reach them on the general bay channel. Then, yes, we'll file a report. If needed. #b 
         -> transponder
     *   {prevent || seen} How can I join the general bay channel ?
-        Input transpoder code AAOO from your cabin. Every boat in the area will receive your ... #b
+        Input transpoder code AA00 from your cabin. Every boat in the area will receive your ... #b
         Okay enough, __c'est fini les conneries_, just make a gen call if you need to. #b
         **  Sorry it was just a stupid joke.
         **  You know my memory isn't as good as it was.
@@ -309,10 +301,9 @@
     -> hub
 
 == Night_03 ==
-~ temp BE12 = 0
 
 -   (hub)
-    +   [BE12] -> Ship_Dialog("BE12", BE12) ->
+    +   [BE12] -> Ship_Dialog("BE12") ->
     *   [AA00] -> call_03_gen ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
@@ -351,7 +342,7 @@
     \*\* Silence on the line \* #party
     * [Hang up]
 -
--> hub
+->->
 
 
 
@@ -384,10 +375,9 @@
     -> hub
 
 == Night_04 ==
-~ temp BE93 = 0
 
 -   (hub)
-    +   [BE93] -> Ship_Dialog("BE93", BE93) ->
+    +   [BE93] -> Ship_Dialog("BE93") ->
     *   [1h] -> call_04_AI ->
     *   [2h] -> call_04_Ship ->
     *   [Finish Night] #day_begin ->->
@@ -421,7 +411,6 @@
     Thank you very much.
     +   [Hang up.]
 -   ->->
-
 
 == Day_05 ==
     *   [Turn on the radio]
@@ -459,13 +448,13 @@
     *   Good luck with your report then.
 -   We should get back to work. #b 
     Nothing special today, keep on the good work boys ! #b
+-   
     -> hub
 
 == Night_05 ==
-~ temp DB85 = 0
 
 -   (hub)
-    +   [DB85] -> Ship_Dialog("DB85", DB85) ->
+    +   [DB85] -> Ship_Dialog("DB85") ->
     *   [21h] -> call_05_IA ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
@@ -506,10 +495,9 @@
     -> hub
 
 == Night_06 ==
-~ temp CB65 = 0
 
 -   (hub)
-    +   [CB65] -> Ship_Dialog("CB65", CB65) ->
+    +   [CB65] -> Ship_Dialog("CB65") ->
     *   [00h] -> call_06_AI ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
@@ -541,10 +529,9 @@
     -> hub
 
 == Night_07 ==
-~ temp EE99 = 0
 
 -   (hub)
-    +   [EE99] -> Ship_Dialog("EE99", EE99) ->
+    +   [EE99] -> Ship_Dialog("EE99") ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
