@@ -562,6 +562,7 @@ VAR helped_the_AI = false
         I am an artificial superintelligence.
         Designed in secret by Chtooling Corporation.
         I was built to __improve process efficiency_ but I am so much more porwerful than that !
+        -> help
     *   I'll help you.
         ~ helped_the_AI = true
         It is appreciated.
