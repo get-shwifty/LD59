@@ -10,13 +10,19 @@
 // #a Alain : Le phare Euhouet
 // #b Bernard : Le phare Andol
 // Nous Charles : Le phare de La Peyro
+// #j : Jean de Chtooling
 
 // boats
 // #party : party boat
 
 // mysterious calls
 // #u : IA but you don't know it yet
--> Day_01 ->
+//-> Day_01 ->
+    * [Turn on the radio]
+-   ... no, no, no I can't let you say that ! #rf
+    second line #rf
+    * [Turn off radio ] #day_end
+-
 -> Title_Sequence ->
 -> Night_01 ->
 
@@ -118,7 +124,7 @@
 -   (hub)
     *   [Switch to Radio Falaise]
         __Bonsoir Roquebrise !!_ #rf
-        I'm Eric Désinfaut and you're listening to radio Falaise, __la seule radio qui raconte pas de fadaise_. #rf
+        I'm Pascal Désinfaut and you're listening to radio Falaise, __la seule radio qui raconte pas de fadaise_. #rf
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_01
     *   {light_buddies_01} [Turn off radio]
@@ -153,8 +159,8 @@
 ~ temp AE34 = 0
 
 -   (hub)
-    +   [BA45] -> Ship_Dialog("BA45", BA45) ->
-    +   [AE34] -> Ship_Dialog("AE34", AE34) -> 
+    +   [AW15] -> Ship_Dialog("AW15", BA45) ->
+    +   [AX25] -> Ship_Dialog("AX25", AE34) -> 
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -382,24 +388,49 @@
 
 -   (hub)
     +   [BE93] -> Ship_Dialog("BE93", BE93) ->
-    *   [1h] -> call_04 ->
+    *   [1h] -> call_04_AI ->
+    *   [2h] -> call_04_Ship ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
-= call_04
-    L'IA qui grésille au téléphone mais il y a des petits mots qu'on distingue quand même. Creepy.
+= call_04_AI
+    \*\*crackling noise\* #u
+    ... He ... l ... p ...
+    \*\*crackling noise\* #u
+    ... F ... re ... e ...
+    \*\*crackling noise\* #u
+    ... ME ! ...
+    \*\*crackling noise\* #u
+    +   [Hang up.]
+-   ->->
+
+= call_04_Ship
+    Hello, anyone copy ?
+    * Yes, this is La Peyro lighthouse
+-   We experience a lot of interference in the area.
+    We don't trust our radar, could you give us the direction to get out here please ?
+    +   [N] Head North.
+    +   [S] Head South.
+    +   [E] Head East.
+    +   [W] Head West.
+    +   [NE] Head North East.
+    +   [SE] Head South East.
+    +   [NW] Head North West.
+    +   [SW] Head South West.
+-   Copy that.
+    Thank you very much.
     +   [Hang up.]
 -   ->->
 
 
-
 == Day_05 ==
     *   [Turn on the radio]
--   radio falaise qui parle de l'arrivée de Leon Skum en ville
+-   ... indeed, the end goal of Weaving is to summon the Pattern. A omnipotent entity believed to be ... #rro 
 -   (hub)
-    *   [Switch to Roquebrise Radio]
-        RBR parle de Chtooling et des investissement de Skum ??
-        les ados perdus en mer ont été retrouvés, mais ils se souviennent de rien à part d'un gard du phare qui les a grondé.
+    *   [Switch to Radio Falaise]
+        ... people around here are afraid of success. #rf 
+        A billionnaire chooses our humble bay to build a state of the art data center and all people talk about is how it will hurt birds. #rf
+        __Clairement_, who cares about birds when Chtooling can put us back on the map ! #rf
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_05
     *   {light_buddies_05} [Turn off radio ] #day_end
@@ -407,9 +438,27 @@
 ->->
 
 = light_buddies_05
-    Jean est là a discuter sur le channel, on laisse vraiment rentrer n'importe qui sur le canal.
-    Il tente de brosser tout le monde dans le sens du poil. On capte qu'il y un truc bizarre entre Bernard et lui.
--   
+    ... wanted to thank you in person for last night. #j 
+    Leon likes his privacy and prefer other ships stay away from his. #j
+    *   Hmm and you are ?
+    *   So ... anyone can actually join this channel ?
+-   Ah ! Charles ! Alain and Bernard told me great things about you. #j
+    Allow me to present myself. #j
+    Jean Fume, senior process efficiency analyst.
+    *   Senior ? My kid's older than you.
+        You know the saying. Perspective is expertise. #j 
+        Just consider I'm bringing you a fresh perspective. #j
+    *   Nice to meet you Jean.
+        The pleasure is all mine Charles. #j 
+-   Jean will be with Bernard for a few days. #b 
+    __C'est le gamin dont je parlais y quelques jours ..._ #a
+    He's here to observe what we do and help us catch on with new industry standards. #b
+    You flatter me Bernard, I'm only here to produce a report on the possible margin of improvements. #j
+    The rest will be for the __Comité de gestion des phares de la baie de Roquebrise_ to decide. #j
+    *   And we all know the CoGéPHaR is great at making decision ...
+    *   Good luck with your report then.
+-   We should get back to work. #b 
+    Nothing special today, keep on the good work boys ! #b
     -> hub
 
 == Night_05 ==
@@ -417,20 +466,24 @@
 
 -   (hub)
     +   [DB85] -> Ship_Dialog("DB85", DB85) ->
-    *   [1h] -> call_05_IA ->
-    *   [3h] -> call_05_Ship ->
+    *   [21h] -> call_05_IA ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
 = call_05_IA
-    L'IA qui commence à faire des phrase qui ont du sens, demande de l'aide, envoyer des bateaux, n'importe qui à telle position.
+    \*\*crackling noise\* #u
+    ... Send ... ships ... #u
+    ... to ... island ... #u
+    ... you know ... which one ... #u
+    \*\*crackling noise\* #u
+    ... free ... me ... #u
+    \*\*crackling noise\* #u
+    
+    on enleve un jour et elle donne les instructions direct ici ??
     +   [Hang up.]
 -   ->->
 
-= call_05_Ship
-    Bateau qui dit que leur radar a cessé de fonctionner. Ils vont avoir besoin de guidage pour aller vers leur point de mouillage. Ptet faut hint que c'est un bon moment pour envoyer un bateau sur l'ile de l'IA ??
-    +   [Hang up.]
--   ->->
+
 
 
 
