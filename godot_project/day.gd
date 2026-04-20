@@ -16,3 +16,7 @@ func display_game_title(game_dialogue):
 
 func next_day():
 	Global.day_number += 1
+
+func display_object(object_name: String):
+	pass
+	#get_node(object_name).visible = true

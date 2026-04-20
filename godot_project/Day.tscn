@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckvfkususnm01"]
 
-[ext_resource type="Script" path="res://day.gd" id="1_uj21n"]
+[ext_resource type="Script" uid="uid://blnm2kbuh7o2e" path="res://day.gd" id="1_uj21n"]
 [ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_up1jf"]
 [ext_resource type="Texture2D" uid="uid://ugajwb62s2um" path="res://assets/images/titre.png" id="3_uj21n"]
 [ext_resource type="Texture2D" uid="uid://ygnutnxtsw13" path="res://assets/images/radio_day.png" id="4_wf5ll"]
@@ -75,3 +75,9 @@ texture = ExtResource("4_wf5ll")
 position = Vector2(-79, 3.5762787e-07)
 rotation = 0.23635167
 skew = -0.26703537
+
+[node name="display_people" type="Sprite2D" parent="." unique_id=590607281]
+
+[node name="display_whale" type="Sprite2D" parent="." unique_id=1015101947]
+
+[node name="display_storm" type="Sprite2D" parent="." unique_id=1928007777]

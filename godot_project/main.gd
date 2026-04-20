@@ -57,6 +57,8 @@ func execute_tags(tags):
 			hang_up()
 		if tag in ["N","S", "E", "W", "P"]:
 			$Night._on_order_sent(tag)
+		if tag.contains("display_"):
+			$Day.display_object(tag)
 
 func _continue_story():
 	while _ink_player.can_continue:
