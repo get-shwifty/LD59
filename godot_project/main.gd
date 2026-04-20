@@ -74,9 +74,14 @@ func _continue_story():
 
 		if _ink_player.has_choices:
 			var choices = _ink_player.current_choices
+			var isNightHub = false;
 			for c in choices:
+				if (c.text in Global.POSSIBLE_BOATS):
+					isNightHub = true;
 				print(c.text + '   ' + str(c.tags))
-			dialogue.add_choices(choices)
+			if (!isNightHub):
+				dialogue.add_choices(choices)
+
 		else:
 			# This code runs when the story reaches it's end.
 			print("The End")
@@ -115,8 +120,21 @@ func start_of_day():
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
 
-func _contact_boat():
-	# Mettre en pause l'horloge ?
-	# game_dialogue.visible = true
-	pass
+func _contact_boat(boat_code):
+	var choices = _ink_player.current_choices
+	var choice_index = -1;
+	var found_boat = false;
+	for c in choices:
+		choice_index += 1;
+		if (boat_code == c.text):
+			found_boat = true;
+			break ;
+			print('contacting boat' + c.text)
 	
+	if (!found_boat):
+		return ;
+	
+	# Mettre en pause l'horloge ?
+	game_dialogue.visible = true
+	
+	select_choice(choice_index)

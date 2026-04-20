@@ -37,4 +37,4 @@ func _on_call_button_pressed() -> void:
 	if Global.POSSIBLE_BOATS.has(combinaison):
 		$CallButton.modulate = Color(0.192, 0.969, 0.0)
 		Global.talking_boat = combinaison
-		emit_signal("contact_boat")
+		emit_signal("contact_boat", combinaison)
