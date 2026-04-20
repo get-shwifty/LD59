@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="3_lrvaf"]
 [ext_resource type="PackedScene" uid="uid://bmv85de0lfyt1" path="res://ship_map_visual.tscn" id="3_ymyf8"]
 [ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
-[ext_resource type="Script" uid="uid://bm7y043wewq40" path="res://layers.gd" id="4_vivnb"]
+[ext_resource type="Script" path="res://layers.gd" id="4_vivnb"]
 [ext_resource type="PackedScene" uid="uid://mksyvl660i44" path="res://scenes/Radar.tscn" id="5_mwgpu"]
 [ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
 [ext_resource type="Script" uid="uid://b2vqx8qsbneo4" path="res://island.gd" id="6_t33dh"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhqgnfed18ud" path="res://assets/images/ilesfond_sans_fond.png" id="7_ud8no"]
 [ext_resource type="Texture2D" uid="uid://qaaosn8hlf2u" path="res://assets/images/iles_sand_fond.png" id="8_t33dh"]
 [ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="12_vfwos"]
-[ext_resource type="Script" uid="uid://ups60ntxr1t3" path="res://night_button.gd" id="13_ryn8s"]
+[ext_resource type="Script" path="res://night_button.gd" id="13_ryn8s"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")

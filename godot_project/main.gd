@@ -123,6 +123,7 @@ func start_of_day():
 	Global.talking_boat = ""
 	Global.event_to_call = ""
 	$Night/UI/NextDay.visible = false
+	game_dialogue.clear()
 	
 	# On prépare la scène day
 	$Day.visible = true
@@ -152,7 +153,6 @@ func _contact_boat(boat_code):
 	select_choice(choice_index)
 
 func hang_up():
-	print("Hang up")
 	game_dialogue.visible = false
 	dialogue.clear()
 	night_timer.restart_timer()
