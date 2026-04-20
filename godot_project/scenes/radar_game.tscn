@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://ew4oncpyhow1"]
+
+[ext_resource type="Script" uid="uid://dtov6gdjycf24" path="res://scenes/radar_game.gd" id="1_at58i"]
+[ext_resource type="Script" uid="uid://6tect72tkahr" path="res://david/map.gd" id="1_ofnbb"]
+[ext_resource type="Texture2D" uid="uid://cyxirf3eqth0f" path="res://assets/images/cost_map.png" id="2_ja0ty"]
+[ext_resource type="Script" uid="uid://dcqlycugintwt" path="res://david/costmap.gd" id="3_jmqnr"]
+[ext_resource type="Shader" uid="uid://yap6arrys1h" path="res://scenes/test_radar.gdshader" id="3_tholm"]
+[ext_resource type="Script" uid="uid://cv27qagqmbq5d" path="res://david/pathfinder.gd" id="4_ja0ty"]
+[ext_resource type="Texture2D" uid="uid://dkq5diymqacqc" path="res://assets/images/radar_grand.png" id="4_vw8ex"]
+[ext_resource type="PackedScene" uid="uid://ccp12knr85kla" path="res://david/ship.tscn" id="5_jmqnr"]
+[ext_resource type="Texture2D" uid="uid://ckqcsksquvlo5" path="res://assets/images/radar_cone.png" id="5_ov4q5"]
+[ext_resource type="Texture2D" uid="uid://dhfb6qp0eqoti" path="res://assets/images/radar_cadre.png" id="6_lvoe0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28otr"]
+shader = ExtResource("3_tholm")
+shader_parameter/shake = 0.1
+
+[node name="root" type="Node2D" unique_id=160520249]
+position = Vector2(363, 363)
+script = ExtResource("1_at58i")
+
+[node name="RadarGame" type="Node2D" parent="." unique_id=1030926297]
+script = ExtResource("1_ofnbb")
+
+[node name="Radar" type="Node2D" parent="RadarGame" unique_id=192683704]
+
+[node name="Sprite2D" type="Sprite2D" parent="RadarGame/Radar" unique_id=263472440]
+material = SubResource("ShaderMaterial_28otr")
+position = Vector2(0, 1)
+texture = ExtResource("4_vw8ex")
+offset = Vector2(0, -1)
+
+[node name="PlayerPos" type="ColorRect" parent="RadarGame/Radar" unique_id=817115918]
+offset_left = -7.0
+offset_top = -9.0
+offset_right = 12.0
+offset_bottom = 10.0
+color = Color(0.7410202, 0.1280837, 2.8878452e-07, 1)
+
+[node name="Cone" type="Sprite2D" parent="RadarGame/Radar" unique_id=415274090]
+modulate = Color(0.41568628, 1, 1, 0.21176471)
+rotation = 6.2831855
+texture = ExtResource("5_ov4q5")
+offset = Vector2(-7.2721877, -170.858)
+
+[node name="Cadre" type="Sprite2D" parent="RadarGame/Radar" unique_id=1934421316]
+texture = ExtResource("6_lvoe0")
+
+[node name="CostMapSource" type="Sprite2D" parent="RadarGame" unique_id=201753049]
+visible = false
+modulate = Color(1, 1, 1, 0.2784314)
+texture = ExtResource("2_ja0ty")
+
+[node name="CostmapGenerated" type="Node2D" parent="RadarGame" unique_id=92671504]
+visible = false
+script = ExtResource("3_jmqnr")
+
+[node name="AstarMap" type="Node2D" parent="RadarGame" unique_id=1018887999]
+position = Vector2(-363, -363)
+
+[node name="Pathfinder" type="Node2D" parent="RadarGame" unique_id=470227521 node_paths=PackedStringArray("costmapManager")]
+script = ExtResource("4_ja0ty")
+costmapManager = NodePath("../CostmapGenerated")
+
+[node name="Ships" type="Node2D" parent="RadarGame" unique_id=859168839]
+
+[node name="Goals" type="Node2D" parent="RadarGame" unique_id=1684848708]
+
+[node name="goal1" type="Node2D" parent="RadarGame/Goals" unique_id=90497074]
+position = Vector2(222, -81)
+
+[node name="goal2" type="Node2D" parent="RadarGame/Goals" unique_id=1267842331]
+position = Vector2(-95, 278)
+
+[node name="goal3" type="Node2D" parent="RadarGame/Goals" unique_id=1584011087]
+position = Vector2(-245, -108)
+
+[node name="goal4" type="Node2D" parent="RadarGame/Goals" unique_id=758822502]
+position = Vector2(-133, -220)
+
+[node name="goal5" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
+position = Vector2(61, 78)
+
+[node name="goal6" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
+position = Vector2(-209, -13)
+
+[node name="Levels" type="Node2D" parent="RadarGame" unique_id=82889980]
+
+[node name="level0" type="Node2D" parent="RadarGame/Levels" unique_id=555794200]
+
+[node name="A1" parent="RadarGame/Levels/level0" unique_id=998419548 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-280, 77)
+goals = [NodePath("../../../Goals/goal1")]
+
+[node name="B2" parent="RadarGame/Levels/level0" unique_id=249437953 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(257, 121)
+goals = [NodePath("../../../Goals/goal3")]
+
+[node name="C3" parent="RadarGame/Levels/level0" unique_id=868789457 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(145, 233)
+goals = [NodePath("../../../Goals/goal4")]
+
+[node name="E5" parent="RadarGame/Levels/level0" unique_id=1171815560 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-212, 211)
+goals = [NodePath("../../../Goals/goal5")]
+
+[node name="F6" parent="RadarGame/Levels/level0" unique_id=2001997813 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(101, -148)
+goals = [NodePath("../../../Goals/goal6")]

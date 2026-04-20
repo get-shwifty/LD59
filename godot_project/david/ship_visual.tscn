@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bnkkbmpmwhkpj"]
+
+[ext_resource type="Script" uid="uid://cohiovxus7vf8" path="res://david/ship_visual.gd" id="1_7muh6"]
+[ext_resource type="Texture2D" uid="uid://ve3xui75m3i4" path="res://david/white-circle.png" id="1_crqrh"]
+[ext_resource type="Script" uid="uid://dopxvretyq0eb" path="res://david/arrow.gd" id="2_7muh6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gnfn"]
+font_size = 40
+
+[node name="ShipVisual" type="Node2D" unique_id=505262563]
+script = ExtResource("1_7muh6")
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=251634520]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_crqrh")
+script = ExtResource("2_7muh6")
+
+[node name="Label" type="Label" parent="." unique_id=1817269532]
+offset_left = -114.0
+offset_top = -81.0
+offset_right = 107.0
+offset_bottom = -26.0
+text = "ACAVB2034"
+label_settings = SubResource("LabelSettings_2gnfn")
+horizontal_alignment = 1
+vertical_alignment = 1

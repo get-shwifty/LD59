@@ -38,6 +38,10 @@ bool inCone(vec2 ps) {
 
 void fragment() {
     vec2 uv = UV;
+    
+    //if (rand(vec2(TIME, 0.0)) < shake) {
+        //uv.x += rand(vec2(TIME, uv.y)) * 0.01;
+    //}
 
     if (rand(vec2(TIME, 0.0)) < shake) {
         uv.r += rand(vec2(TIME, uv.y)) * ai_takeover;

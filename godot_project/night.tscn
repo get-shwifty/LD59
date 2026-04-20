@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
 [ext_resource type="PackedScene" uid="uid://mksyvl660i44" path="res://scenes/Radar.tscn" id="5_mwgpu"]
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
+[ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
+[ext_resource type="AudioStream" uid="uid://dgbw546iy56kj" path="res://assets/music/Ludum59_ThemeNuit_SansBasse.mp3" id="6_wk727"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")
@@ -21,6 +23,11 @@ repeat_times = 3
 [node name="Landscape" type="Sprite2D" parent="Parallax" unique_id=483139179]
 position = Vector2(-44, 361)
 texture = ExtResource("4_lrvaf")
+
+[node name="radar game" parent="." unique_id=160520249 instance=ExtResource("6_osdpk")]
+visible = false
+top_level = true
+position = Vector2(365, 406)
 
 [node name="UI" type="Parallax2D" parent="." unique_id=1979713735]
 scroll_scale = Vector2(0, 0)
