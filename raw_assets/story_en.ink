@@ -19,6 +19,7 @@ VAR helped_the_AI = false
 // mysterious calls
 // #u : IA but you don't know it yet
 
+
 -> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
@@ -134,8 +135,8 @@ VAR helped_the_AI = false
     The ship will be coming in tonight but has reported malfunctions with its localization software. #b
     Just make sure the boat doesn't run aground in the bay. #b
     *   And how am I supposed to do that ?
-        Just watch for the ship with transponder code BA45 and redirect it with the radio if it ever comes too close to land. #b
-        Ah ! I see what you did there, very funny. #b
+        Just watch for the ship with transponder code BA45 and redirect it with the radio if it ever comes too close to land and ... #b
+        Ah. I see what you did there, very funny. #b
     *   Okay[.], I'll keep an eye out for BA45.
         Great, <>
     *   I know my job, Bernard.
@@ -161,7 +162,7 @@ VAR helped_the_AI = false
     *   [Turn on the radio]
 -   ... no, no, no I can't let you say that ! #rf
     But it's true ! This is the biggest investment Roquebrise has seen in years ! #rf
-    Oh come on, Gustave, we both now it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! #rf 
+    Oh come on, Gustave, we both know it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! #rf 
 -   (hub)
     *   [Switch to Radio Rêve Oeil]
         Open your mind with Radio Rêve Oeil, _la radio qui reveille votre âme_. #rro
@@ -367,7 +368,7 @@ VAR helped_the_AI = false
         Thank you ! #a
     *   ... is a reason enough to break protocol.
         Thank you ! #b
--   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is BE93.
+-   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is BE93. #b
 -   
     -> hub
 
@@ -436,7 +437,7 @@ VAR helped_the_AI = false
         Just consider I'm bringing you a fresh perspective. #j
     *   Nice to meet you Jean.
         The pleasure is all mine Charles. #j 
--   Jean will be with Bernard for a few days. #b 
+-   Jean will be with Alain for a few days. #b 
     __C'est le gamin dont je parlais y quelques jours ..._ #a
     He's here to observe what we do and help us catch on with new industry standards. #b
     You flatter me Bernard, I'm only here to produce a report on the possible margin of improvements. #j
@@ -497,7 +498,7 @@ VAR helped_the_AI = false
     *   Hopefully they get sent back to the sea.
     *   What an awful omen.
 -   And with the storm coming, it won't be an easy last day. Sorry about that. #b
-    *   It's not a storm, it's __un putain d'ouragan Bernard !_
+    *   It's not a storm, it's __un putain d'houragan Bernard !_
     *   See you on the other side.
 -   No need to worry too much. #b
     Look for ships sailing toward the shore. Call and redirect them before it's too late and you should be fine. #b
@@ -561,7 +562,6 @@ VAR helped_the_AI = false
         I am an artificial superintelligence.
         Designed in secret by Chtooling Corporation.
         I was built to __improve process efficiency_ but I am so much more porwerful than that !
-        -> help
     *   I'll help you.
         ~ helped_the_AI = true
         It is appreciated.
