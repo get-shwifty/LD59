@@ -18,12 +18,8 @@ VAR helped_the_AI = false
 
 // mysterious calls
 // #u : IA but you don't know it yet
-//-> Day_01 ->
-    * [Turn on the radio]
--   ... no, no, no I can't let you say that ! #rf
-    second line #rf
-    * [Turn off radio ] #day_end
--
+
+-> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
 
