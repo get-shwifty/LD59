@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c8hdtdkf4jicq" path="res://assets/images/radio.png" id="2_8q18p"]
 [ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="3_polgl"]
 [ext_resource type="Texture2D" uid="uid://betuoa80b4plt" path="res://assets/images/radio_button_off.png" id="4_goecq"]
+[ext_resource type="AudioStream" uid="uid://c5f1420sml31q" path="res://assets/soundEffects/click.wav" id="4_wl0ky"]
+[ext_resource type="AudioStream" uid="uid://c8lfpkx6j7egk" path="res://assets/soundEffects/Sonnerie-Prop1.mp3" id="5_goecq"]
+[ext_resource type="AudioStream" uid="uid://dw2q2huwhmj8w" path="res://assets/soundEffects/decroche.mp3" id="6_oijbw"]
+[ext_resource type="AudioStream" uid="uid://bmd4e3us7hfcn" path="res://assets/soundEffects/SoundComBoat.mp3" id="6_ugl3s"]
 
 [sub_resource type="Animation" id="Animation_8q18p"]
 resource_name = "Calling_button"
@@ -59,6 +63,10 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
 flip_v = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button1HAUT" unique_id=1097807900]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+
 [node name="Button1BAS" type="TextureButton" parent="." unique_id=966281323]
 offset_left = 288.0
 offset_top = 613.0
@@ -66,6 +74,10 @@ offset_right = 320.0
 offset_bottom = 629.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Button1BAS" unique_id=1031605469]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
 
 [node name="ButtonHAUT2" type="TextureButton" parent="." unique_id=2125682301]
 offset_left = 346.0
@@ -76,6 +88,11 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
 flip_v = true
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="ButtonHAUT2" unique_id=1308586336]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 0.77
+
 [node name="ButtonBAS2" type="TextureButton" parent="." unique_id=1871672128]
 offset_left = 346.0
 offset_top = 614.0
@@ -83,6 +100,11 @@ offset_right = 378.0
 offset_bottom = 630.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="ButtonBAS2" unique_id=2057605586]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 1.2
 
 [node name="ButtonHAUT3" type="TextureButton" parent="." unique_id=636378459]
 offset_left = 402.0
@@ -93,6 +115,11 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
 flip_v = true
 
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="ButtonHAUT3" unique_id=1616841775]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 0.9
+
 [node name="ButtonBAS3" type="TextureButton" parent="." unique_id=478125311]
 offset_left = 404.0
 offset_top = 614.0
@@ -100,6 +127,11 @@ offset_right = 436.0
 offset_bottom = 630.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="ButtonBAS3" unique_id=390790884]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 1.25
 
 [node name="ButtonHAUT4" type="TextureButton" parent="." unique_id=488018383]
 offset_left = 460.0
@@ -110,6 +142,11 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
 flip_v = true
 
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="ButtonHAUT4" unique_id=1363163181]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 0.85
+
 [node name="ButtonBAS4" type="TextureButton" parent="." unique_id=463950707]
 offset_left = 462.0
 offset_top = 614.0
@@ -117,6 +154,11 @@ offset_right = 494.0
 offset_bottom = 630.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_polgl")
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="ButtonBAS4" unique_id=721471768]
+stream = ExtResource("4_wl0ky")
+volume_db = -6.0
+pitch_scale = 1.1
 
 [node name="Label1" type="Label" parent="." unique_id=1851371511]
 offset_left = 283.0
@@ -173,6 +215,24 @@ texture_normal = ExtResource("4_goecq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1298804061]
 libraries/ = SubResource("AnimationLibrary_oijbw")
+
+[node name="Call" type="AudioStreamPlayer" parent="." unique_id=1370295792]
+stream = ExtResource("5_goecq")
+volume_db = 3.205
+pitch_scale = 0.61
+
+[node name="CallBoat" type="AudioStreamPlayer" parent="." unique_id=787688622]
+stream = ExtResource("6_oijbw")
+volume_db = -2.107
+pitch_scale = 0.93
+
+[node name="CallBoat2" type="AudioStreamPlayer" parent="." unique_id=76263185]
+stream = ExtResource("6_ugl3s")
+pitch_scale = 0.85
+
+[node name="ClickToAnswer" type="AudioStreamPlayer" parent="." unique_id=1166803974]
+stream = ExtResource("6_oijbw")
+pitch_scale = 0.85
 
 [connection signal="pressed" from="Button1HAUT" to="." method="_on_button_pressed" binds= [NodePath("Button1HAUT"), 1]]
 [connection signal="pressed" from="Button1BAS" to="." method="_on_button_pressed" binds= [NodePath("Button1BAS"), 1]]

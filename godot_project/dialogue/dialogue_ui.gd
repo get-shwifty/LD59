@@ -28,7 +28,15 @@ const TAG_VOICE: Dictionary = {
 
 const TAG_SOUND: Dictionary = {
 	"radioon": preload("res://assets/soundEffects/Radioon-off.mp3"),
-	"radiooff": preload("res://assets/soundEffects/Radioon-off.mp3")
+	"radiooff": preload("res://assets/soundEffects/Radioon-off.mp3"),
+	"hang_up": preload("res://assets/soundEffects/raccroche.mp3"),
+	"gzzz": preload("res://assets/soundEffects/voices/charles/gzzzcrchbzzcrch.mp3"),
+	"u": [
+		preload("res://assets/soundEffects/cracklingsound0.mp3"),
+		preload("res://assets/soundEffects/cracklingsound1.mp3"),
+		preload("res://assets/soundEffects/cracklingsound2.mp3"),
+		preload("res://assets/soundEffects/cracklingsound3.mp3")
+	]
 }
 
 const SOUND_VOLUMES: Dictionary = {
@@ -38,7 +46,11 @@ const SOUND_VOLUMES: Dictionary = {
 	"res://assets/soundEffects/voices/charles/Charles_Voice": +2.75,
 	"res://assets/soundEffects/voices/radiofadaises/B_voice": -1.4,
 	"radioon": 0.75,
-	"radiooff": 0.0
+	"radiooff": 0.,
+	"res://assets/soundEffects/cracklingsound0.mp3":0,
+	"res://assets/soundEffects/cracklingsound1.mp3":-2.0,
+	"res://assets/soundEffects/cracklingsound2.mp3":-1.0,
+	"res://assets/soundEffects/cracklingsound3.mp3":-2.0
 } 
 
 
@@ -168,7 +180,10 @@ func write_text_from_buffer():
 
 	for tagsound in dial.tags:
 		if TAG_SOUND.has(tagsound):
-			audio_player2.stream = TAG_SOUND[tagsound]
+			var sound = TAG_SOUND[tagsound]
+			if sound is Array:
+				sound = sound[randi() % sound.size()]
+			audio_player2.stream = sound
 			if SOUND_VOLUMES.has(tagsound):
 				audio_player2.volume_db = SOUND_VOLUMES[tagsound]
 			else:

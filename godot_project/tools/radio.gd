@@ -6,6 +6,18 @@ extends Node2D
 @onready var button3_map = ["1", "2", "3", "4"]
 @onready var button4_map = ["5", "6", "7", "8"]
 
+
+@onready var BUTTON_AUDIO: Dictionary = {
+	"Button1HAUT": $Button1HAUT/AudioStreamPlayer,
+	"Button1BAS": $Button1BAS/AudioStreamPlayer8,
+	"ButtonHAUT2": $ButtonHAUT2/AudioStreamPlayer2,
+	"ButtonBAS2": $ButtonBAS2/AudioStreamPlayer3,
+	"ButtonHAUT3": $ButtonHAUT3/AudioStreamPlayer4,
+	"ButtonBAS3": $ButtonBAS3/AudioStreamPlayer5,
+	"ButtonHAUT4": $ButtonHAUT4/AudioStreamPlayer6,
+	"ButtonBAS4": $ButtonBAS4/AudioStreamPlayer7,
+}
+
 ################################## Var
 var indexes = {}
 var actual_call_event = ""
@@ -25,6 +37,10 @@ func _on_button_pressed(extra_arg_0: NodePath,button: int) -> void:
 	else:
 		increment_index = -1
 	indexes[button] = posmod(indexes[button] + increment_index, 4)
+	
+	var btn_name = extra_arg_0.get_name(0)
+	if BUTTON_AUDIO.has(btn_name):
+		BUTTON_AUDIO[btn_name].play()
 
 func _process(delta: float):
 	$Label1.text = button1_map[indexes[1]]
@@ -39,14 +55,17 @@ func _on_call_button_pressed() -> void:
 		$CallButton.modulate = Color(0.192, 0.969, 0.0)
 		Global.talking_boat = combinaison
 		emit_signal("contact_boat", combinaison)
-
+		$CallBoat.play()
+		$CallBoat2.play()
+		
 func light_button_call(call_event: String):
 	actual_call_event = call_event
 	$AnimationPlayer.play("Calling_button")
+	$Call.play()
 
 func _on_radio_button_calling_pressed() -> void:
 	$AnimationPlayer.stop()
+	$Call.stop()
+	$ClickToAnswer.play()
 	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 	call_from_ship.emit(actual_call_event)
-	
-	

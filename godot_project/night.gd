@@ -99,7 +99,7 @@ func _process(delta: float) -> void:
 		if clock.hours >= event_hour and (!clock.timer.is_paused()) :
 			Global.event_to_call = ""
 			$UI/Radio.light_button_call(call_event)
-
+	
 func _on_end_night() -> void:
 	next_day_button.visible = true
 
