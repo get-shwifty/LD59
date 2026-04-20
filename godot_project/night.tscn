@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
 [ext_resource type="Texture2D" uid="uid://cyhqgnfed18ud" path="res://assets/images/ilesfond_sans_fond.png" id="7_ud8no"]
 [ext_resource type="Texture2D" uid="uid://qaaosn8hlf2u" path="res://assets/images/iles_sand_fond.png" id="8_t33dh"]
+[ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="12_vfwos"]
+[ext_resource type="Script" uid="uid://ups60ntxr1t3" path="res://night_button.gd" id="13_ryn8s"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")
@@ -153,21 +155,25 @@ offset_bottom = 637.0
 theme_override_font_sizes/font_size = 28
 text = "GO TO NEXT DAY ?"
 
-[node name="LeftButton" type="Button" parent="UI" unique_id=609557662]
-offset_left = -1.0
-offset_top = 625.0
-offset_right = 53.0
-offset_bottom = 688.0
-theme_override_font_sizes/font_size = 40
-text = "<="
+[node name="LeftButton" type="TextureButton" parent="UI" unique_id=2118802894]
+offset_left = 50.0
+offset_top = 115.0
+offset_right = 89.0
+offset_bottom = 132.906
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture_normal = ExtResource("12_vfwos")
+script = ExtResource("13_ryn8s")
 
-[node name="RightButton" type="Button" parent="UI" unique_id=1428286049]
-offset_left = 1230.0
-offset_top = 623.0
-offset_right = 1284.0
-offset_bottom = 686.0
-theme_override_font_sizes/font_size = 40
-text = "=>"
+[node name="RightButton" type="TextureButton" parent="UI" unique_id=2023389058]
+offset_left = 1229.0
+offset_top = 181.0
+offset_right = 1268.5054
+offset_bottom = 198.9057
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture_normal = ExtResource("12_vfwos")
+script = ExtResource("13_ryn8s")
 
 [node name="Radio" parent="UI" unique_id=848813022 instance=ExtResource("7_osdpk")]
 
