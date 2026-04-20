@@ -16,10 +16,11 @@ script = ExtResource("1_0xm2m")
 visible = false
 
 [node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("3_lquwl")]
-offset_left = 413.0
-offset_top = 62.0
-offset_right = 928.0
-offset_bottom = 352.0
+z_index = 100
+offset_left = 713.0
+offset_top = 385.0
+offset_right = 1228.0
+offset_bottom = 675.0
 
 [node name="InkPlayer" type="Node" parent="." unique_id=343049778]
 script = ExtResource("4_7mycd")

@@ -5,13 +5,15 @@ extends Node2D
 @onready var dialogue = game_dialogue
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var is_night = false
-@onready var sav_position_dialog_UI = $DialogueUi.position
 @onready var night_timer = $Night/UI/Clock
 
 const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
 const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
 const FADE_DURATION = 1
 
+@onready var sav_position_dialog_UI = $DialogueUi.position
+@onready var sav_size_dialog_UI = $DialogueUi.size
+@onready var sav_position_camera = $"Night/Camera2D".position
 
 func _ready() -> void:
 	Global.game_started = true
@@ -24,9 +26,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_night:
-		$DialogueUi.position = sav_position_dialog_UI
+		$DialogueUi.size.y = 400
+		print($Night/Camera2D.position)
+		$DialogueUi.position.x = $Night/Camera2D.position.x - 245
+		$DialogueUi.position.y = $Night/Camera2D.position.y - 300
 	else:
-		$DialogueUi.position = $Night/Camera2D.position
+		$DialogueUi.position = sav_position_dialog_UI
+		$DialogueUi.size = sav_size_dialog_UI
 	
 
 func _story_loaded(successfully: bool):
@@ -114,12 +120,14 @@ func start_of_day():
 	game_dialogue.visible = false
 	$Night.visible = false
 	night_timer.stop_timer()
+	$Night/Camera2D.position = sav_position_camera
 	
 	# On prépare la scène day
 	$Day.visible = true
 	for c in _ink_player.current_choices:
 		if c.text == "Finish Night":
 			select_choice(c.index)
+	
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
 	
