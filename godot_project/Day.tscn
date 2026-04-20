@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://ckvfkususnm01"]
 
 [ext_resource type="Script" uid="uid://blnm2kbuh7o2e" path="res://day.gd" id="1_uj21n"]
+[ext_resource type="Texture2D" uid="uid://beq5p7117nrrh" path="res://assets/images/day_background.png" id="2_biu7l"]
 [ext_resource type="Texture2D" uid="uid://b0icv46ydkg5e" path="res://assets/images/ld59-day.png" id="2_up1jf"]
 [ext_resource type="Texture2D" uid="uid://ugajwb62s2um" path="res://assets/images/titre.png" id="3_uj21n"]
+[ext_resource type="Texture2D" uid="uid://c20huexw4ft6x" path="res://assets/images/storm.png" id="4_02umq"]
+[ext_resource type="Texture2D" uid="uid://ygnutnxtsw13" path="res://assets/images/radio_day.png" id="4_wf5ll"]
+[ext_resource type="PackedScene" uid="uid://bmqij2eo673ex" path="res://alexis/spectrum_analyzer.tscn" id="5_ncttb"]
+[ext_resource type="Texture2D" uid="uid://b3tvvxt8oflad" path="res://assets/images/day_foreground.png" id="5_usacn"]
+[ext_resource type="Texture2D" uid="uid://iw0cut6bus51" path="res://assets/images/gens.png" id="9_qtqol"]
+[ext_resource type="Texture2D" uid="uid://dqnniufevu1p1" path="res://assets/images/baleine.png" id="10_fq1pr"]
 
 [sub_resource type="Animation" id="Animation_kek77"]
 resource_name = "Game_title"
@@ -44,10 +51,24 @@ _data = {
 [node name="Day" type="Node2D" unique_id=1492088320]
 script = ExtResource("1_uj21n")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1750307732]
-position = Vector2(639.5, 360.58337)
+[node name="Background" type="Sprite2D" parent="." unique_id=195539794]
+position = Vector2(640, 360)
+texture = ExtResource("2_biu7l")
+
+[node name="Background_old" type="Sprite2D" parent="." unique_id=1750307732]
+visible = false
+position = Vector2(638, 358)
 scale = Vector2(0.99609375, 0.99282414)
 texture = ExtResource("2_up1jf")
+
+[node name="display_storm" type="Sprite2D" parent="." unique_id=1928007777]
+visible = false
+position = Vector2(641, 360)
+texture = ExtResource("4_02umq")
+
+[node name="Foreground" type="Sprite2D" parent="." unique_id=1643895477]
+position = Vector2(640, 359)
+texture = ExtResource("5_usacn")
 
 [node name="DayNumber" type="Label" parent="." unique_id=1854039835]
 offset_left = 594.0
@@ -64,3 +85,21 @@ texture = ExtResource("3_uj21n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16669965]
 libraries/ = SubResource("AnimationLibrary_ncttb")
+
+[node name="RadioDay" type="Sprite2D" parent="." unique_id=1755885557]
+position = Vector2(489, 593)
+texture = ExtResource("4_wf5ll")
+
+[node name="SpectrumAnalyzer" parent="RadioDay" unique_id=1105494842 instance=ExtResource("5_ncttb")]
+position = Vector2(-79, 3.5762787e-07)
+rotation = 0.23635167
+skew = -0.26703537
+
+[node name="display_people" type="Sprite2D" parent="." unique_id=590607281]
+position = Vector2(1074, 549)
+texture = ExtResource("9_qtqol")
+
+[node name="display_whale" type="Sprite2D" parent="." unique_id=1015101947]
+visible = false
+position = Vector2(1007, 581)
+texture = ExtResource("10_fq1pr")
