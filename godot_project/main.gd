@@ -104,8 +104,6 @@ func end_of_day():
 	$Night.visible = true
 	night_timer.start_timer()
 	play_music(MUSIC_NIGHT)
-	remove_child($DialogueUi)
-	$Night/UI.add_child(game_dialogue)
 	print("current day: ", Global.day_number)
 	$Night.load_level(Global.day_number-1)
 	
