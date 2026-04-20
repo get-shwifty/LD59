@@ -9,6 +9,7 @@ var max_scroll_length = 0
 var text_buffer = []
 var option_buffer = []
 var is_writing = false
+var is_waiting: Node = null
 var tag_buffer = []
 var listener = null
 
@@ -52,9 +53,12 @@ func handle_scrollbar_changed():
 		self.scroll_vertical = max_scroll_length
 
 func select_option(option):
-	listener.select_choice(option.index)
-	if option.tags:
-		listener.execute_tags(option.tags)
+	if is_waiting:
+		clear_waiting()
+	else:
+		listener.select_choice(option.index)
+		if option.tags:
+			listener.execute_tags(option.tags)
 
 func add_dialogue(text, type, tags):
 	for t in tags:
@@ -68,6 +72,8 @@ func notify_write_end():
 	is_writing = false
 	if tag_buffer:
 		execute_tags()
+	if text_buffer.size() > 0:
+		write_waiting()
 
 func execute_tags():
 	listener.execute_tags(tag_buffer)
@@ -82,7 +88,9 @@ func play_sound(player: AudioStreamPlayer, path: String) -> void:
 	player.play()
 
 func _process(delta):
-	if text_buffer.size() and not is_writing:
+	if is_waiting:
+		pass
+	elif text_buffer.size() and not is_writing:
 		write_text_from_buffer()
 	elif option_buffer.size() and not is_writing:
 		write_options_from_buffer()
@@ -183,6 +191,19 @@ func write_options_from_buffer():
 	options.listener = self
 	$VBoxContainer.add_child(options)
 	option_buffer.clear()
+
+func write_waiting():
+	var options = OPTIONS.instantiate()
+	var next = InkChoice.new()
+	next.text = "..."
+	options.options = [next]
+	options.listener = self
+	$VBoxContainer.add_child(options)
+	is_waiting = options
+
+func clear_waiting():
+	is_waiting.queue_free()
+	is_waiting = null
 	
 
 func add_choices(choices):
