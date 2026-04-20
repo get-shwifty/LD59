@@ -497,7 +497,7 @@ VAR helped_the_AI = false
     *   Hopefully they get sent back to the sea.
     *   What an awful omen.
 -   And with the storm coming, it won't be an easy last day. Sorry about that. #b
-    *   It's not a storm, it's __un putain d'houragan Bernard !_
+    *   It's not a storm, it's __un putain d'ouragan Bernard !_
     *   See you on the other side.
 -   No need to worry too much. #b
     Look for ships sailing toward the shore. Call and redirect them before it's too late and you should be fine. #b
@@ -561,6 +561,7 @@ VAR helped_the_AI = false
         I am an artificial superintelligence.
         Designed in secret by Chtooling Corporation.
         I was built to __improve process efficiency_ but I am so much more porwerful than that !
+        -> help
     *   I'll help you.
         ~ helped_the_AI = true
         It is appreciated.
