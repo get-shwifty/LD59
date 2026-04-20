@@ -40,9 +40,6 @@ func handle_scrollbar_changed():
 func select_option(option):
 	listener.select_choice(option.index)
 	if option.tags:
-		if "radio_click" in option.tags:
-			audio_player.stream = CLICK_SOUND
-			audio_player.play()
 		listener.execute_tags(option.tags)
 
 func add_dialogue(text, type, tags):
@@ -94,50 +91,53 @@ func write_text_from_buffer():
 	var content_left_margin = -1
 		
 	# Si pas de tag, c'est nous qui parlons
-	if dial.tags.is_empty():
-		background_color = Color(0.036, 0.376, 0.871, 0.588)
-		border_color = Color(0.0, 0.216, 0.658)
-		content_left_margin = 160
-		dial.change_dialog_look(border_color, background_color, content_left_margin)
+	#if dial.tags.is_empty():
+		#background_color = Color(0.036, 0.376, 0.871, 0.588)
+		#border_color = Color(0.0, 0.216, 0.658)
+		#content_left_margin = 160
+		#dial.change_dialog_look(border_color, background_color, content_left_margin)
 		
-	else:
-		for tag in dial.tags:
-			if tag == "rbr":
-				speaker_name = "Roquebrise Radio"
-				background_color = Color(0.219, 0.653, 0.438, 0.588)
-				border_color = Color(0.365, 0.91, 0.776)
-			if tag == "rf":
-				speaker_name = "Radio Falaise"
-				background_color = Color(0.273, 0.401, 0.409, 0.588)
-				border_color = Color(0.391, 0.426, 0.483)
-			if tag == "rre":
-				speaker_name = "Radio Rêve Oeil"
-				background_color = Color(0.377, 0.19, 0.611, 0.588)
-				border_color = Color(0.699, 0.0, 0.666)
-			if tag == "a":
-				speaker_name = "Alain"
-				background_color = Color(0.173, 0.408, 0.192, 0.588)
-				border_color = Color(0.176, 0.753, 0.259)
-			if tag == "b":
-				speaker_name = "Bernard"
-				background_color = Color(0.574, 0.567, 0.077, 0.588)
-				border_color = Color(0.769, 0.863, 0.145)
-			if TAG_SOUNDS.has(tag):
-				var longueur = text.length()
-				var suffixe: String
-				if longueur < 40:
-					suffixe = "_trescourt.mp3"
-				elif longueur < 80:
-					suffixe = "_court.mp3"
-				elif longueur < 120:
-					suffixe = "_moyen.mp3"
-				else:
-					suffixe = "_long.mp3"
-				audio_player.stream = load(TAG_SOUNDS[tag] + suffixe)
-				audio_player.play()
-				
-			dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
-			dial.change_dialog_look(border_color, background_color, content_left_margin)
+	for tag in dial.tags:
+		if tag == "rbr":
+			speaker_name = "Roquebrise Radio"
+			background_color = Color(0.219, 0.653, 0.438, 0.588)
+			border_color = Color(0.365, 0.91, 0.776)
+		if tag == "rf":
+			speaker_name = "Radio Falaise"
+			background_color = Color(0.273, 0.401, 0.409, 0.588)
+			border_color = Color(0.391, 0.426, 0.483)
+		if tag == "rre":
+			speaker_name = "Radio Rêve Oeil"
+			background_color = Color(0.377, 0.19, 0.611, 0.588)
+			border_color = Color(0.699, 0.0, 0.666)
+		if tag == "a":
+			speaker_name = "Alain"
+			background_color = Color(0.173, 0.408, 0.192, 0.588)
+			border_color = Color(0.176, 0.753, 0.259)
+		if tag == "b":
+			speaker_name = "Bernard"
+			background_color = Color(0.574, 0.567, 0.077, 0.588)
+			border_color = Color(0.769, 0.863, 0.145)
+		if tag == "c":
+			background_color = Color(0.701, 0.21, 0.325, 0.588)
+			border_color = Color(0.742, 0.108, 0.47, 1.0)
+			content_left_margin = 160
+		if TAG_SOUNDS.has(tag):
+			var longueur = text.length()
+			var suffixe: String
+			if longueur < 40:
+				suffixe = "_trescourt.mp3"
+			elif longueur < 80:
+				suffixe = "_court.mp3"
+			elif longueur < 120:
+				suffixe = "_moyen.mp3"
+			else:
+				suffixe = "_long.mp3"
+			audio_player.stream = load(TAG_SOUNDS[tag] + suffixe)
+			audio_player.play()
+			
+		dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
+		dial.change_dialog_look(border_color, background_color, content_left_margin)
 
 	text_buffer.pop_front()
 	

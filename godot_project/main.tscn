@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b0cqw80yi5i5h" path="res://addons/inkgd/ink_player.gd" id="4_7mycd"]
 [ext_resource type="Resource" uid="uid://bk54h47btachi" path="res://assets/story_en.ink.json" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://ckvfkususnm01" path="res://Day.tscn" id="5_lquwl"]
+[ext_resource type="AudioStream" uid="uid://bn1wbrfhyn7wg" path="res://assets/soundEffects/ChangementRadio.mp3" id="7_272bh"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")
@@ -28,3 +29,7 @@ ink_file = ExtResource("5_272bh")
 metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1291100322]
+
+[node name="SoundRadio" type="AudioStreamPlayer" parent="." unique_id=1111930409]
+stream = ExtResource("7_272bh")
+pitch_scale = 0.91

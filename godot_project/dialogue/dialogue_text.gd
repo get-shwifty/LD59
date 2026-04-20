@@ -26,17 +26,16 @@ func _ready():
 	if type == 0:
 		$MarginContainer.add_theme_constant_override("margin_left", 20)
 		$MarginContainer.add_theme_constant_override("margin_right", 0)
-		style.bg_color = Color(83/255.0, 80/255.0, 158/255.0)
-
+		#style.bg_color = Color(83/255.0, 80/255.0, 158/255.0)
 	
 	if type == 1:
 		$MarginContainer.add_theme_constant_override("margin_left", 10)
 		$MarginContainer.add_theme_constant_override("margin_right", 10)
-		style.bg_color = Color(0,0,0,0)
+		#style.bg_color = Color(0,0,0,0)
 	if type == 2:
 		$MarginContainer.add_theme_constant_override("margin_left", 0)
 		$MarginContainer.add_theme_constant_override("margin_right", 20)
-		style.bg_color = Color(41/255.0, 40/255.0, 78/255.0)
+		#style.bg_color = Color(41/255.0, 40/255.0, 78/255.0)
 		
 	
 	$MarginContainer/PanelContainer.add_theme_stylebox_override("panel", style)

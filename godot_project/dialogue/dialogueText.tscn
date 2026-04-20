@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://cb8vjdp6wb808" path="res://dialogue/dialogue_text.gd" id="1_rpvr2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpvr2"]
-content_margin_left = 281.0
-bg_color = Color(0.035798114, 0.3761591, 0.8713065, 0.588)
+bg_color = Color(0.972549, 0.3764706, 0.87058824, 0.5882353)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(5.8671387e-05, 0.21551469, 0.6582987, 1)
+border_color = Color(0.99742264, 0, 0.5262005, 1)
 border_blend = true
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6q0a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="DialogueText" type="PanelContainer" unique_id=1200851924]
 offset_left = 300.0
@@ -32,6 +34,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=120793730]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n6q0a")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1511908165]
 layout_mode = 2
