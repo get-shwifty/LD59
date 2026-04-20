@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://di8o4ublrr2fj"]
+
+[ext_resource type="Script" uid="uid://ilx8urbgyurv" path="res://tools/tooltip.gd" id="1_3cp48"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fm8y"]
+bg_color = Color(0.07000001, 0.17183332, 0.2, 0.92156863)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1128, 0.23151998, 0.24, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Tooltip" type="PanelContainer" unique_id=396841687]
+custom_minimum_size = Vector2(200, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4fm8y")
+script = ExtResource("1_3cp48")
+
+[node name="TooltipText" type="RichTextLabel" parent="." unique_id=910994966]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "Ceci est le text de mon tooltip"
+horizontal_alignment = 1
+vertical_alignment = 1
