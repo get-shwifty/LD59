@@ -3,14 +3,14 @@ extends Node2D
 ################################## On Ready
 @onready var minutes_lab = $Minute
 @onready var hours_lab = $Hour
+@onready var timer = Timer.new()
 
 ################################## Const
 const START_NIGHT = 21
-const NIGHT_DURATION_HOURS = 1
-const HALF_HOUR_DURATION_SECS = 2
+const NIGHT_DURATION_HOURS = 5
+const HALF_HOUR_DURATION_SECS = 1
 
 ################################## Var
-var timer = null
 var total_minutes = START_NIGHT * 2 * 30 # On veut commencer la nuit à une heure donnée
 var total_hours = 0
 
@@ -18,12 +18,10 @@ var total_hours = 0
 signal end_night
 
 func _ready() -> void:
-	timer = Timer.new()
 	add_child(timer)
 	timer.set_one_shot(false)
 	timer.set_wait_time(HALF_HOUR_DURATION_SECS)
 	timer.connect("timeout", _on_timeout)
-	timer.start()
 
 func _on_timeout() -> void:
 	total_minutes += 30
@@ -40,3 +38,21 @@ func _on_timeout() -> void:
 	else:
 		timer.start()
 		
+
+func start_timer():
+	print("START")
+	timer.paused = false
+	timer.start()
+	
+func pause_timer():
+	print("PAUSE")
+	timer.paused = true
+	
+func restart_timer():
+	print("RESTART")
+	timer.paused = false
+	
+func stop_timer():
+	print("STOP")
+	timer.paused = false
+	timer.stop()

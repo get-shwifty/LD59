@@ -3,10 +3,10 @@ extends Node2D
 @onready var _ink_player: InkPlayer = $InkPlayer
 @onready var game_dialogue: DialogeUI = $"DialogueUi"
 @onready var dialogue = game_dialogue
-
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var is_night = false
 @onready var sav_position_dialog_UI = $DialogueUi.position
+@onready var night_timer = $Night/UI/Clock
 
 const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
 const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
@@ -47,8 +47,8 @@ func execute_tags(tags):
 			$Day.display_game_title(game_dialogue)
 		if tag == "day_end":
 			end_of_day()
-		#if tag == "day_begin":
-		#	start_of_day()
+		if tag == "hang_up":
+			hang_up()
 
 func _continue_story():
 	while _ink_player.can_continue:
@@ -102,6 +102,7 @@ func end_of_day():
 	
 	# Début de la nuit
 	$Night.visible = true
+	night_timer.start_timer()
 	play_music(MUSIC_NIGHT)
 
 func start_of_day():
@@ -109,6 +110,7 @@ func start_of_day():
 	game_dialogue.visible = false
 	game_dialogue.clear()
 	$Night.visible = false
+	night_timer.stop_timer()
 	
 	$Day.visible = true
 	game_dialogue.visible = true
@@ -121,14 +123,19 @@ func _contact_boat(boat_code):
 	for c in choices:
 		choice_index += 1;
 		if (boat_code == c.text):
-			found_boat = true;
-			break ;
+			found_boat = true
 			print('contacting boat' + c.text)
+			night_timer.pause_timer()
+			break
 	
 	if (!found_boat):
-		return ;
+		return 
 	
-	# Mettre en pause l'horloge ?
 	game_dialogue.visible = true
-	
 	select_choice(choice_index)
+
+
+func hang_up():
+	dialogue.clear()
+	night_timer.restart_timer()
+	
