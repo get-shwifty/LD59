@@ -25,6 +25,16 @@ var ship_y_max: float = 320.0
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
 
+# TODO: Change the texture when we have them
+var texture_north = preload("res://assets/images/jean.png")
+var texture_north_west = preload("res://assets/images/jean.png")
+var texture_west = preload("res://assets/images/bernard.png")
+var texture_south_west = preload("res://assets/images/jean.png")
+var texture_south = preload("res://assets/images/alain.png")
+var texture_south_east = preload("res://assets/images/jean.png")
+var texture_east = preload("res://assets/images/bernard.png")
+var texture_north_east = preload("res://assets/images/bernard.png")
+
 ################################## Signal
 signal switch_to_day
 
@@ -37,6 +47,25 @@ func _ready() -> void:
 func load_level(level: int):
 	print("start level ", level)
 	$"radar game".load_level(level)
+
+func get_texture(rotation: float) -> Resource:
+	var rotation_deg = rad_to_deg(rotation)
+	if rotation_deg > 157.5 or rotation_deg <= -157.5:
+		return texture_west
+	elif rotation_deg > 112.5:
+		return texture_south_west
+	elif rotation_deg > 67.5:
+		return texture_south
+	elif rotation_deg > 22.5:
+		return texture_south_east
+	elif rotation_deg > -22.5:
+		return texture_east
+	elif rotation_deg > -67.5:
+		return texture_north_east
+	elif rotation_deg > -112.5:
+		return texture_north
+	else:
+		return texture_north_west
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("droite") and get_parent().is_night:
@@ -84,6 +113,12 @@ func _process(delta: float) -> void:
 		visual.scale = Vector2(s, s)
 		visual.z_index = ships_container.get_node("islands").get_ship_z(ship.distance)
 		visual.get_node('Label').text = str(ship.distance)
+		
+		# For some reason, visual.get_node('Circle') does not work ?!
+		var ship_sprite = visual.get_children()[0]
+		print(ship.rotation)
+		var ship_texture = get_texture(ship.rotation)
+		ship_sprite.texture = ship_texture
 		
 	# Remove visuals for ships no longer present
 	for id in ship_visuals.keys():
