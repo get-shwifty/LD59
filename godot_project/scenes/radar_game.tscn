@@ -14,9 +14,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28otr"]
 shader = ExtResource("3_tholm")
 shader_parameter/shake = 0.1
+shader_parameter/ai_takeover = 0.0
+shader_parameter/cone_angle = 225.0
+shader_parameter/cone_width = 90.0
+shader_parameter/cone_radius = 0.5
+shader_parameter/cone_origin = Vector2(0.5, 0.5)
 
 [node name="root" type="Node2D" unique_id=160520249]
-position = Vector2(363, 363)
 script = ExtResource("1_at58i")
 
 [node name="RadarGame" type="Node2D" parent="." unique_id=1030926297]
@@ -47,7 +51,6 @@ offset = Vector2(-7.2721877, -170.858)
 texture = ExtResource("6_lvoe0")
 
 [node name="CostMapSource" type="Sprite2D" parent="RadarGame" unique_id=201753049]
-visible = false
 modulate = Color(1, 1, 1, 0.2784314)
 texture = ExtResource("2_ja0ty")
 
@@ -56,7 +59,7 @@ visible = false
 script = ExtResource("3_jmqnr")
 
 [node name="AstarMap" type="Node2D" parent="RadarGame" unique_id=1018887999]
-position = Vector2(-363, -363)
+visible = false
 
 [node name="Pathfinder" type="Node2D" parent="RadarGame" unique_id=470227521 node_paths=PackedStringArray("costmapManager")]
 script = ExtResource("4_ja0ty")
@@ -67,43 +70,71 @@ costmapManager = NodePath("../CostmapGenerated")
 [node name="Goals" type="Node2D" parent="RadarGame" unique_id=1684848708]
 
 [node name="goal1" type="Node2D" parent="RadarGame/Goals" unique_id=90497074]
-position = Vector2(222, -81)
+position = Vector2(314, 122)
 
 [node name="goal2" type="Node2D" parent="RadarGame/Goals" unique_id=1267842331]
-position = Vector2(-95, 278)
+position = Vector2(136, -94)
 
 [node name="goal3" type="Node2D" parent="RadarGame/Goals" unique_id=1584011087]
-position = Vector2(-245, -108)
+position = Vector2(250, 18)
 
 [node name="goal4" type="Node2D" parent="RadarGame/Goals" unique_id=758822502]
-position = Vector2(-133, -220)
+position = Vector2(315, -4)
 
 [node name="goal5" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
-position = Vector2(61, 78)
+position = Vector2(150, 128)
 
 [node name="goal6" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
-position = Vector2(-209, -13)
+position = Vector2(225, 143)
+
+[node name="goal7" type="Node2D" parent="RadarGame/Goals" unique_id=802931017]
+position = Vector2(11, 294)
+
+[node name="goal8" type="Node2D" parent="RadarGame/Goals" unique_id=1894040346]
+position = Vector2(-181, 134)
+
+[node name="goal9" type="Node2D" parent="RadarGame/Goals" unique_id=1758463692]
+position = Vector2(-242, 160)
+
+[node name="goal10" type="Node2D" parent="RadarGame/Goals" unique_id=658435341]
+position = Vector2(-294, -18)
+
+[node name="goal11" type="Node2D" parent="RadarGame/Goals" unique_id=214321084]
+position = Vector2(-218, -3)
+
+[node name="goal12" type="Node2D" parent="RadarGame/Goals" unique_id=750225057]
+position = Vector2(-157, -142)
+
+[node name="goal13" type="Node2D" parent="RadarGame/Goals" unique_id=1579020815]
+position = Vector2(-95, -84)
+
+[node name="goal14" type="Node2D" parent="RadarGame/Goals" unique_id=1943856183]
+position = Vector2(-69, -238)
 
 [node name="Levels" type="Node2D" parent="RadarGame" unique_id=82889980]
 
 [node name="level0" type="Node2D" parent="RadarGame/Levels" unique_id=555794200]
 
 [node name="A1" parent="RadarGame/Levels/level0" unique_id=998419548 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-280, 77)
+position = Vector2(0, -32)
 goals = [NodePath("../../../Goals/goal1")]
+goal_wait_time = 0.5
+maxSpeed = 10.0
+maxRotationSpeed = 20.0
 
-[node name="B2" parent="RadarGame/Levels/level0" unique_id=249437953 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="Level1" type="Node2D" parent="RadarGame/Levels" unique_id=1649763809]
+visible = false
+
+[node name="B2" parent="RadarGame/Levels/Level1" unique_id=2087076144 instance=ExtResource("5_jmqnr")]
 position = Vector2(257, 121)
-goals = [NodePath("../../../Goals/goal3")]
 
-[node name="C3" parent="RadarGame/Levels/level0" unique_id=868789457 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="C3" parent="RadarGame/Levels/Level1" unique_id=639898758 instance=ExtResource("5_jmqnr")]
 position = Vector2(145, 233)
-goals = [NodePath("../../../Goals/goal4")]
 
-[node name="E5" parent="RadarGame/Levels/level0" unique_id=1171815560 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="E5" parent="RadarGame/Levels/Level1" unique_id=1289826786 instance=ExtResource("5_jmqnr")]
 position = Vector2(-212, 211)
-goals = [NodePath("../../../Goals/goal5")]
 
-[node name="F6" parent="RadarGame/Levels/level0" unique_id=2001997813 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="F6" parent="RadarGame/Levels/Level1" unique_id=791203853 instance=ExtResource("5_jmqnr")]
 position = Vector2(101, -148)
-goals = [NodePath("../../../Goals/goal6")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=911944928]

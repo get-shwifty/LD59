@@ -26,6 +26,10 @@ func pixel_to_cost(pixel: Vector2i) -> float:
 
 func is_obstacle(pixel: Vector2i) -> bool:
 	return costmapManager.costmap[pixel.x][pixel.y] >= 1.0
+	
+func is_position_obstacle(pos: Vector2):
+	var pixel = costmapManager.pos_to_pixel(pos)
+	return is_obstacle(pixel)
 
 func get_ship_cell_radius(ship) -> int:
 	if ship_radius_cache.has(ship):

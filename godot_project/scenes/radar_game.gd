@@ -24,6 +24,19 @@ func get_ships_polar() -> Array:
 			"ship": ship,
 			"angle": offset.angle(),
 			"rotation": ship.facing.angle(),
-			"distance": offset.length()
+			"distance": offset.length(),
+			"color": ship.modulate
 		})
 	return result
+	
+func send_order(ship_id, direction: Vector2):
+	var ships = $RadarGame/Ships.get_children()
+	var ship = null
+	for s in ships:
+		if s.id == ship_id:
+			ship = s
+			break
+	if ship == null:
+		return
+		
+	ship.send_order(direction)

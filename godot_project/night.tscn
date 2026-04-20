@@ -3,13 +3,18 @@
 [ext_resource type="Script" uid="uid://cmipciygdv668" path="res://night.gd" id="1_duiv2"]
 [ext_resource type="PackedScene" uid="uid://c3pek7x4rjfxy" path="res://tools/clock.tscn" id="2_h0nnu"]
 [ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="3_lrvaf"]
+[ext_resource type="PackedScene" uid="uid://bmv85de0lfyt1" path="res://ship_map_visual.tscn" id="3_ymyf8"]
 [ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
+[ext_resource type="Script" uid="uid://bm7y043wewq40" path="res://layers.gd" id="4_vivnb"]
 [ext_resource type="PackedScene" uid="uid://mksyvl660i44" path="res://scenes/Radar.tscn" id="5_mwgpu"]
-[ext_resource type="PackedScene" path="res://scenes/radar_game.tscn" id="6_osdpk"]
+[ext_resource type="Texture2D" uid="uid://ve3xui75m3i4" path="res://david/white-circle.png" id="5_ud8no"]
+[ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
+[ext_resource type="Script" uid="uid://b2vqx8qsbneo4" path="res://island.gd" id="6_t33dh"]
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")
+SHIP_VISUAL = ExtResource("3_ymyf8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=996101138]
 position = Vector2(639, 360)
@@ -23,12 +28,79 @@ repeat_times = 3
 position = Vector2(-44, 361)
 texture = ExtResource("4_lrvaf")
 
+[node name="Ships" type="Node2D" parent="Parallax" unique_id=1177349137]
+
+[node name="islands" type="Node2D" parent="Parallax/Ships" unique_id=974310599]
+script = ExtResource("4_vivnb")
+
+[node name="Island" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=1089598669]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1399, 394)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 50
+
+[node name="Island2" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=1220192498]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1879, 307)
+scale = Vector2(0.92000973, 0.36000854)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 250
+
+[node name="Island3" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=2142090910]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2467, 372)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 200
+
+[node name="Island4" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=264250811]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3148.0002, 377)
+scale = Vector2(1.7265625, 2.8399994)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 0
+
+[node name="Island4" type="Sprite2D" parent="Parallax/Ships/islands/Island4" unique_id=19406053]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(19.113045, 80.98593)
+scale = Vector2(3.2466066, 0.6730705)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+
+[node name="Island5" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=1164032022]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4044.0002, 324)
+scale = Vector2(0.64453125, 0.64453125)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 230
+
+[node name="Island6" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=1910304855]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4417, 306)
+scale = Vector2(-0.419482, -0.419482)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 250
+
+[node name="Island7" type="Sprite2D" parent="Parallax/Ships/islands" unique_id=239411844]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(5054, 309)
+scale = Vector2(-0.419482, -0.75021183)
+texture = ExtResource("5_ud8no")
+script = ExtResource("6_t33dh")
+distance = 130
+
 [node name="radar game" parent="." unique_id=160520249 instance=ExtResource("6_osdpk")]
 visible = false
 top_level = true
 position = Vector2(365, 406)
 
 [node name="UI" type="Parallax2D" parent="." unique_id=1979713735]
+z_index = 200
 scroll_scale = Vector2(0, 0)
 
 [node name="Cabin" type="Sprite2D" parent="UI" unique_id=340391364]
@@ -68,6 +140,13 @@ theme_override_font_sizes/font_size = 40
 text = "=>"
 
 [node name="Radio" parent="UI" unique_id=848813022 instance=ExtResource("7_osdpk")]
+[node name="UPORDER" type="Button" parent="UI" unique_id=1779946342]
+offset_left = 618.0
+offset_top = 60.0
+offset_right = 672.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 40
+text = "^"
 
 [node name="MusicNight" type="AudioStreamPlayer" parent="." unique_id=2106272154]
 autoplay = true
@@ -75,3 +154,4 @@ autoplay = true
 [connection signal="pressed" from="UI/NextDay" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="UI/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="UI/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="UI/UPORDER" to="." method="_on_uporder_pressed"]

@@ -3,9 +3,9 @@ class_name Ship
 
 @export var goals: Array[Node2D]
 @export var goal_wait_time := 4.0
-@export var maxSpeed: float = 40.0
+@export var maxSpeed: float = 20.0
 @export var acceleration: float = 900.0
-@export var arriveDistance: float = 40.0
+@export var arriveDistance: float = 4.0
 @export var waypointAdvance: float = 80.0
 @export var rotationSmooth: float = 8.0
 @export var lookAheadDistance: float = 40.0
@@ -26,12 +26,33 @@ var started := false
 var is_waiting := false
 var is_yielding := false
 
+# Order system
+var order_goal = null
+var has_order := false
+
 func _parent_scale() -> Vector2:
 	if get_parent():
 		return get_parent().global_scale.abs()
 	return Vector2.ONE
 
+func send_order(direction: Vector2):
+	# Cancel any current wait so we respond immediately
+	is_waiting = false
+	is_yielding = false
+	order_goal = global_position + direction * 50
+	has_order = true
+	request_path()
+
+func clear_order():
+	order_goal = null
+	has_order = false
+
+
 func get_goal_position() -> Vector2:
+	if has_order:
+		if order_goal is Node2D:
+			return order_goal.global_position
+		return order_goal
 	if goal is Node2D:
 		return goal.global_position
 	return goal
@@ -41,8 +62,16 @@ func wait_at_goal():
 		return
 	is_waiting = true
 	await get_tree().create_timer(goal_wait_time).timeout
-	update_goal()
 	is_waiting = false
+	if has_order:
+		clear_order()
+		# Immediately request path back to main goal
+		if goal:
+			request_path()
+		else:
+			update_goal()
+	else:
+		update_goal()
 
 func yield_to_ship():
 	if is_yielding:
@@ -69,11 +98,9 @@ func check_incoming_collision() -> bool:
 		var trigger_dist = combined_radius + collisionLookAhead
 		if dist > trigger_dist:
 			continue
-		# Check if other ship is in front of us
 		var dot = facing.dot(to_other.normalized())
 		if dot < 0.3:
 			continue
-		# Check if we are approaching each other
 		var closing = (velocity - other.velocity).dot(to_other.normalized())
 		if closing > 0:
 			return true
@@ -114,29 +141,49 @@ func get_lookahead_target() -> Vector2:
 	return path.back()
 
 func request_path():
-	set_path(Global.pathfinder.compute_path(self, get_goal_position()))
+	if get_goal_position() == null:
+		return
+	if has_order:
+		var intermediate_path = []
+		for i in range(1, 5):
+			var weight = i / 4.0
+			var point = global_position.lerp(order_goal, weight)
+			intermediate_path.append(point)
+		
+		set_path(intermediate_path)
+	else:
+		set_path(Global.pathfinder.compute_path(self, get_goal_position()))
 
 func _ready():
 	desiredDir = Vector2.RIGHT
 	facing = Vector2.RIGHT
 	label.text = self.name
+	$CollisionShape2D.disabled = true
 
 func start():
 	started = true
 	modulate = Color("0093d1")
 	update_goal()
+	$CollisionShape2D.disabled = false
+
+func verify_position():
+	var should_crash = Global.pathfinder.is_position_obstacle(global_position)
+	if should_crash:
+		crash()
 
 func crash():
 	started = false
 	path = []
 	modulate = Color("e30000")
+	print("crash")
 
 func _physics_process(delta):
 	if not started or is_waiting:
 		return
+		
+	verify_position()
 
 	advance_waypoint()
-
 	if path.is_empty():
 		wait_at_goal()
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
@@ -145,8 +192,7 @@ func _physics_process(delta):
 
 	var target := get_lookahead_target()
 	var toTarget := target - global_position
-
-	if toTarget.length() < arriveDistance and pathIndex >= path.size() - 1:
+	if toTarget.length() < arriveDistance:
 		wait_at_goal()
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 		move_and_slide()
@@ -160,7 +206,6 @@ func _physics_process(delta):
 	var target_speed := 0.0 if is_yielding else maxSpeed
 	speed = move_toward(speed, target_speed, acceleration * delta)
 
-	# Only rotate when actually moving
 	if not is_yielding:
 		var targetAngle := toTarget.angle()
 		var currentAngle := facing.angle()

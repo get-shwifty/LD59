@@ -6,7 +6,7 @@ class_name Costmap
 @export var cell_size := 10
 @export var border_cells := 20
 @export var smooth_radius := 5
-@export var smooth_strength := 2
+@export var smooth_strength := 1
 
 var size := Vector2i.ZERO
 var costmap = []

@@ -47,6 +47,7 @@ func update_ships(ships):
 		ship_nodes[id].position = world_offset_to_radar(ship.angle, ship.distance)
 		ship_nodes[id].set_ship_rotation(ship.rotation)
 		ship_nodes[id].set_id(ship.ship.name)
+		ship_nodes[id].set_color(ship.color)
 	for id in ship_nodes.keys():
 		if id not in valid_ids:
 			ship_nodes[id].queue_free()

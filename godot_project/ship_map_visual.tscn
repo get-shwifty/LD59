@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bmv85de0lfyt1"]
+
+[ext_resource type="Texture2D" uid="uid://ve3xui75m3i4" path="res://david/white-circle.png" id="1_hw362"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hw362"]
+font_size = 60
+font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+
+[node name="ShipMapVisual" type="Node2D" unique_id=1736990360]
+
+[node name="WhiteCircle" type="Sprite2D" parent="." unique_id=650950293]
+modulate = Color(0, 0.14509805, 1, 1)
+position = Vector2(-10.899994, -10.900001)
+scale = Vector2(0.48515627, 0.48515627)
+texture = ExtResource("1_hw362")
+
+[node name="Label" type="Label" parent="." unique_id=1017368707]
+visible = false
+offset_left = -61.0
+offset_top = -51.0
+offset_right = 42.0
+offset_bottom = 32.0
+text = "230"
+label_settings = SubResource("LabelSettings_hw362")
