@@ -20,6 +20,10 @@ func _ready() -> void:
 	print($UI/Radar/Cone.rotation_degrees)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("droite") and get_parent().is_night:
+		_on_right_button_pressed()
+	if Input.is_action_just_pressed("gauche") and get_parent().is_night:
+		_on_left_button_pressed()
 	pass
 
 func _on_end_night() -> void:
