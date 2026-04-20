@@ -16,6 +16,11 @@ const INCREMENT_DIVIDOR = 3
 const paralax_width = 5120
 const MAX_DIST = 325.0
 
+const MIN_DIST = 60.0
+
+var ship_y_min: float = 700.0
+var ship_y_max: float = 320.0
+
 ################################## Var
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
@@ -40,7 +45,7 @@ func _process(delta: float) -> void:
 		_on_right_button_pressed()
 	if Input.is_action_just_pressed("gauche") and get_parent().is_night:
 		_on_left_button_pressed()
-	pass
+	
 	var ships = radar_game.get_ships_polar()
 	var screen_center_x = get_viewport().get_visible_rect().size.x / 2.0
 	var ships_container = $Parallax/Ships
@@ -59,14 +64,28 @@ func _process(delta: float) -> void:
 		# Update position, scale, z
 		var visual = ship_visuals[id]
 		var angle_pct = fposmod((ship.angle - PI / 2.0) / (2.0 * PI), 1.0)
-		var t = clamp(ship.distance / MAX_DIST, 0.0, 1.0)
-		var s = lerp(1.0, 0.3, t)
 		visual.position.x = (angle_pct - 0.5) * paralax_width + screen_center_x
-		visual.position.y = lerp(ship_y_min, ship_y_max, t)
+		
+		# --- PERSPECTIVE MATH STARTS HERE ---
+		
+		# 1. Prevent division by zero if ship is exactly at center
+		var safe_dist = max(ship.distance, MIN_DIST) 
+		
+		# 2. Calculate the inverse depth
+		var inv_min = 1.0 / MIN_DIST
+		var inv_max = 1.0 / MAX_DIST
+		var inv_d = 1.0 / safe_dist
+		
+		# 3. Get the perspective ratio (0.0 at MIN_DIST, 1.0 at MAX_DIST)
+		var t_persp = (inv_min - inv_d) / (inv_min - inv_max)
+		t_persp = clamp(t_persp, 0.0, 1.0) 
+		
+		# 4. Apply the perspective ratio to scale and Y position
+		var s = lerp(1.0, 0.3, t_persp)
+		visual.position.y = lerp(ship_y_min, ship_y_max, t_persp)
 		visual.scale = Vector2(s, s)
 		visual.z_index = ships_container.get_node("islands").get_ship_z(ship.distance)
 		visual.get_node('Label').text = str(ship.distance)
-		#print(ship.distance)
 		
 	# Remove visuals for ships no longer present
 	for id in ship_visuals.keys():

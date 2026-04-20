@@ -5,6 +5,7 @@ class_name RadarGame
 
 func _ready():
 	Global.radar_game = self
+	#load_level(0)
 
 func _process(_delta):
 	#queue_redraw()

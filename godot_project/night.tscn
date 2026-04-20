@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="3_lrvaf"]
 [ext_resource type="PackedScene" uid="uid://bmv85de0lfyt1" path="res://ship_map_visual.tscn" id="3_ymyf8"]
 [ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
-[ext_resource type="Script" path="res://layers.gd" id="4_vivnb"]
+[ext_resource type="Script" uid="uid://bm7y043wewq40" path="res://layers.gd" id="4_vivnb"]
 [ext_resource type="PackedScene" uid="uid://mksyvl660i44" path="res://scenes/Radar.tscn" id="5_mwgpu"]
 [ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
 [ext_resource type="Script" uid="uid://b2vqx8qsbneo4" path="res://island.gd" id="6_t33dh"]
@@ -55,7 +55,7 @@ region_enabled = true
 region_rect = Rect2(3149.544, 117.840836, 887.16113, 379.16022)
 
 [node name="Ile3" type="Node2D" parent="Parallax/Ships/islands" unique_id=1448034829]
-position = Vector2(1550, 601)
+position = Vector2(1550, 489)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile3" unique_id=1816700188]
@@ -65,21 +65,21 @@ region_enabled = true
 region_rect = Rect2(4260.2695, 259.38467, 385.28906, 291.75095)
 
 [node name="Ile4" type="Node2D" parent="Parallax/Ships/islands" unique_id=1469529030]
-position = Vector2(1983, 431)
+position = Vector2(1985, 332)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile4" unique_id=110268966]
-position = Vector2(2, -79)
+position = Vector2(-2, -29)
 texture = ExtResource("8_t33dh")
 region_enabled = true
 region_rect = Rect2(4727.366, 194.8425, 391.9707, 202.66669)
 
 [node name="Ile5" type="Node2D" parent="Parallax/Ships/islands" unique_id=883003739]
-position = Vector2(2488, 474)
+position = Vector2(2493, 350)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile5" unique_id=1860801382]
-position = Vector2(-27, -98)
+position = Vector2(-23, -50)
 texture = ExtResource("8_t33dh")
 region_enabled = true
 region_rect = Rect2(5319.5317, 222.475, 331.83887, 287.29672)
@@ -95,27 +95,27 @@ region_enabled = true
 region_rect = Rect2(90.47943, -29.404938, 1728.8269, 771.1572)
 
 [node name="Ile7" type="Node2D" parent="Parallax/Ships/islands" unique_id=1652929476]
-position = Vector2(4019, 462)
+position = Vector2(4042, 336)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile7" unique_id=750518003]
-position = Vector2(2, -51)
+position = Vector2(-1, -26)
 texture = ExtResource("8_t33dh")
 region_enabled = true
 region_rect = Rect2(1840.4409, 229.13008, 255.55225, 220.56581)
 
 [node name="Ile8" type="Node2D" parent="Parallax/Ships/islands" unique_id=463831764]
-position = Vector2(4538, 446)
+position = Vector2(4546, 331)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile8" unique_id=932024466]
-position = Vector2(-2, -38)
+position = Vector2(-8, 0)
 texture = ExtResource("8_t33dh")
 region_enabled = true
 region_rect = Rect2(2229.2256, 225.41669, 227.7893, 182.37354)
 
 [node name="Ile9" type="Node2D" parent="Parallax/Ships/islands" unique_id=377115479]
-position = Vector2(5053, 532)
+position = Vector2(5050, 428)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile9" unique_id=389661650]

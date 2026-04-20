@@ -10,14 +10,14 @@ font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 
 [node name="WhiteCircle" type="Sprite2D" parent="." unique_id=650950293]
 modulate = Color(0, 0.14509805, 1, 1)
-position = Vector2(1.1000022, 1.0999908)
+position = Vector2(-1.9999996, -60.999992)
 scale = Vector2(0.48515627, 0.48515627)
 texture = ExtResource("1_hw362")
 
 [node name="Label" type="Label" parent="." unique_id=1017368707]
-offset_left = -47.899998
-offset_top = -43.90001
-offset_right = 55.100002
-offset_bottom = 39.09999
+offset_left = -50.0
+offset_top = -104.0
+offset_right = 53.0
+offset_bottom = -21.0
 text = "230"
 label_settings = SubResource("LabelSettings_hw362")
