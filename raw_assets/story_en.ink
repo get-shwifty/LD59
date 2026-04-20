@@ -19,12 +19,6 @@ VAR helped_the_AI = false
 // mysterious calls
 // #u : IA but you don't know it yet
 
--> Night_06 ->
-
--> Epilogue ->
-
--> END
-
 -> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
