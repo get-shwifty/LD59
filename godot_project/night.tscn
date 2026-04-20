@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
 [ext_resource type="Script" uid="uid://b2vqx8qsbneo4" path="res://island.gd" id="6_t33dh"]
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
+[ext_resource type="Texture2D" uid="uid://cyhqgnfed18ud" path="res://assets/images/ilesfond_sans_fond.png" id="7_ud8no"]
+[ext_resource type="Texture2D" uid="uid://qaaosn8hlf2u" path="res://assets/images/iles_sand_fond.png" id="8_t33dh"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
 script = ExtResource("1_duiv2")
@@ -93,6 +95,22 @@ scale = Vector2(-0.419482, -0.75021183)
 texture = ExtResource("5_ud8no")
 script = ExtResource("6_t33dh")
 distance = 130
+
+[node name="Ile1" type="Node2D" parent="Parallax/Ships/islands" unique_id=1574468022]
+position = Vector2(640, 306)
+
+[node name="IleFond1" type="Sprite2D" parent="Parallax/Ships/islands/Ile1" unique_id=317685935]
+position = Vector2(2, -136)
+texture = ExtResource("7_ud8no")
+region_enabled = true
+region_rect = Rect2(2714.5076, -22.545258, 2097.0442, 385.95474)
+
+[node name="Ile2" type="Node2D" parent="Parallax/Ships/islands" unique_id=1626286924]
+position = Vector2(639, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile2" unique_id=1746924932]
+texture = ExtResource("8_t33dh")
+region_enabled = true
 
 [node name="radar game" parent="." unique_id=160520249 instance=ExtResource("6_osdpk")]
 visible = false
