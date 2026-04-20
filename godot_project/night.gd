@@ -24,8 +24,6 @@ var ship_y_max: float = 320.0
 ################################## Var
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
-var ship_y_min: float = 700.0
-var ship_y_max: float = 320.0
 
 ################################## Signal
 signal switch_to_day
