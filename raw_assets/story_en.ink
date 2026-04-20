@@ -19,6 +19,12 @@ VAR helped_the_AI = false
 // mysterious calls
 // #u : IA but you don't know it yet
 
+-> Night_06 ->
+
+-> Epilogue ->
+
+-> END
+
 -> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
@@ -577,13 +583,12 @@ VAR helped_the_AI = false
 == Epilogue ==
     *   [Turn on the radio]
 -   
--   (hub)
-    *   [Switch to Radio Rêve Oeil]
-        RRO qui dit que la prochaine temête sera la bonne
-        -> hub
-    *   [Switch to Radio Falaise]
-        RF qui parle du fait que Bernard était soudoyé par Chtooling pour cacher des trucs mystérieux.
-        -> hub
+    { helped_the_AI:
+	    ... Chtooling Corporation on the verge of bankrupcy as key investors in the new data center revoke their engagement.
+    - else:
+	    ... Leon Skum will hold a press conference on its island tonight. Claiming he has something __magical and life changing_ project to show the world.
+    }
+    Weather. With the hurricane behind us and little to no damage to account for it, it is ...
     *   [Turn off radio ]
 -
     *   [Enjoy __la retraite_]
