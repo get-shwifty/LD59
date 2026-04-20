@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var is_night = false
+@onready var boat_choice = false
 
 const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
 const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
@@ -17,7 +18,8 @@ func _ready() -> void:
 	game_dialogue.listener = self
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
-	$Night/Radio.connect("contact_boat", _contact_boat)
+	$Night/UI/Radio.connect("contact_boat", _contact_boat)
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -43,6 +45,8 @@ func execute_tags(tags):
 			end_of_day()
 		if tag == "day_begin":
 			start_of_day()
+		if tag == "boat_choice":
+			boat_choice = true
 
 func _continue_story():
 	while _ink_player.can_continue:
@@ -54,25 +58,25 @@ func _continue_story():
 		print('text')
 		text = text.replace("__","[i]")
 		text = text.replace("_","[/i]")
+		text = text.replace("**","[b]")
+		text = text.replace("*","[/b]")
 		print(text)
 		
 		var type = 1
 		var tags = _ink_player.current_tags
 		dialogue.add_dialogue(text, type, tags)
+		
+		
+		execute_tags(tags)
+		
+		if boat_choice:
+			return
 
 		if _ink_player.has_choices:
 			var choices = _ink_player.current_choices
-			print("is night")
-			print(is_night)
-			if is_night:
-				if choices.has(Global.talking_boat):
-					print("J'AI")
-					#_ink_player.choose_choice_index(1)
-			else:
-				for c in choices:
-					print(c.text + '   ' + str(c.tags))
-				dialogue.add_choices(choices)
-
+			for c in choices:
+				print(c.text + '   ' + str(c.tags))
+			dialogue.add_choices(choices)
 		else:
 			# This code runs when the story reaches it's end.
 			print("The End")
@@ -87,15 +91,20 @@ func play_music(new_stream: AudioStream) -> void:
 	music_player.play()
 
 func end_of_day():
+	# Fin du jour
 	game_dialogue.visible = false
 	is_night = true
 	game_dialogue.clear()
 	$Day.visible = false
 	$Day.next_day()
 	
+	# Début de la nuit
 	$Night.visible = true
-	game_dialogue.visible = true
+	#game_dialogue.visible = true
 	play_music(MUSIC_NIGHT)
+	remove_child($DialogueUi)
+	$Night/UI.add_child(game_dialogue)
+	
 
 func start_of_day():
 	game_dialogue.visible = false
@@ -108,4 +117,6 @@ func start_of_day():
 
 func _contact_boat():
 	# Mettre en pause l'horloge ?
-	game_dialogue.visible = true
+	# game_dialogue.visible = true
+	pass
+	

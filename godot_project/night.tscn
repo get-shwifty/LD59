@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dui1jvwpmq3" path="res://assets/images/cockpit.png" id="3_lrvaf"]
 [ext_resource type="Texture2D" uid="uid://c3r0n51wknvqn" path="res://assets/images/fond_image.png" id="4_lrvaf"]
 [ext_resource type="PackedScene" uid="uid://mksyvl660i44" path="res://scenes/Radar.tscn" id="5_mwgpu"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://ew4oncpyhow1" path="res://scenes/radar_game.tscn" id="6_osdpk"]
+=======
+[ext_resource type="PackedScene" path="res://scenes/radar_game.tscn" id="6_osdpk"]
+>>>>>>> 5592015 (Le dialog suit la caméra lorsque l'on se déplace dans le phare)
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
 
 [node name="Night" type="Node2D" unique_id=722676467]
@@ -67,7 +71,10 @@ offset_bottom = 686.0
 theme_override_font_sizes/font_size = 40
 text = "=>"
 
-[node name="Radio" parent="." unique_id=848813022 instance=ExtResource("7_osdpk")]
+[node name="Radio" parent="UI" unique_id=848813022 instance=ExtResource("7_osdpk")]
+
+[node name="MusicNight" type="AudioStreamPlayer" parent="." unique_id=2106272154]
+autoplay = true
 
 [connection signal="pressed" from="UI/NextDay" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="UI/LeftButton" to="." method="_on_left_button_pressed"]
