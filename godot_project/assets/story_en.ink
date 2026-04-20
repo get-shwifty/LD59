@@ -238,7 +238,7 @@
     *   [Keep listening]
     *   {call_hub > 1} This isn't funny. #c
     *   {call_hub > 1} [Imitate crackling noise]
-        gzzz crch bzz crch  #c #laugh
+        gzzz crch bzz crch  #gzzz #c 
     +   {call_hub > 1} [Hang up.] #raccroche
         #hang_up
         ->->
@@ -314,7 +314,7 @@
 -   -> hub
 
 = call_03_gen
-    This is a general call from La Peyro Lighthouse.
+    This is a general call from La Peyro Lighthouse. #c
     \*\* Laugh and talks in the distance \* #party
     Hailing all ships without active transponder, please respond.
     __Attends c'est pour nous ça non ?_ #party
