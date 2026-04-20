@@ -40,25 +40,20 @@ func _on_timeout() -> void:
 		
 
 func start_timer():
-	print("START")
 	timer.paused = false
 	timer.start()
 	
 func pause_timer():
-	print("PAUSE")
 	timer.paused = true
 	
 func restart_timer():
-	print("RESTART")
 	timer.paused = false
 	
 func stop_timer():
-	print("STOP")
 	timer.paused = false
 	timer.stop()
 
 func reset_timer():
-	print("RESET")
 	timer.paused = false
 	total_minutes = START_NIGHT * 2 * 30
 	total_hours = 0

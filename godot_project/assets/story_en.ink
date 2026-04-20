@@ -43,14 +43,11 @@
 == Ship_Dialog (ship_transponder, ref ship_call_count) ==
     ~ ship_call_count ++
     Hello ship {ship_transponder}, this is the lighthouse of La Peyro, calling for the {ship_call_count} time.
-    +   [N] Head North.
-    +   [S] Head South.
-    +   [E] Head East.
-    +   [W] Head West.
-    +   [NE] Head North East.
-    +   [SE] Head South East.
-    +   [NW] Head North West.
-    +   [SW] Head South West.
+    +   [N] Head North. #N
+    +   [S] Head South. #S
+    +   [E] Head East. #E
+    +   [W] Head West. #W
+    +   [P] Stop ! #P
     +   [Keep on] Please keep on.
 -   Copy that. #ship
     +   [Hang up.]
@@ -243,6 +240,7 @@
     *   {call_hub > 1} [Imitate crackling noise]
         gzzz crch bzz crch
     +   {call_hub > 1} [Hang up.]
+        #hang_up
         ->->
 -   ->call_hub
 
@@ -348,6 +346,7 @@
     \*\* Hanging up noise \* #party
     \*\* Silence on the line \* #party
     * [Hang up]
+    #hang_up
 -
 -> hub
 
@@ -400,6 +399,7 @@
     ... ME ! ...
     \*\*crackling noise\* #u
     +   [Hang up.]
+    #hang_up
 -   ->->
 
 = call_04_Ship
@@ -407,17 +407,18 @@
     * Yes, this is La Peyro lighthouse
 -   We experience a lot of interference in the area.
     We don't trust our radar, could you give us the direction to get out here please ?
-    +   [N] Head North.
-    +   [S] Head South.
-    +   [E] Head East.
-    +   [W] Head West.
-    +   [NE] Head North East.
-    +   [SE] Head South East.
-    +   [NW] Head North West.
-    +   [SW] Head South West.
+    +   [N] Head North. #N
+    +   [S] Head South. #S
+    +   [E] Head East. #E
+    +   [W] Head West. #W
+    +   [NE] Head North East. #NE
+    +   [SE] Head South East. #SE
+    +   [NW] Head North West. #NW
+    +   [SW] Head South West. #SW
 -   Copy that.
     Thank you very much.
     +   [Hang up.]
+    #hang_up
 -   ->->
 
 
@@ -479,6 +480,7 @@
     
     on enleve un jour et elle donne les instructions direct ici ??
     +   [Hang up.]
+    #hang_up
 -   ->->
 
 

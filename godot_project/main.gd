@@ -27,7 +27,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_night:
 		$DialogueUi.size.y = 400
-		print($Night/Camera2D.position)
 		$DialogueUi.position.x = $Night/Camera2D.position.x - 245
 		$DialogueUi.position.y = $Night/Camera2D.position.y - 300
 	else:
@@ -55,6 +54,8 @@ func execute_tags(tags):
 			end_of_day()
 		if tag == "hang_up":
 			hang_up()
+		if tag in ["N","S", "E", "W", "P"]:
+			$Night._on_order_sent(tag)
 
 func _continue_story():
 	while _ink_player.can_continue:
@@ -123,7 +124,6 @@ func start_of_day():
 	
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
-	
 
 func _contact_boat(boat_code):
 	var choices = _ink_player.current_choices
@@ -142,7 +142,6 @@ func _contact_boat(boat_code):
 	
 	game_dialogue.visible = true
 	select_choice(choice_index)
-
 
 func hang_up():
 	dialogue.clear()

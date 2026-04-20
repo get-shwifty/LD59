@@ -15,12 +15,11 @@ const INCREMENT_DIVIDOR = 3
 const paralax_width = 5120
 const MAX_DIST = 325.0
 
-var ship_y_min: float = 700.0
-var ship_y_max: float = 320.0
-
 ################################## Var
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
+var ship_y_min: float = 700.0
+var ship_y_max: float = 320.0
 
 ################################## Signal
 signal switch_to_day
@@ -90,6 +89,10 @@ func _on_right_button_pressed() -> void:
 	$UI/Radar/Cone.rotation_degrees += VISION_ANGLE / INCREMENT_DIVIDOR
 	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
 
+func _on_order_sent(tag: String):
+	print("Réception des ordres")
+	print("Direction %s" % tag)
+	print("Ship %s" % Global.talking_boat)
 
 func _on_uporder_pressed():
 	var id = ship_visuals.keys()[0]
