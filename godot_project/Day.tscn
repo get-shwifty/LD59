@@ -79,5 +79,7 @@ skew = -0.26703537
 [node name="display_people" type="Sprite2D" parent="." unique_id=590607281]
 
 [node name="display_whale" type="Sprite2D" parent="." unique_id=1015101947]
+visible = false
 
 [node name="display_storm" type="Sprite2D" parent="." unique_id=1928007777]
+visible = false
