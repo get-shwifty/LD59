@@ -29,6 +29,7 @@ func _ready() -> void:
 	var vision_pct = 360 / VISION_ANGLE
 	landscape_pct = landscape.texture.get_width() / vision_pct
 	clock.connect("end_night", _on_end_night)
+	load_level(0)
 	
 func load_level(level: int):
 	print("start level ", level)

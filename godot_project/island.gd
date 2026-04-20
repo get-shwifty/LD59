@@ -1,10 +1,14 @@
 extends Node2D
 
-@export var distance: int = 100
+@export var distance: float = 100
+
+var min_y = 306.0
+var max_y = 721.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	distance = max_y - global_position.y
+	print(name, ": ", distance)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
