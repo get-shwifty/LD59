@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var is_night = false
-@onready var boat_choice = false
+@onready var sav_position_dialog_UI = $DialogueUi.position
 
 const MUSIC_DAY = preload("res://assets/music/Ludum59_ThemeJour_V1.ogg")
 const MUSIC_NIGHT = preload("res://assets/music/Ludum59_ThemeNuit_SansBasse.ogg")
@@ -19,10 +19,14 @@ func _ready() -> void:
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 	$Night/UI/Radio.connect("contact_boat", _contact_boat)
+	$Night.connect("switch_to_day",start_of_day)
 	
 
 func _process(delta: float) -> void:
-	pass
+	if is_night:
+		$DialogueUi.position = sav_position_dialog_UI
+	else:
+		$DialogueUi.position = $Night/Camera2D.position
 	
 
 func _story_loaded(successfully: bool):
@@ -43,10 +47,8 @@ func execute_tags(tags):
 			$Day.display_game_title(game_dialogue)
 		if tag == "day_end":
 			end_of_day()
-		if tag == "day_begin":
-			start_of_day()
-		if tag == "boat_choice":
-			boat_choice = true
+		#if tag == "day_begin":
+		#	start_of_day()
 
 func _continue_story():
 	while _ink_player.can_continue:
@@ -66,18 +68,13 @@ func _continue_story():
 		var tags = _ink_player.current_tags
 		dialogue.add_dialogue(text, type, tags)
 		
-		
-		execute_tags(tags)
-		
-		if boat_choice:
-			return
-
 		if _ink_player.has_choices:
 			var choices = _ink_player.current_choices
 			var isNightHub = false;
 			for c in choices:
 				if (c.text in Global.POSSIBLE_BOATS):
 					isNightHub = true;
+					break;
 				print(c.text + '   ' + str(c.tags))
 			if (!isNightHub):
 				dialogue.add_choices(choices)
@@ -105,13 +102,10 @@ func end_of_day():
 	
 	# Début de la nuit
 	$Night.visible = true
-	#game_dialogue.visible = true
 	play_music(MUSIC_NIGHT)
-	remove_child($DialogueUi)
-	$Night/UI.add_child(game_dialogue)
-	
 
 func start_of_day():
+	is_night = false
 	game_dialogue.visible = false
 	game_dialogue.clear()
 	$Night.visible = false

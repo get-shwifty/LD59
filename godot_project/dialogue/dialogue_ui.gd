@@ -10,8 +10,11 @@ var text_buffer = []
 var option_buffer = []
 var is_writing = false
 var tag_buffer = []
+var listener = null
 
 @onready var audio_player: AudioStreamPlayer = $SoundsPlayer
+@onready var DIALOGUE = preload("res://dialogue/dialogueText.tscn")
+@onready var OPTIONS = preload("res://dialogue/dialogueOptionList.tscn")
 
 const TAG_SOUNDS: Dictionary = {
 	"rf": "res://assets/soundEffects/voices/radiofadaises/B_voice",
@@ -34,12 +37,6 @@ func handle_scrollbar_changed():
 		max_scroll_length = scrollbar.max_value 
 		self.scroll_vertical = max_scroll_length
 
-@onready var DIALOGUE = preload("res://dialogue/dialogueText.tscn")
-@onready var OPTIONS = preload("res://dialogue/dialogueOptionList.tscn")
-
-var listener = null
-
-		
 func select_option(option):
 	listener.select_choice(option.index)
 	if option.tags:
@@ -86,9 +83,10 @@ func write_text_from_buffer():
 	tag_buffer = text_req[2]
 	dial.visible = true 
 	
-	$VBoxContainer.add_child(dial)
-	if text.length() == 0:
+	if text.strip_edges(true,true).length() == 0:
 		dial.visible = false
+	
+	$VBoxContainer.add_child(dial)
 	
 	var speaker_name = ""
 	var border_color = Color(0.0, 0.0, 0.0)
@@ -149,6 +147,7 @@ func write_options_from_buffer():
 	options.listener = self
 	$VBoxContainer.add_child(options)
 	option_buffer.clear()
+	
 
 func add_choices(choices):
 	option_buffer = choices

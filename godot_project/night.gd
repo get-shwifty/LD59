@@ -22,6 +22,9 @@ var ship_y_max: float = 310.0
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
 
+################################## Signal
+signal switch_to_day
+
 func _ready() -> void:
 	var vision_pct = 360 / VISION_ANGLE
 	landscape_pct = landscape.texture.get_width() / vision_pct
@@ -70,7 +73,7 @@ func _on_end_night() -> void:
 	next_day_button.visible = true
 
 func _on_next_day_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	switch_to_day.emit()
 
 func _on_left_button_pressed() -> void:
 	camera.position.x -= landscape_pct / INCREMENT_DIVIDOR
