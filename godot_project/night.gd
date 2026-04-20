@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 		visual.scale = Vector2(s, s)
 		visual.z_index = ships_container.get_node("islands").get_ship_z(ship.distance)
 		visual.get_node('Label').text = str(ship.distance)
-		print(ship.distance)
+		#print(ship.distance)
 		
 	# Remove visuals for ships no longer present
 	for id in ship_visuals.keys():

@@ -7,7 +7,7 @@ extends Node2D
 
 ################################## Const
 const START_NIGHT = 21
-const NIGHT_DURATION_HOURS = 5
+const NIGHT_DURATION_HOURS = 2
 const HALF_HOUR_DURATION_SECS = 1
 
 ################################## Var

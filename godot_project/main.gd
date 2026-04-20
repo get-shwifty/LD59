@@ -111,15 +111,20 @@ func end_of_day():
 	
 
 func start_of_day():
+	# On remet la scène Night comme il faut
 	is_night = false
 	game_dialogue.visible = false
-	game_dialogue.clear()
 	$Night.visible = false
 	night_timer.stop_timer()
 	
+	# On prépare la scène day
 	$Day.visible = true
+	for c in _ink_player.current_choices:
+		if c.text == "Finish Night":
+			select_choice(c.index)
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
+	
 
 func _contact_boat(boat_code):
 	var choices = _ink_player.current_choices
