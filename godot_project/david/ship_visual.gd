@@ -10,3 +10,6 @@ func set_id(ship_id: String):
 	
 func set_color(color):
 	$Circle.modulate = color
+	
+func set_show_label(value: bool):
+	$Label.visible = value

@@ -16,6 +16,7 @@ texture = ExtResource("1_crqrh")
 script = ExtResource("2_7muh6")
 
 [node name="Label" type="Label" parent="." unique_id=1817269532]
+visible = false
 offset_left = -114.0
 offset_top = -81.0
 offset_right = 107.0

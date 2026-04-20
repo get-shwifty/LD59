@@ -35,6 +35,19 @@ func _get_world_to_radar_scale() -> float:
 func world_offset_to_radar(angle: float, distance: float) -> Vector2:
 	return Vector2.RIGHT.rotated(angle) * distance * _get_world_to_radar_scale()
 
+func update_labels():
+	$Area2D2.visible = false
+	for ship in ship_nodes.values():
+		ship.set_show_label(true)
+	
+	await get_tree().create_timer(10).timeout
+	
+	for ship in ship_nodes.values():
+		ship.set_show_label(false)
+	
+		$Area2D2.visible = true
+	
+
 func update_ships(ships):
 	var valid_ids = []
 	for ship in ships:
@@ -71,3 +84,9 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				big = true
 				scale = bigScale
 				position = bigPosition
+
+
+func _on_area_2d_2_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			update_labels()
