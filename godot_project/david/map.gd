@@ -9,6 +9,8 @@ func load_level(level: int):
 		child.free()
 	var id = 0
 	var ships = LEVELS.get_child(level)
+	if not ships:
+		return
 	for ship in ships.get_children():
 		ship.reparent(SHIPS)
 		ship.id = id
@@ -16,4 +18,5 @@ func load_level(level: int):
 		id+=1
 		
 func _ready():
-	load_level(0)
+	pass
+	#load_level(0)

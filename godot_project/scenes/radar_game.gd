@@ -10,6 +10,9 @@ func _process(_delta):
 	#queue_redraw()
 	pass
 
+func load_level(level: int):
+	$RadarGame.load_level(level)
+
 func _draw():
 	var center = Vector2.ZERO
 	var radius = 10.0

@@ -10,7 +10,7 @@ font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 
 [node name="WhiteCircle" type="Sprite2D" parent="." unique_id=650950293]
 modulate = Color(0, 0.14509805, 1, 1)
-position = Vector2(-10.899994, -10.900001)
+position = Vector2(0, -62.999992)
 scale = Vector2(0.48515627, 0.48515627)
 texture = ExtResource("1_hw362")
 

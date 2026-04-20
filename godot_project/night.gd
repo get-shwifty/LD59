@@ -16,7 +16,7 @@ const paralax_width = 5120
 const MAX_DIST = 325.0
 
 var ship_y_min: float = 700.0
-var ship_y_max: float = 310.0
+var ship_y_max: float = 320.0
 
 ################################## Var
 var landscape_pct = 0.0
@@ -29,6 +29,10 @@ func _ready() -> void:
 	var vision_pct = 360 / VISION_ANGLE
 	landscape_pct = landscape.texture.get_width() / vision_pct
 	clock.connect("end_night", _on_end_night)
+	
+func load_level(level: int):
+	print("start level ", level)
+	$"radar game".load_level(level)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("droite") and get_parent().is_night:
@@ -55,7 +59,7 @@ func _process(delta: float) -> void:
 		var visual = ship_visuals[id]
 		var angle_pct = fposmod((ship.angle - PI / 2.0) / (2.0 * PI), 1.0)
 		var t = clamp(ship.distance / MAX_DIST, 0.0, 1.0)
-		var s = lerp(1.0, 0.25, t)
+		var s = lerp(1.0, 0.3, t)
 		visual.position.x = (angle_pct - 0.5) * paralax_width + screen_center_x
 		visual.position.y = lerp(ship_y_min, ship_y_max, t)
 		visual.scale = Vector2(s, s)
