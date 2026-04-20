@@ -11,17 +11,19 @@
 // #b Bernard : Le phare Andol
 // Nous Charles : Le phare de La Peyro
 
+// boats
+// #party : party boat
+
 // mysterious calls
 // #u : IA but you don't know it yet
+//-> Day_01 ->
+//-> Title_Sequence ->
+//-> Night_01 ->
 
--> Day_01 ->
--> Title_Sequence ->
--> Night_01 ->
+//-> Day_02 ->
+//-> Night_02 ->
 
--> Day_02 ->
--> Night_02 ->
-
--> Day_03 ->
+//-> Day_03 ->
 -> Night_03 ->
 
 -> Day_04 ->
@@ -275,7 +277,7 @@
         -> transponder
     *   (prevent) How can we prevent that ?
         File a report apparently. #a
-        First, try to reach them on the general bay channel. Then, yes, we'll file a report. If needed. #b
+        First, try to reach them on the general bay channel. Then, yes, we'll file a report. If needed. #b 
         -> transponder
     *   {prevent || seen} How can I join the general bay channel ?
         Input transpoder code AAOO from your cabin. Every boat in the area will receive your ... #b
@@ -294,6 +296,7 @@
             __Comment ça_ you have no idea ? #a
         --  Let's not get ahead of ourselves. It's probably an honest mistake. #b 
             -> transponder
+    * ->
 -   I sure hope they wont call us out if one of those __inconscients_ causes an accident. #a
     No need to worry too much. Keep focused on the job. #a 
     And if you see one of those phantom ship, contact them on AA00.
@@ -305,29 +308,57 @@
 -   (hub)
     +   [BE12] -> Ship_Dialog("BE12", BE12) ->
     *   [AA00] -> call_03_gen ->
-    *   [23h] -> call_03_alain -> 
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
 = call_03_gen
-Discussion avec une bande de fêtards qui veulent aller sur une île pour teufer.
-On leur dire, allumez le transpondeur.
-Ils repondent okay boomer tu vas faire quoi ??
--> hub
-
-= call_03_alain
-Ptet Alain appelle dans la nuit parce qu'il en a plein le *** de son taff, de Bernard et de Jean de Chtooling.
-Il se confie un peu à nous et trouve que Bernard est bizarre ses derniers temps.
+    This is a general call from La Peyro Lighthouse.
+    \*\* Laugh and talks in the distance \* #party
+    Hailing all ships without active transponder, please respond.
+    __Attends c'est pour nous ça non ?_ #party
+-   (hello) __Hell{|oo|oooooo}euh ?_ #party
+    *   Hello. 
+    -> hello
+    *   Please turn on your transponder. 
+    -> hello
+    * ->
+-   __Ar you spanisheuh ? #party
+    *   No I'm not.
+    *   Yes I am.
+    *   Are \*\*you\* spanish ?
+-   __Merde, c'est quoi la suite déjà ?_ #party
+    __Goud goud, I love poudding !_ #party
+    *   You're in violation of the bay code.
+    *   Are you drunk sailing !?
+    *   Are you the owners of this ship ?
+    *   Shouldn't you guys be at home ?
+-   __Je comprends rien à ce qu'il dit gros ! _#party
+    \*\* Laughs \* #party
+    __Whey you spik anglish my doude ?_ #party
+    __We in Roquebrise, we spik french_ #party
+    *   Please use english for all radio communications.
+    *   __We in Roquebrise, we turn on transpondeur_
+    *   __Allumez moi ce putain de transpondeur et arrêter de jouer aux cons !_
+-   __Okay boomer !_
+    __Tu vas faire quoi ??!_
+    \*\* Hanging up noise \* #party
+    \*\* Silence on the line \* #party
+    * [Hang up]
+-
 -> hub
 
 
 
 == Day_04 ==
     *   [Turn on the radio]
--   radio falaise qui parle d'ado disparus en mer la nuit dernière
+-   ... reported a group of missing teenagers. They supposedly took their parents boat to party in the bay. The search will continue. #rbr 
+    Leaked documents reveal Chtooling Corporation is building a secret facility on a bay island. #rbr
+    Weather. Today ... #rbr
 -   (hub)
-    *   [Switch to Radio Rêve Oeil]
-        RRO qui recoit les parents des ados disparus et qui dit que c'est à cause du weaving c'est sur ! Ils les avaients prévenus pourtant.
+    *   [Switch to Radio Falaise]
+        ... they bought the island, they should be allowed to do whatever they want on it. #rb
+        But there is serious concern about the impact on the ecosystem. #rb
+        Look, I'm sure Chtooling Corporation will be mindful of ...
         -> hub
     *   [Switch to the Lighthouse channel] -> light_buddies_04
     *   {light_buddies_04} [Turn off radio ] #day_end
@@ -335,12 +366,14 @@ Il se confie un peu à nous et trouve que Bernard est bizarre ses derniers temps
 ->->
 
 = light_buddies_04
-    ca discute un peu des gamins disparus. Est ce que c'était eux avec le transpondeur masqué ? Ptet mais il y avait deux bateaux sans transpondeur non ? Et que celui des ados qui a répondu.
-    Bon okay très bien tout ça mais c'est pas notre taff, on va faire un rapport et basta.
-    Aujourd'hui faut se concentrer sur le yacht de Leon Skum qui a une requete spéciale.
-    Faut pas que qui que ce soit s'approche trop près. Devier les autres bateaux si besoin.
-    Okay chelou c'est pas le protocole.
-    Surement un passe droit parce qu'il met plein de thunes dans Roquebrise. Rumeur sur l'achat du Cap Ybara ?
+    ... but this has nothing to do with protocol. #a
+    We're talking about Leon Skum personnal Yacht. I think we can bend protocol a little. #b
+    Being the CEO of Chtooling fucking Corporation ... #a
+    *   ... should not be enough to break protocol.
+        Thank you ! #a
+    *   ... is a reason enough to break protocol.
+        Thank you ! #b
+-   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is BE93.
 -   
     -> hub
 
@@ -479,6 +512,4 @@ Il se confie un peu à nous et trouve que Bernard est bizarre ses derniers temps
     *   [Enjoy __la retraite_]
 -   Thank you for playing.
 ->->
-
-
 
