@@ -88,7 +88,7 @@ func play_music(new_stream: AudioStream) -> void:
 
 func end_of_day():
 	game_dialogue.visible = false
-	is_night = true
+	#is_night = true
 	game_dialogue.clear()
 	$Day.visible = false
 	$Day.next_day()
