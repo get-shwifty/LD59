@@ -493,7 +493,7 @@ VAR helped_the_AI = false
 ->->
 
 = light_buddies_06
-    ... those stranded whales, __sacré bordel_. #a
+    ... those stranded whales, __sacré bordel_ everything is getting crazier those days. #a
     we've seen worse. #b
     *   Hopefully they get sent back to the sea.
     *   What an awful omen.
