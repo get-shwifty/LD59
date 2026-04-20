@@ -49,4 +49,11 @@ func _on_radio_button_calling_pressed() -> void:
 	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 	call_from_ship.emit(actual_call_event)
 	
-	
+
+func _on_tooltip_enter(node: NodePath) -> void:
+	var child = get_node(str(node) + "/Tooltip")
+	child.visible = true
+
+func _on_tooltip_exit(node: NodePath) -> void:
+	var child = get_node(str(node) + "/Tooltip")
+	child.visible = false
