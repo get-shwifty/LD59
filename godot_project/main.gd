@@ -126,7 +126,7 @@ func end_of_day():
 	print("current day: ", Global.day_number)
 	$Night.load_level(actual_level)
 	actual_level +=1
-	
+
 
 func start_of_day():
 	# On remet la scène Night comme il faut
@@ -189,6 +189,7 @@ func call_from_ship(event: String):
 	$Night.pause_game()
 	
 func retry():
+	is_night = true
 	_ink_player.set_state(saved_state)
 	$Night.reset_cone_rotation_degrees()
 	$Night.visible = true
@@ -198,8 +199,7 @@ func retry():
 	print("current day: ", Global.day_number)
 	$Night.load_level(actual_level-1)
 	_ink_player.continue_story()
-	
-	
+		
 
 
 func _on_night_failed():

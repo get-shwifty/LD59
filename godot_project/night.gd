@@ -206,6 +206,7 @@ func _on_uporder_pressed():
 	$"radar game".send_order(id, Vector2.UP)
 
 func reset_cone_rotation_degrees():
+	camera.position = Vector2(639.0, 360)
 	$UI/Radar/Cone.rotation_degrees = sav_rotation_degrees
 	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
 
