@@ -142,16 +142,11 @@ func write_text_from_buffer():
 	#var background_color = Color(0.106, 0.322, 0.451, 0.588)
 	var align_right = false
 	var avatar: Texture
-	
-	# Si pas de tag, c'est nous qui parlons
-	#if dial.tags.is_empty():
-		#background_color = Color(0.036, 0.376, 0.871, 0.588)
-		#border_color = Color(0.0, 0.216, 0.658)
-		#content_left_margin = 160
-		#dial.change_dialog_look(border_color, background_color, content_left_margin)
+	var voice = ""
 	
 	for tag in dial.tags:
 		align_right = false
+
 		if tag == "rbr":
 			speaker_name = "Roquebrise Radio"
 			color = Color(0.219, 0.653, 0.438)
@@ -200,28 +195,36 @@ func write_text_from_buffer():
 			color = Color(0.814, 0.655, 0.814)
 			#background_color = Color(0.814, 0.655, 0.814, 0.471)
 			#border_color = Color(0.73, 0.62, 0.687, 1.0)
+		elif tag == "ship":
+			speaker_name = ""
+			color = Color(0.0, 0.0, 0.0)
+			#background_color = Color(0.814, 0.655, 0.814, 0.471)
+			#border_color = Color(0.73, 0.62, 0.687, 1.0)
 
 		if TAG_VOICE.has(tag):
-			var longueur = text.length()
-			var suffixe: String
-			if longueur < 40:
-				suffixe = "_trescourt.mp3"
-			elif longueur < 80:
-				suffixe = "_court.mp3"
-			elif longueur < 120:
-				suffixe = "_moyen.mp3"
-			else:
-				suffixe = "_long.mp3"
-			var path = TAG_VOICE[tag] + suffixe
-			audio_player.stream = load(path)
-			if SOUND_VOLUMES.has(TAG_VOICE[tag]):
-				audio_player.volume_db = SOUND_VOLUMES[TAG_VOICE[tag]]
-			else:
-				audio_player.volume_db = 0.0
-			audio_player.play()
+			voice = TAG_VOICE.get(tag)
 	
-		dial.set_speaker_name("[b][i]" + speaker_name + "[/i][/b]")
-		dial.change_dialog_look(color, align_right, avatar)
+	if voice:
+		var longueur = text.length()
+		var suffixe: String
+		if longueur < 40:
+			suffixe = "_trescourt.mp3"
+		elif longueur < 80:
+			suffixe = "_court.mp3"
+		elif longueur < 120:
+			suffixe = "_moyen.mp3"
+		else:
+			suffixe = "_long.mp3"
+		var path = voice + suffixe
+		audio_player.stream = load(path)
+		if SOUND_VOLUMES.has(voice):
+			audio_player.volume_db = SOUND_VOLUMES[voice]
+		else:
+			audio_player.volume_db = 0.0
+		audio_player.play()
+	
+	dial.set_speaker_name(speaker_name)
+	dial.change_dialog_look(color, align_right, avatar)
 
 	for tagsound in dial.tags:
 		if TAG_SOUND.has(tagsound):

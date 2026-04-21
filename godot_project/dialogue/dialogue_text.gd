@@ -32,7 +32,6 @@ func write_to_ui():
 func _ready():
 	text_buffer = text
 	write_to_ui()
-	name_container.hide()
 
 func write_to_text():
 	var to_write_n = min(speed, text_buffer.length())
@@ -65,9 +64,12 @@ func _on_timer_timeout():
 		listener.notify_write_end()
 		timer_node.stop()
 
-func set_speaker_name(name: String):
-	name_label_node.text = name
-	name_container.show()
+func set_speaker_name(speaker_name: String):
+	if speaker_name:
+		name_label_node.text = "[b][i]" + speaker_name + "[/i][/b]"
+		name_container.show()
+	else:
+		name_container.hide()
 	
 
 func change_dialog_look(color: Color, align_right: bool, avatar: Texture):
