@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://01norawswf6k" path="res://tools/clock.gd" id="1_sdd0f"]
 
-[node name="Clock" type="Node2D" unique_id=2042308701]
+[node name="Clock" type="Node2D" unique_id=1003083339]
 position = Vector2(1195, 2)
 script = ExtResource("1_sdd0f")
 

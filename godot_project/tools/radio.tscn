@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://v1iw8kmc0bg6" path="res://tools/radio.gd" id="1_polgl"]
 [ext_resource type="Texture2D" uid="uid://c8hdtdkf4jicq" path="res://assets/images/radio.png" id="2_8q18p"]
 [ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="3_polgl"]
-[ext_resource type="Texture2D" uid="uid://betuoa80b4plt" path="res://assets/images/radio_button_off.png" id="4_goecq"]
 [ext_resource type="AudioStream" uid="uid://c5f1420sml31q" path="res://assets/soundEffects/click.wav" id="4_wl0ky"]
 [ext_resource type="AudioStream" uid="uid://c8lfpkx6j7egk" path="res://assets/soundEffects/Sonnerie-Prop1.mp3" id="5_goecq"]
+[ext_resource type="FontFile" uid="uid://bt5e131kpqp37" path="res://assets/RADIOLANDSLIM.ttf" id="5_ie1xv"]
+[ext_resource type="Texture2D" uid="uid://da2c4m662mdex" path="res://assets/images/radar_button_off.png" id="6_jqlh4"]
 [ext_resource type="AudioStream" uid="uid://dw2q2huwhmj8w" path="res://assets/soundEffects/decroche.mp3" id="6_oijbw"]
 [ext_resource type="AudioStream" uid="uid://bmd4e3us7hfcn" path="res://assets/soundEffects/SoundComBoat.mp3" id="6_ugl3s"]
 
@@ -16,14 +17,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RadioButtonCalling:self_modulate")
+tracks/0/path = NodePath("RadioButtonCalling:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.0333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.015686275, 1, 0.011764706, 1), Color(0.015686275, 1, 0.011764706, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_goecq"]
@@ -31,14 +32,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RadioButtonCalling:self_modulate")
+tracks/0/path = NodePath("RadioButtonCalling:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0.015686275, 1, 0.011764706, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oijbw"]
@@ -161,57 +162,61 @@ volume_db = -6.0
 pitch_scale = 1.1
 
 [node name="Label1" type="Label" parent="." unique_id=1851371511]
-offset_left = 283.0
-offset_top = 527.0
-offset_right = 323.0
-offset_bottom = 596.0
+offset_left = 282.0
+offset_top = 544.0
+offset_right = 322.0
+offset_bottom = 613.0
+theme_override_fonts/font = ExtResource("5_ie1xv")
 theme_override_font_sizes/font_size = 50
 text = "A"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=505936806]
-offset_left = 341.0
-offset_top = 526.0
-offset_right = 381.0
-offset_bottom = 595.0
+offset_left = 340.0
+offset_top = 543.0
+offset_right = 380.0
+offset_bottom = 612.0
+theme_override_fonts/font = ExtResource("5_ie1xv")
 theme_override_font_sizes/font_size = 50
 text = "B"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="." unique_id=1506048222]
-offset_left = 402.0
-offset_top = 524.0
-offset_right = 442.0
-offset_bottom = 593.0
+offset_left = 397.0
+offset_top = 542.0
+offset_right = 437.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("5_ie1xv")
 theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="." unique_id=649816519]
-offset_left = 459.0
-offset_top = 525.0
-offset_right = 499.0
-offset_bottom = 594.0
+offset_left = 458.0
+offset_top = 542.0
+offset_right = 498.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("5_ie1xv")
 theme_override_font_sizes/font_size = 50
 text = "2"
 horizontal_alignment = 1
 
 [node name="CallButton" type="TextureButton" parent="." unique_id=1097868155]
-offset_left = 545.0
-offset_top = 565.0
+offset_left = 538.0
+offset_top = 557.0
 offset_right = 585.0
-offset_bottom = 605.0
+offset_bottom = 599.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_goecq")
+texture_normal = ExtResource("6_jqlh4")
 
 [node name="RadioButtonCalling" type="TextureButton" parent="." unique_id=288670630]
-self_modulate = Color(0, 0, 0, 1)
+modulate = Color(0.015686275, 1, 0.011764706, 1)
 offset_left = 267.0
-offset_top = 449.0
-offset_right = 302.0
-offset_bottom = 485.0
+offset_top = 441.0
+offset_right = 314.0
+offset_bottom = 483.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_goecq")
+texture_normal = ExtResource("6_jqlh4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1298804061]
 libraries/ = SubResource("AnimationLibrary_oijbw")

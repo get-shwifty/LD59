@@ -121,6 +121,7 @@ func start_of_day():
 	game_dialogue.visible = false
 	$Night.visible = false
 	night_timer.stop_timer()
+	night_timer.reset_timer()
 	$Night/Camera2D.position = sav_position_camera
 	Global.talking_boat = ""
 	Global.event_to_call = ""

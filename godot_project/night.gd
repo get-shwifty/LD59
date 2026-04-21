@@ -129,6 +129,10 @@ func _process(delta: float) -> void:
 	var call_event = Global.event_to_call
 	var event_hour = 0
 	if call_event.length() > 0:
+		print("clock.total_hours")
+		print(clock.total_hours)
+		print("event_hour")
+		print(event_hour)
 		event_hour = int(call_event.lstrip("h"))
 		if clock.total_hours >= event_hour and (!clock.timer.is_paused()) :
 			Global.event_to_call = ""

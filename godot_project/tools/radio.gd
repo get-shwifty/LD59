@@ -27,7 +27,7 @@ signal contact_boat
 signal call_from_ship
 
 func _ready():
-	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
+	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
 	for i in range(4):
 		indexes[i+1] = 0
 
@@ -68,7 +68,7 @@ func _on_radio_button_calling_pressed() -> void:
 	$AnimationPlayer.stop()
 	$Call.stop()
 	$ClickToAnswer.play()
-	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
+	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
 	call_from_ship.emit(actual_call_event)
 	
 
