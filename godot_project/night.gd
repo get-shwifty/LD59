@@ -25,16 +25,6 @@ var ship_y_max: float = 320.0
 var landscape_pct = 0.0
 var ship_visuals = {}  # ship.id -> Node2D
 
-# TODO: Change the texture when we have them
-var texture_north = preload("res://assets/images/jean.png")
-var texture_north_west = preload("res://assets/images/jean.png")
-var texture_west = preload("res://assets/images/bernard.png")
-var texture_south_west = preload("res://assets/images/jean.png")
-var texture_south = preload("res://assets/images/alain.png")
-var texture_south_east = preload("res://assets/images/jean.png")
-var texture_east = preload("res://assets/images/bernard.png")
-var texture_north_east = preload("res://assets/images/bernard.png")
-
 ################################## Signal
 signal switch_to_day
 
@@ -51,25 +41,30 @@ func load_level(level: int):
 func get_sprite_frame(rotation: float) -> int:
 	var rotation_deg = rad_to_deg(rotation)
 	var EAST = 0
-	var WEST = 3
-	var NORTH = 2
 	var SOUTH = 1
+	var NORTH = 2
+	var WEST = 3
+	# var SOUTH_EAST = 4
+	# var SOUTH_WEST = 5
+	# var NORTH_WEST = 6
+	# var NORTH_EAST = 7
+
 	if rotation_deg > 157.5 or rotation_deg <= -157.5:
 		return WEST
 	elif rotation_deg > 112.5:
-		return NORTH
+		return WEST
 	elif rotation_deg > 67.5:
-		return NORTH
+		return WEST
 	elif rotation_deg > 22.5:
 		return NORTH
 	elif rotation_deg > -22.5:
 		return EAST
 	elif rotation_deg > -67.5:
-		return SOUTH
+		return EAST
 	elif rotation_deg > -112.5:
 		return SOUTH
 	else:
-		return SOUTH
+		return WEST
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("droite") and get_parent().is_night:
