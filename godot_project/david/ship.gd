@@ -105,10 +105,13 @@ func wait_at_goal():
 	if is_waiting:
 		return
 	is_waiting = true
-	if not await wait_time(goal_wait_time):
-		return
+	await wait_time(goal_wait_time)
 	is_waiting = false
-	reset_goal()
+	
+	if has_order:
+		reset_goal()
+	else:
+		update_goal()
 
 func yield_to_ship():
 	if is_yielding:
