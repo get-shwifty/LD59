@@ -186,7 +186,7 @@ VAR helped_the_AI = false
     Jean is not here to teach you your job. #b
     He's only here to make a report on possible process efficiency improvement. #b
 -   (consulting)
-    *   Is he the guy from Chtooling Consulting ? #c
+    *   Is he the guy from Chtooling Corporation ? #c
         He wasn't event born when I started this job ! #a
         He's a fine young consultant, sent by Leon Skum himself and promised to a great carreer. It can't hurt to befriend him a little. #b 
         -> consulting
@@ -196,8 +196,8 @@ VAR helped_the_AI = false
     *   I'm sure possible process efficiency improvements can be a good thing. #c
         Yeah, sure.  Easy for you to say. #a
     *   Fuck Chtooling ! #c
-        Fuck Chtooling ! Fuck Consulting ! #a
-        **  Fuck Consulting ! #c
+        Fuck Chtooling ! Fuck Corporation ! #a
+        **  Fuck Corporation ! #c
             Fuck them ! #b
         **  [Say nothing]
         --  __Bon bon, ca va les gars on a compris_ #b
