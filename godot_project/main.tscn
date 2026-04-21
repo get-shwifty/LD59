@@ -17,7 +17,6 @@ script = ExtResource("1_0xm2m")
 visible = false
 
 [node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("3_lquwl")]
-visible = false
 z_index = 100
 offset_left = 713.0
 offset_top = 385.0
@@ -35,10 +34,3 @@ bus = &"Radio"
 [node name="SoundRadio" type="AudioStreamPlayer" parent="." unique_id=1111930409]
 stream = ExtResource("7_272bh")
 pitch_scale = 0.91
-
-[node name="Timer" type="Timer" parent="." unique_id=576181587]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
