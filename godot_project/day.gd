@@ -3,7 +3,8 @@ extends Node2D
 
 
 func _process(delta: float) -> void:
-	$DayNumber.text = "Day %0*d" % [2, Global.day_number]
+	pass
+	#$DayNumber.text = "Day %0*d" % [2, Global.day_number]
 
 func display_game_title(game_dialogue):
 	game_dialogue.visible = false
