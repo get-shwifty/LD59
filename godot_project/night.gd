@@ -10,7 +10,8 @@ signal failed()
 @onready var camera = $Camera2D
 @onready var landscape = $Parallax/Landscape
 @onready var radar_game = $"radar game"
-@onready var sav_rotation_degrees = $UI/Radar/Cone.rotation_degrees 
+@onready var sav_rotation_degrees = $UI/Radar/Cone.rotation_degrees
+@onready var radio: Node2D = $UI/Radio
 
 ################################## Const
 const VISION_ANGLE = 90
@@ -26,7 +27,7 @@ var current_level = 0
 
 ################################## Var
 var landscape_pct = 0.0
-var ship_visuals = {}  # ship.id -> Node2D
+var ship_visuals = {} # ship.id -> Node2D
 
 ################################## Signal
 signal switch_to_day
@@ -114,7 +115,7 @@ func _process(delta: float) -> void:
 		# --- PERSPECTIVE MATH STARTS HERE ---
 		
 		# 1. Prevent division by zero if ship is exactly at center
-		var safe_dist = max(ship.distance, MIN_DIST) 
+		var safe_dist = max(ship.distance, MIN_DIST)
 		
 		# 2. Calculate the inverse depth
 		var inv_min = 1.0 / MIN_DIST
@@ -123,7 +124,7 @@ func _process(delta: float) -> void:
 		
 		# 3. Get the perspective ratio (0.0 at MIN_DIST, 1.0 at MAX_DIST)
 		var t_persp = (inv_min - inv_d) / (inv_min - inv_max)
-		t_persp = clamp(t_persp, 0.0, 1.0) 
+		t_persp = clamp(t_persp, 0.0, 1.0)
 		
 		# 4. Apply the perspective ratio to scale and Y position
 		var s = lerp(1.0, 0.3, t_persp)
@@ -146,13 +147,9 @@ func _process(delta: float) -> void:
 	var event_hour = 0
 	if call_event.length() > 0:
 		event_hour = int(call_event.lstrip("h"))
-		print("event hour")
-		print(event_hour)
-		print("clock.total_hours")
-		print(clock.total_hours)
-		if clock.total_hours >= event_hour and (!clock.timer.is_paused()) :
+		if clock.total_hours >= event_hour and (!clock.timer.is_paused()):
 			Global.event_to_call = ""
-			$UI/Radio.light_button_call(call_event)
+			radio.light_button_call(call_event)
 	
 			
 	if check_success():
@@ -162,10 +159,12 @@ func _process(delta: float) -> void:
 
 
 func check_success():
+	if radio.on_call or radio.actual_call_event.length():
+		return false
 	var ships = radar_game.get_ships_polar()
-	for ship in ships:
-		if ship.ship.success and ship.ship.should_not_cross_boats:
-			return true
+	#for ship in ships:
+		#if ship.ship.success and ship.ship.should_not_cross_boats:
+			#return true
 	for ship in ships:
 		if ship.ship.success == false:
 			return false
