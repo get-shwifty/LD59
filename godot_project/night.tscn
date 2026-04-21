@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://db3k2jjescd58" path="res://tools/radio.tscn" id="7_osdpk"]
 [ext_resource type="Texture2D" uid="uid://cyhqgnfed18ud" path="res://assets/images/ilesfond_sans_fond.png" id="7_ud8no"]
 [ext_resource type="Texture2D" uid="uid://qaaosn8hlf2u" path="res://assets/images/iles_sand_fond.png" id="8_t33dh"]
-[ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="12_vfwos"]
+[ext_resource type="Texture2D" uid="uid://bnh0fvo5jwgxq" path="res://assets/images/fleche_cabine.png" id="12_k11o4"]
 [ext_resource type="Script" uid="uid://ups60ntxr1t3" path="res://night_button.gd" id="13_ryn8s"]
 [ext_resource type="Texture2D" uid="uid://b73veu7n5c4hc" path="res://assets/images/slow.png" id="15_k11o4"]
 [ext_resource type="Texture2D" uid="uid://6nuxjde0r6c7" path="res://assets/images/fast.png" id="16_54l60"]
@@ -159,23 +159,23 @@ theme_override_font_sizes/font_size = 28
 text = "Go to next day"
 
 [node name="LeftButton" type="TextureButton" parent="UI" unique_id=2118802894]
-offset_left = 50.0
-offset_top = 115.0
-offset_right = 89.0
-offset_bottom = 132.906
-rotation = 1.5707964
-scale = Vector2(2, 2)
-texture_normal = ExtResource("12_vfwos")
+offset_left = 61.81203
+offset_top = 301.01077
+offset_right = 181.81203
+offset_bottom = 501.01077
+scale = Vector2(-0.4, 0.4)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_k11o4")
 script = ExtResource("13_ryn8s")
 
 [node name="RightButton" type="TextureButton" parent="UI" unique_id=2023389058]
-offset_left = 1229.0
-offset_top = 181.0
-offset_right = 1268.5054
-offset_bottom = 198.9057
-rotation = -1.5707964
-scale = Vector2(2, 2)
-texture_normal = ExtResource("12_vfwos")
+offset_left = 1222.0
+offset_top = 308.00003
+offset_right = 1342.0
+offset_bottom = 508.00003
+scale = Vector2(0.40000486, 0.40000486)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_k11o4")
 script = ExtResource("13_ryn8s")
 
 [node name="Radio" parent="UI" unique_id=848813022 instance=ExtResource("7_osdpk")]
@@ -189,11 +189,13 @@ theme_override_font_sizes/font_size = 28
 text = "RETRY"
 
 [node name="Accelerate" type="TextureButton" parent="UI" unique_id=1412297033]
-offset_left = 1122.0
-offset_top = 603.0
-offset_right = 1240.0
-offset_bottom = 721.0
+offset_left = 1138.0
+offset_top = 610.0
+offset_right = 1256.0
+offset_bottom = 728.0
+scale = Vector2(0.71999514, 0.71999514)
 tooltip_text = "Faster !"
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("15_k11o4")
 texture_pressed = ExtResource("16_54l60")
 ignore_texture_size = true
