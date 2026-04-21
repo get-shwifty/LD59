@@ -158,13 +158,13 @@ func write_text_from_buffer():
 		elif tag == "rf":
 			speaker_name = "Radio Falaise"
 			color = Color(0.273, 0.401, 0.409)
-			avatar = preload("res://assets/images/radio_portrait.png")
+			avatar = preload("res://assets/images/radio_portrait_rf.png")
 			#background_color = Color(0.273, 0.401, 0.409, 0.588)
 			#border_color = Color(0.391, 0.426, 0.483)
 		elif tag == "rro":
 			speaker_name = "Radio Rêve Oeil"
 			color = Color(0.377, 0.19, 0.611)
-			avatar = preload("res://assets/images/radio_portrait.png")
+			avatar = preload("res://assets/images/radio_portrait_rro.png")
 			#background_color = Color(0.377, 0.19, 0.611, 0.588)
 			#border_color = Color(0.699, 0.0, 0.666)
 		elif tag == "a":
