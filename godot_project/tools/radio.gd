@@ -21,6 +21,7 @@ extends Node2D
 ################################## Var
 var indexes = {}
 var actual_call_event = ""
+var on_call = false
 
 ################################## Signal
 signal contact_boat
@@ -29,13 +30,13 @@ signal call_from_ship
 func _ready():
 	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 	for i in range(4):
-		indexes[i+1] = 0
+		indexes[i + 1] = 0
 	indexes[1] = 1
 	indexes[2] = 0
 	indexes[3] = 4
 	indexes[4] = 1
 
-func _on_button_pressed(extra_arg_0: NodePath,button: int) -> void:
+func _on_button_pressed(extra_arg_0: NodePath, button: int) -> void:
 	var increment_index = 0
 	if extra_arg_0.get_name(0).contains("BAS"):
 		increment_index = -1
@@ -54,11 +55,12 @@ func _process(delta: float):
 	$Label4.text = button4_map[indexes[4]]
 	
 func _on_call_button_pressed() -> void:
-	if len(actual_call_event):
+	if on_call:
 		return
 	# On teste si la combinaison existe bien
 	var combinaison = $Label1.text + $Label2.text + $Label3.text + $Label4.text
 	if Global.POSSIBLE_BOATS.has(combinaison):
+		on_call = true
 		$CallButton.self_modulate = Color(0.192, 0.969, 0.0)
 		Global.talking_boat = combinaison
 		emit_signal("contact_boat", combinaison)
@@ -71,15 +73,16 @@ func light_button_call(call_event: String):
 	$Call.play()
 
 func _on_radio_button_calling_pressed() -> void:
-	if actual_call_event.length() != 0:
+	if on_call:
+		return
+	if actual_call_event.length():
+		on_call = true
 		$AnimationPlayer.stop()
 		$Call.stop()
 		$ClickToAnswer.play()
 		$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 		call_from_ship.emit(actual_call_event)
 		actual_call_event = ""
-	else:
-		return
 	
 
 func _on_tooltip_enter(node: NodePath) -> void:
@@ -91,4 +94,5 @@ func _on_tooltip_exit(node: NodePath) -> void:
 	child.visible = false
 
 func quit_call():
+	on_call = false
 	$CallButton.self_modulate = Color(1.0, 1.0, 1.0)
