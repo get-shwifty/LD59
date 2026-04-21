@@ -18,7 +18,7 @@ const FADE_DURATION = 1
 @onready var sav_position_camera = $"Night/Camera2D".position
 
 var saved_state = null
-var actual_level = 5
+var actual_level = 0
 
 func _ready() -> void:
 	Global.game_started = true
