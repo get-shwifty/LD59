@@ -1,41 +1,44 @@
 [gd_scene format=3 uid="uid://ycd0cegcalx5"]
 
 [ext_resource type="Script" uid="uid://caqss4duhngq6" path="res://dialogue/dialogue_options.gd" id="1_nxu4r"]
+[ext_resource type="Texture2D" uid="uid://depmea8qei8jw" path="res://assets/images/bulle_nom.png" id="2_280bd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxu4r"]
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.38431373, 0.38431373, 0.38431373, 0.75686276)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.3045748, 0.9074434, 0.8429452, 1)
-border_blend = true
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-expand_margin_left = 1.0
-expand_margin_right = 2.0
-
-[node name="DialogueOptions" type="PanelContainer" unique_id=1163861476]
+[node name="DialogueOptions" type="MarginContainer" unique_id=353406203]
 custom_minimum_size = Vector2(200, 0)
-offset_right = 1.0
-offset_bottom = 46.0
+offset_right = 200.0
+offset_bottom = 125.0
 mouse_default_cursor_shape = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nxu4r")
 script = ExtResource("1_nxu4r")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=371904663]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=60671069]
+layout_mode = 2
+texture = ExtResource("2_280bd")
+region_rect = Rect2(148, 34, 191, 63)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1847758751]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=371904663]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "option 1
 qui peut etre kdhd jhfje hf ejfh ejfhej hfej fhejfh ejfh ejfh ejfh ejfh ejhf jehf "
 fit_content = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="RichTextLabel" to="." method="_on_rich_text_label_mouse_entered"]
-[connection signal="mouse_exited" from="RichTextLabel" to="." method="_on_rich_text_label_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/RichTextLabel" to="." method="_on_rich_text_label_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/RichTextLabel" to="." method="_on_rich_text_label_mouse_exited"]

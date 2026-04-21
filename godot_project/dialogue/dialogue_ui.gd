@@ -108,14 +108,15 @@ func play_sound(player: AudioStreamPlayer, path: String) -> void:
 func _process(delta):
 	if is_waiting:
 		pass
-	elif is_writing:
-		if scrollbar_container.scroll_vertical < max_scroll_length:
-			var value = lerp(scrollbar_container.scroll_vertical, max_scroll_length, delta * SCROLL_SPEED)
-			scrollbar_container.scroll_vertical = value
-	elif text_buffer.size():
+	elif text_buffer.size() and not is_writing:
 		write_text_from_buffer()
-	elif option_buffer.size():
+	elif option_buffer.size() and not is_writing:
 		write_options_from_buffer()
+	
+	if scrollbar_container.scroll_vertical < max_scroll_length:
+		var value = lerp(scrollbar_container.scroll_vertical, max_scroll_length, delta * SCROLL_SPEED)
+		scrollbar_container.scroll_vertical = value
+		
 
 func write_text_from_buffer():
 	var text_req = text_buffer[0]

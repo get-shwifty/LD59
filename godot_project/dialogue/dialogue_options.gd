@@ -1,4 +1,4 @@
-extends PanelContainer
+extends MarginContainer
 
 var text = ''
 var listener = null
@@ -13,7 +13,7 @@ func _ready():
 
 
 func set_text(t: String):
-	$RichTextLabel.text = '[center]' + t + '[/center]'
+	%RichTextLabel.text = '[center]' + t + '[/center]'
 
 func hover():
 	set_text('[u]' + text + '[/u]')
