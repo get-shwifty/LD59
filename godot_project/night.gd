@@ -40,31 +40,32 @@ func load_level(level: int):
 
 func get_sprite_frame(rotation: float) -> int:
 	var rotation_deg = rad_to_deg(rotation)
-	var EAST = 0
-	var SOUTH = 1
+	# var EAST = 0
+	# var SOUTH = 1
 	var NORTH = 2
-	var WEST = 3
+	return 2
+	# var WEST = 3
 	# var SOUTH_EAST = 4
 	# var SOUTH_WEST = 5
 	# var NORTH_WEST = 6
 	# var NORTH_EAST = 7
 
-	if rotation_deg > 157.5 or rotation_deg <= -157.5:
-		return WEST
-	elif rotation_deg > 112.5:
-		return WEST
-	elif rotation_deg > 67.5:
-		return WEST
-	elif rotation_deg > 22.5:
-		return NORTH
-	elif rotation_deg > -22.5:
-		return EAST
-	elif rotation_deg > -67.5:
-		return EAST
-	elif rotation_deg > -112.5:
-		return SOUTH
-	else:
-		return WEST
+	#if rotation_deg > 157.5 or rotation_deg <= -157.5:
+		#return WEST
+	#elif rotation_deg > 112.5:
+		#return WEST
+	#elif rotation_deg > 67.5:
+		#return WEST
+	#elif rotation_deg > 22.5:
+		#return NORTH
+	#elif rotation_deg > -22.5:
+		#return EAST
+	#elif rotation_deg > -67.5:
+		#return EAST
+	#elif rotation_deg > -112.5:
+		#return SOUTH
+	#else:
+		#return WEST
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("droite") and get_parent().is_night:
