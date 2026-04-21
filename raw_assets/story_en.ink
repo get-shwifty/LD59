@@ -44,11 +44,11 @@ VAR helped_the_AI = false
 
 == Ship_Dialog (ship_transponder) ==
     Hello ship {ship_transponder}, this is the lighthouse of La Peyro. #c
-    +   [N] Head North. #c 
-    +   [S] Head South. #c
-    +   [E] Head East. #c
-    +   [W] Head West. #c
-    +   [P] Please wait. #c
+    +   [N] Head North. #N #c 
+    +   [S] Head South. #S #c
+    +   [E] Head East. #E #c
+    +   [W] Head West. #W #c
+    +   [P] Please wait. #P #c
     +   [Keep on] Please keep on. #c
 -   Copy that.  #copythatship #ship
     +   [Hang up.] #raccroche #hang_up
