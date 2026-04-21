@@ -31,8 +31,9 @@ func get_ships_polar() -> Array:
 	for ship in ships:
 		var offset = ship.global_position - global_position
 		var goals = []
-		for goal in ship.goals:
-			goals.append(goal.global_position - ship.global_position)
+		for point in ship.path:
+			var limited_point = (point - global_position).limit_length(325.0)
+			goals.append(limited_point - offset)
 		result.append({
 			"ship": ship,
 			"angle": offset.angle(),

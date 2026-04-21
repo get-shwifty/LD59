@@ -43,7 +43,7 @@ func set_goals(goals):
 		line.remove_point(0)
 	if goals:
 		# take only last
-		# for goal in goals:
 		line.add_point(Vector2.ZERO)
-		line.add_point(goals[-1])
+		for goal in goals:
+			line.add_point(goal)
 		
