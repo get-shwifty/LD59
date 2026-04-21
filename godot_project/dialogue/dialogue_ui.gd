@@ -46,14 +46,14 @@ const SOUND_VOLUMES: Dictionary = {
 	"res://assets/soundEffects/voices/VoixGeneriques/Jeanne": 0.0,
 	"res://assets/soundEffects/voices/Alain/Alain_Voice": -4.0,
 	"res://assets/soundEffects/voices/bernard/b": 0,
-	"res://assets/soundEffects/voices/charles/Charles_Voice": +2.75,
+	"res://assets/soundEffects/voices/charles/Charles_Voice": 2.75,
 	"res://assets/soundEffects/voices/radiofadaises/B_voice": -1.4,
 	"radioon": 0.75,
-	"radiooff": 0.,
-	"res://assets/soundEffects/cracklingsound0.mp3":0,
-	"res://assets/soundEffects/cracklingsound1.mp3":0,
-	"res://assets/soundEffects/cracklingsound2.mp3":0,
-	"res://assets/soundEffects/cracklingsound3.mp3":0
+	"radiooff": 0,
+	"u":0
+	#"res://assets/soundEffects/voices/U/U2.mp3":0,
+	#"res://assets/soundEffects/voices/U/U3.mp3":0,
+	#"res://assets/soundEffects/voices/U/U4.mp3":0
 } 
 
 
@@ -166,9 +166,11 @@ func write_text_from_buffer():
 			border_color = Color(0.22, 0.481, 0.429, 1.0)
 			content_left_margin = 160
 		if tag == "j":
+			speaker_name = "Jean Fume"
 			background_color = Color(0.5, 0.733, 1.0, 0.471)
 			border_color = Color(0.76, 0.825, 0.955, 1.0)
 		if tag == "party":
+			speaker_name = "Partygoers"
 			background_color = Color(0.814, 0.655, 0.814, 0.471)
 			border_color = Color(0.73, 0.62, 0.687, 1.0)
 

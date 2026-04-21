@@ -66,7 +66,7 @@ flip_v = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button1HAUT" unique_id=1097807900]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 
 [node name="Button1BAS" type="TextureButton" parent="." unique_id=966281323]
 offset_left = 288.0
@@ -78,7 +78,7 @@ texture_normal = ExtResource("3_polgl")
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Button1BAS" unique_id=1031605469]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 
 [node name="ButtonHAUT2" type="TextureButton" parent="." unique_id=2125682301]
 offset_left = 346.0
@@ -91,7 +91,7 @@ flip_v = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="ButtonHAUT2" unique_id=1308586336]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 0.77
 
 [node name="ButtonBAS2" type="TextureButton" parent="." unique_id=1871672128]
@@ -104,7 +104,7 @@ texture_normal = ExtResource("3_polgl")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="ButtonBAS2" unique_id=2057605586]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 1.2
 
 [node name="ButtonHAUT3" type="TextureButton" parent="." unique_id=636378459]
@@ -118,7 +118,7 @@ flip_v = true
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="ButtonHAUT3" unique_id=1616841775]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 0.9
 
 [node name="ButtonBAS3" type="TextureButton" parent="." unique_id=478125311]
@@ -131,7 +131,7 @@ texture_normal = ExtResource("3_polgl")
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="ButtonBAS3" unique_id=390790884]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 1.25
 
 [node name="ButtonHAUT4" type="TextureButton" parent="." unique_id=488018383]
@@ -145,7 +145,7 @@ flip_v = true
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="ButtonHAUT4" unique_id=1363163181]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 0.85
 
 [node name="ButtonBAS4" type="TextureButton" parent="." unique_id=463950707]
@@ -158,7 +158,7 @@ texture_normal = ExtResource("3_polgl")
 
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="ButtonBAS4" unique_id=721471768]
 stream = ExtResource("4_wl0ky")
-volume_db = -6.0
+volume_db = -10.0
 pitch_scale = 1.1
 
 [node name="Label1" type="Label" parent="." unique_id=1851371511]
