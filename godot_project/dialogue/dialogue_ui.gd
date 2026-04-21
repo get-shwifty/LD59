@@ -1,4 +1,4 @@
-extends PanelContainer
+extends MarginContainer
 class_name DialogeUI
 
 @export var center_all = false
@@ -88,10 +88,10 @@ func add_dialogue(text, type, tags):
 	
 func notify_write_end():
 	is_writing = false
-	if tag_buffer:
-		execute_tags()
 	if text_buffer.size() > 0:
 		write_waiting()
+	if tag_buffer:
+		execute_tags()
 
 func execute_tags():
 	listener.execute_tags(tag_buffer)
@@ -151,6 +151,7 @@ func write_text_from_buffer():
 		#dial.change_dialog_look(border_color, background_color, content_left_margin)
 	
 	for tag in dial.tags:
+		align_right = false
 		if tag == "rbr":
 			speaker_name = "Roquebrise Radio"
 			color = Color(0.219, 0.653, 0.438)
@@ -221,7 +222,6 @@ func write_text_from_buffer():
 	
 		dial.set_speaker_name("[b][i]" + speaker_name + "[/i][/b]")
 		dial.change_dialog_look(color, align_right, avatar)
-		dial.grab_focus()
 
 	for tagsound in dial.tags:
 		if TAG_SOUND.has(tagsound):

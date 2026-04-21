@@ -32,24 +32,7 @@ func write_to_ui():
 func _ready():
 	text_buffer = text
 	write_to_ui()
-	#if text_buffer.length() == 0:
-	#	listener.notify_write_end()
-	return
-
-	var style = self.get_theme_stylebox("panel")
-	
-	if type == 0:
-		style.content_margin_left = 100.0
-		style.content_margin_right = 20.0
-		#style.bg_color = Color(83/255.0, 80/255.0, 158/255.0)
-	if type == 1:
-		style.content_margin_left = 50.0
-		style.content_margin_right = 50.0
-		#style.bg_color = Color(0,0,0,0)
-	if type == 2:
-		style.content_margin_left = 20.0
-		style.content_margin_right = 100.0
-		#style.bg_color = Color(41/255.0, 40/255.0, 78/255.0)
+	name_container.hide()
 
 func write_to_text():
 	var to_write_n = min(speed, text_buffer.length())
@@ -84,14 +67,19 @@ func _on_timer_timeout():
 
 func set_speaker_name(name: String):
 	name_label_node.text = name
+	name_container.show()
 	
 
 func change_dialog_look(color: Color, align_right: bool, avatar: Texture):
 	#text_bg.self_modulate = color
 	#name_bg.self_modulate = color
 	#avatar_bg.self_modulate = color
-	%Avatar.texture = avatar
-	name_label_node.add_theme_color_override("default_color", color)
+	if avatar == null:
+		avatar_container.hide()
+	else:
+		%Avatar.texture = avatar
+		name_label_node.add_theme_color_override("default_color", color)
+
 	if align_right:
 		%Avatar.flip_h = not %Avatar.flip_h
 		self.add_theme_constant_override("margin_left", self.get_theme_constant("margin_right"))
