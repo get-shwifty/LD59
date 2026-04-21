@@ -13,7 +13,7 @@ class_name Ship
 
 @export var goals: Array[Node2D]
 @export var goal_wait_time := 4.0
-@export var maxSpeed: float = 10.0
+@export var maxSpeed: float = 20.0
 @export var acceleration: float = 900.0
 @export var arriveDistance: float = 4.0
 @export var waypointAdvance: float = 80.0
@@ -196,6 +196,7 @@ func _ready():
 	facing = Vector2.RIGHT
 	label.text = self.name
 	$CollisionShape2D.disabled = true
+	add_to_group("ships")
 
 func start():
 	started = true
@@ -291,4 +292,14 @@ func set_success():
 	success = true
 	$CollisionShape2D.disabled = true
 	modulate = Color("328e00ff")
+	
+
+func accelerate():
+	if maxSpeed < 80:
+		maxSpeed += 20
+	
+func decelerate():
+	if maxSpeed > 20:
+		maxSpeed -= 20
+	
 	

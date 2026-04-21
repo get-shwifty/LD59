@@ -124,16 +124,16 @@ goal_is_right = true
 goals = [NodePath("../../../Goals/goal1")]
 goal_wait_time = 0.0
 
-[node name="Level1" type="Node2D" parent="RadarGame/Levels" unique_id=1649763809]
+[node name="level1" type="Node2D" parent="RadarGame/Levels" unique_id=1649763809]
 
-[node name="BA45" parent="RadarGame/Levels/Level1" unique_id=923377514 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="BA45" parent="RadarGame/Levels/level1" unique_id=923377514 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
 position = Vector2(306, 73)
 has_pathfinder = false
 goal_is_left = true
 goals = [NodePath("../../../Goals/goal2")]
 goal_wait_time = 0.0
 
-[node name="000" parent="RadarGame/Levels/Level1" unique_id=1310344876 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+[node name="000" parent="RadarGame/Levels/level1" unique_id=1310344876 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
 position = Vector2(202, 245)
 not_visible_on_radar = true
 goals = [NodePath("../../../Goals/goal3")]

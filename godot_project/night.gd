@@ -22,6 +22,7 @@ const MIN_DIST = 60.0
 
 var ship_y_min: float = 650.0
 var ship_y_max: float = 320.0
+var current_level = 0
 
 ################################## Var
 var landscape_pct = 0.0
@@ -41,6 +42,7 @@ func _ready() -> void:
 	
 func load_level(level: int):
 	print("start level ", level)
+	current_level = level
 	$"radar game".load_level(level)
 	play_game()
 	$UI/RetryBtn.visible = false
@@ -218,3 +220,10 @@ func reset_cone_rotation_degrees():
 func _on_retry_btn_pressed():
 	print('failed pressed ')
 	failed.emit()
+
+
+func _on_accelerate_button_down() -> void:
+	get_tree().call_group("ships", "set", "maxSpeed", 70)
+
+func _on_accelerate_button_up() -> void:
+	get_tree().call_group("ships", "set", "maxSpeed", 20)
