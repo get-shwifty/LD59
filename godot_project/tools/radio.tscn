@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://da2c4m662mdex" path="res://assets/images/radar_button_off.png" id="6_jqlh4"]
 [ext_resource type="AudioStream" uid="uid://dw2q2huwhmj8w" path="res://assets/soundEffects/decroche.mp3" id="6_oijbw"]
 [ext_resource type="AudioStream" uid="uid://bmd4e3us7hfcn" path="res://assets/soundEffects/SoundComBoat.mp3" id="6_ugl3s"]
+[ext_resource type="PackedScene" uid="uid://di8o4ublrr2fj" path="res://tools/Tooltip.tscn" id="7_jqlh4"]
 
 [sub_resource type="Animation" id="Animation_8q18p"]
 resource_name = "Calling_button"
@@ -218,6 +219,12 @@ offset_bottom = 483.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_jqlh4")
 
+[node name="Tooltip" parent="RadioButtonCalling" unique_id=396841687 instance=ExtResource("7_jqlh4")]
+layout_mode = 0
+
+[node name="TooltipText" parent="RadioButtonCalling/Tooltip" index="0" unique_id=910994966]
+text = "Flashes when someone tries to reach you. Cress to answer"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1298804061]
 libraries/ = SubResource("AnimationLibrary_oijbw")
 
@@ -249,3 +256,5 @@ pitch_scale = 0.85
 [connection signal="pressed" from="ButtonBAS4" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS4"), 4]]
 [connection signal="pressed" from="CallButton" to="." method="_on_call_button_pressed"]
 [connection signal="pressed" from="RadioButtonCalling" to="." method="_on_radio_button_calling_pressed"]
+
+[editable path="RadioButtonCalling/Tooltip"]
