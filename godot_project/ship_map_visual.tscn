@@ -1,18 +1,48 @@
 [gd_scene format=3 uid="uid://bmv85de0lfyt1"]
 
-[ext_resource type="Texture2D" uid="uid://ve3xui75m3i4" path="res://david/white-circle.png" id="1_hw362"]
+[ext_resource type="Texture2D" uid="uid://b67wqb4xwrvww" path="res://assets/images/bateau.png" id="2_npfmi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hw362"]
 font_size = 60
 font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
 
-[node name="ShipMapVisual" type="Node2D" unique_id=1736990360]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj4da"]
+atlas = ExtResource("2_npfmi")
+region = Rect2(0, 0, 400, 212)
 
-[node name="WhiteCircle" type="Sprite2D" parent="." unique_id=650950293]
-modulate = Color(0, 0.14509805, 1, 1)
-position = Vector2(-1.9999996, -60.999992)
-scale = Vector2(0.48515627, 0.48515627)
-texture = ExtResource("1_hw362")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnl5f"]
+atlas = ExtResource("2_npfmi")
+region = Rect2(0, 212, 400, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yo1q"]
+atlas = ExtResource("2_npfmi")
+region = Rect2(0, 424, 400, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1yv2"]
+atlas = ExtResource("2_npfmi")
+region = Rect2(0, 636, 400, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thj1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj4da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnl5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yo1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1yv2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShipMapVisual" type="Node2D" unique_id=1736990360]
 
 [node name="Label" type="Label" parent="." unique_id=1017368707]
 offset_left = -50.0
@@ -21,3 +51,6 @@ offset_right = 53.0
 offset_bottom = -21.0
 text = "230"
 label_settings = SubResource("LabelSettings_hw362")
+
+[node name="ShipSprite" type="AnimatedSprite2D" parent="." unique_id=1598016256]
+sprite_frames = SubResource("SpriteFrames_thj1t")

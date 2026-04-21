@@ -48,24 +48,28 @@ func load_level(level: int):
 	print("start level ", level)
 	$"radar game".load_level(level)
 
-func get_texture(rotation: float) -> Resource:
+func get_sprite_frame(rotation: float) -> int:
 	var rotation_deg = rad_to_deg(rotation)
+	var EAST = 0
+	var WEST = 3
+	var NORTH = 2
+	var SOUTH = 1
 	if rotation_deg > 157.5 or rotation_deg <= -157.5:
-		return texture_west
+		return WEST
 	elif rotation_deg > 112.5:
-		return texture_south_west
+		return NORTH
 	elif rotation_deg > 67.5:
-		return texture_south
+		return NORTH
 	elif rotation_deg > 22.5:
-		return texture_south_east
+		return NORTH
 	elif rotation_deg > -22.5:
-		return texture_east
+		return EAST
 	elif rotation_deg > -67.5:
-		return texture_north_east
+		return SOUTH
 	elif rotation_deg > -112.5:
-		return texture_north
+		return SOUTH
 	else:
-		return texture_north_west
+		return SOUTH
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("droite") and get_parent().is_night:
@@ -114,10 +118,8 @@ func _process(delta: float) -> void:
 		visual.z_index = ships_container.get_node("islands").get_ship_z(ship.distance)
 		visual.get_node('Label').text = str(ship.distance)
 		
-		# For some reason, visual.get_node('Circle') does not work ?!
-		var ship_sprite = visual.get_children()[0]
-		var ship_texture = get_texture(ship.rotation)
-		ship_sprite.texture = ship_texture
+		var ship_animated_sprite = visual.get_node('ShipSprite')
+		ship_animated_sprite.frame = get_sprite_frame(ship.rotation)
 		
 	# Remove visuals for ships no longer present
 	for id in ship_visuals.keys():
