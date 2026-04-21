@@ -32,12 +32,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_night:
-		$DialogueUi.size.y = 400
+		#$DialogueUi.size.y = 400
 		$DialogueUi.position.x = $Night/Camera2D.position.x - 245
 		$DialogueUi.position.y = $Night/Camera2D.position.y - 300
 	else:
 		$DialogueUi.position = sav_position_dialog_UI
-		$DialogueUi.size = sav_size_dialog_UI
+		#$DialogueUi.size = sav_size_dialog_UI
 	
 
 func _story_loaded(successfully: bool):
