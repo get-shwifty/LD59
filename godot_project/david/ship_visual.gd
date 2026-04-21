@@ -36,3 +36,14 @@ func _draw():
 			var from = Vector2(cos(start_angle), sin(start_angle)) * zone_size
 			var to = Vector2(cos(end_angle), sin(end_angle)) * zone_size
 			draw_line(from, to, Color.RED, 1.5)
+
+func set_goals(goals):
+	var line:Line2D = $Line2D
+	while line.get_point_count() > 0:
+		line.remove_point(0)
+	if goals:
+		# take only last
+		# for goal in goals:
+		line.add_point(Vector2.ZERO)
+		line.add_point(goals[-1])
+		

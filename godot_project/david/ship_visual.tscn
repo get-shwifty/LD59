@@ -25,3 +25,7 @@ text = "ACAVB2034"
 label_settings = SubResource("LabelSettings_2gnfn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1235873013]
+width = 2.083
+default_color = Color(1, 0.62352943, 0.023529412, 1)
