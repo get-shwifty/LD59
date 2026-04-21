@@ -19,7 +19,6 @@ VAR helped_the_AI = false
 // mysterious calls
 // #u : IA but you don't know it yet
 
-
 -> Day_01 ->
 -> Title_Sequence ->
 -> Night_01 ->
@@ -90,8 +89,8 @@ VAR helped_the_AI = false
 -   (hub)
     +   [BA45] -> Ship_Dialog("BA45") ->
     +   [DB67] -> Ship_Dialog("DB67") ->
-    *   [21h] -> call_01 ->
-    *   [22h] -> call_02 ->
+    *   [01h] -> call_01 ->
+    *   [02h] -> call_02 ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -219,7 +218,7 @@ VAR helped_the_AI = false
 -   (hub)
     +   [BA45] -> Ship_Dialog("BA45") ->
     +   [DB67] -> Ship_Dialog("DB67") ->
-    *   [22h] -> call_02 ->
+    *   [02h] -> call_02 ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -373,8 +372,8 @@ VAR helped_the_AI = false
 
 -   (hub)
     +   [BE93] -> Ship_Dialog("BE93") ->
-    *   [1h] -> call_04_AI ->
-    *   [2h] -> call_04_Ship ->
+    *   [01h] -> call_04_AI ->
+    *   [02h] -> call_04_Ship ->
     *   [Finish Night] #day_begin ->->
 -   -> hub
 
@@ -446,8 +445,8 @@ VAR helped_the_AI = false
 
 -   (hub)
     +   [DB85] -> Ship_Dialog("DB85") ->
-    *   [21h] -> call_05_IA ->
-    *   [Finish Night] #day_begin ->->
+    *   [01h] -> call_05_IA ->
+    *   [Finish Night] #day_begin #display_storm ->->
 -   -> hub
 
 = call_05_IA
@@ -506,8 +505,8 @@ VAR helped_the_AI = false
 
 -   (hub)
     +   [CB65] -> Ship_Dialog("CB65") ->
-    *   [00h] -> call_06_AI ->
-    *   [Finish Night] #day_begin ->->
+    *   [01h] -> call_06_AI ->
+    *   [Finish Night] #day_begin #display_whale ->->
 -   -> hub
 
 = call_06_AI
