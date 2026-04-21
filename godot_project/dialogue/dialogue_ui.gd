@@ -209,11 +209,11 @@ func write_text_from_buffer():
 	if voice:
 		var longueur = text.length()
 		var suffixe: String
-		if longueur < 40:
+		if longueur < 20:
 			suffixe = "_trescourt.mp3"
-		elif longueur < 80:
+		elif longueur < 45:
 			suffixe = "_court.mp3"
-		elif longueur < 120:
+		elif longueur < 90:
 			suffixe = "_moyen.mp3"
 		else:
 			suffixe = "_long.mp3"
