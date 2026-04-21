@@ -116,7 +116,6 @@ func _process(delta: float) -> void:
 		visual.position.y = lerp(ship_y_min, ship_y_max, t_persp)
 		visual.scale = Vector2(s, s)
 		visual.z_index = ships_container.get_node("islands").get_ship_z(ship.distance)
-		visual.get_node('Label').text = str(ship.distance)
 		
 		var ship_animated_sprite = visual.get_node('ShipSprite')
 		ship_animated_sprite.frame = get_sprite_frame(ship.rotation)

@@ -45,6 +45,7 @@ animations = [{
 [node name="ShipMapVisual" type="Node2D" unique_id=1736990360]
 
 [node name="Label" type="Label" parent="." unique_id=1017368707]
+visible = false
 offset_left = -50.0
 offset_top = -104.0
 offset_right = 53.0
