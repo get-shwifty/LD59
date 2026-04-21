@@ -4,14 +4,14 @@ const int VU_COUNT = 14;
 const float segment_count = 10.0;
 
  
-uniform vec3 background_color = vec3(0.0, 0.62, 0.02);
+uniform vec3 background_color = vec3(1.0, 0.62, 0.02);
 uniform vec3 display_color = vec3(1.0, 1.0, 1.0);
 uniform float[VU_COUNT] freq_data;
 uniform float squeeze_left : hint_range(0.0, 0.5, 0.01) = 0.2;
 
 void fragment() {
 	float vu_count = float(VU_COUNT);
-	float squeeze_amount = squeeze_left * (1.0 - UV.x);
+	float squeeze_amount = squeeze_left * UV.x;//(1.0 - );
 	vec2 uv = vec2(UV.x, 1.0 - UV.y * (1.0 + 2.0 * squeeze_amount) + squeeze_amount);
 
 	COLOR.a = step(0.0, uv.y) * step(uv.y, 1.0);

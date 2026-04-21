@@ -21,6 +21,10 @@ vertical_scroll_mode = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=2039854991]
 layout_mode = 2
 
+[node name="TopMargin" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=499340680]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
 [node name="TextVBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=694432749]
 unique_name_in_owner = true
 layout_mode = 2

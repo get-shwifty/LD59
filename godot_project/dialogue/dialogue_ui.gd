@@ -9,6 +9,7 @@ var max_scroll_length: int = 0
 @onready var scrollbar: VScrollBar = scrollbar_container.get_v_scroll_bar()
 @onready var text_children_container: VBoxContainer = %TextVBoxContainer
 @onready var options_children_container: VBoxContainer = %OptionsVBoxContainer
+@onready var top_margin: Control = $ScrollContainer/VBoxContainer/TopMargin
 
 var text_buffer = []
 var option_buffer = []

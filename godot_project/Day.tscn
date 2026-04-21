@@ -83,13 +83,14 @@ theme_override_font_sizes/font_size = 28
 libraries/ = SubResource("AnimationLibrary_ncttb")
 
 [node name="RadioDay" type="Sprite2D" parent="." unique_id=1755885557]
-position = Vector2(489, 593)
+position = Vector2(240, 593)
 texture = ExtResource("4_wf5ll")
+flip_h = true
 
 [node name="SpectrumAnalyzer" parent="RadioDay" unique_id=1105494842 instance=ExtResource("5_ncttb")]
-position = Vector2(-79, 3.5762787e-07)
-rotation = 0.23635167
-skew = -0.26703537
+position = Vector2(-41.000008, 28.999998)
+rotation = -0.23922238
+skew = 0.24085544
 
 [node name="display_people" type="Sprite2D" parent="." unique_id=590607281]
 position = Vector2(1074, 549)

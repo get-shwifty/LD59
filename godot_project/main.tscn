@@ -18,10 +18,9 @@ visible = false
 
 [node name="DialogueUi" parent="." unique_id=1922901181 instance=ExtResource("3_lquwl")]
 z_index = 100
-offset_left = 574.0
-offset_top = 107.0
-offset_right = 1021.0
-offset_bottom = 671.0
+offset_left = 450.0
+offset_right = 897.0
+offset_bottom = 670.0
 
 [node name="InkPlayer" type="Node" parent="." unique_id=343049778]
 script = ExtResource("4_7mycd")
