@@ -198,6 +198,7 @@ func write_text_from_buffer():
 		elif tag == "ship":
 			speaker_name = ""
 			color = Color(0.0, 0.0, 0.0)
+			avatar = preload("res://assets/images/bteau_portrait.png")
 			#background_color = Color(0.814, 0.655, 0.814, 0.471)
 			#border_color = Color(0.73, 0.62, 0.687, 1.0)
 
