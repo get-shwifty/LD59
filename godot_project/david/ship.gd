@@ -43,6 +43,14 @@ var has_order := false
 
 var success = false
 
+var current_timer_id = 0
+func wait_time(time: float):
+	var new_id = current_timer_id + 1
+	current_timer_id = new_id
+	await get_tree().create_timer(time).timeout
+	return current_timer_id == new_id # no new timer
+		
+
 func check_crossed_boat() -> bool:
 	var ships = get_parent().get_children()
 	for other in ships:
@@ -58,18 +66,20 @@ func _parent_scale() -> Vector2:
 	return Vector2.ONE
 
 func send_order(direction: Vector2):
-	if direction == Vector2.ZERO:
-		is_waiting = true
-		await get_tree().create_timer(10).timeout
-		is_waiting = false
-		return
 	# Cancel any current wait so we respond immediately
 	is_waiting = false
 	is_yielding = false
-	order_goal = global_position + direction * 500
+	
+	if direction == Vector2.ZERO:
+		is_waiting = true
+		if not await wait_time(10):
+			return
+		is_waiting = false
+		return
+	order_goal = global_position + direction * 200
 	has_order = true
 	request_path()
-	await get_tree().create_timer(2).timeout
+	await wait_time(2)
 	has_pathfinder = true
 
 func clear_order():
@@ -90,7 +100,8 @@ func wait_at_goal():
 	if is_waiting:
 		return
 	is_waiting = true
-	await get_tree().create_timer(goal_wait_time).timeout
+	if not await wait_time(goal_wait_time):
+		return
 	is_waiting = false
 	if has_order:
 		clear_order()
@@ -106,7 +117,8 @@ func yield_to_ship():
 	if is_yielding:
 		return
 	is_yielding = true
-	await get_tree().create_timer(collisionYieldTime).timeout
+	if not await wait_time(collisionYieldTime):
+		return
 	is_yielding = false
 
 func get_collision_radius() -> float:
@@ -182,7 +194,7 @@ func request_path():
 		
 		set_path(intermediate_path)
 	elif has_pathfinder:
-		set_path(Global.pathfinder.compute_path(self, get_goal_position()))
+		set_path(Global.pathfinder.compute_path(self , get_goal_position()))
 	else:
 		var intermediate_path = []
 		for i in range(1, 5):
@@ -301,5 +313,3 @@ func accelerate():
 func decelerate():
 	if maxSpeed > 20:
 		maxSpeed -= 20
-	
-	
