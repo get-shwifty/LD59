@@ -144,6 +144,10 @@ func _process(delta: float) -> void:
 	var event_hour = 0
 	if call_event.length() > 0:
 		event_hour = int(call_event.lstrip("h"))
+		print("event hour")
+		print(event_hour)
+		print("clock.total_hours")
+		print(clock.total_hours)
 		if clock.total_hours >= event_hour and (!clock.timer.is_paused()) :
 			Global.event_to_call = ""
 			$UI/Radio.light_button_call(call_event)

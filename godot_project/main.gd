@@ -86,10 +86,11 @@ func _continue_story():
 			for c in choices:
 				if (c.text in Global.POSSIBLE_BOATS):
 					isNightHub = true
-					break
+					continue
 				if regex.search(c.text):
 					Global.event_to_call = c.text
-					break
+					print("Send call")
+					continue
 				c.text = dialogue.clean_text(c.text)
 			if (!isNightHub):
 				dialogue.add_choices(choices)
@@ -107,7 +108,7 @@ func play_music(new_stream: AudioStream) -> void:
 	music_player.play()
 
 func end_of_day():
-	print(_ink_player.get_state())
+	#print(_ink_player.get_state())
 	saved_state = _ink_player.get_state()
 	# Fin du jour
 	
