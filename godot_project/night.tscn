@@ -121,7 +121,7 @@ position = Vector2(5050, 428)
 script = ExtResource("6_t33dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Ships/islands/Ile9" unique_id=389661650]
-position = Vector2(-8, -80)
+position = Vector2(71, -55)
 texture = ExtResource("8_t33dh")
 region_enabled = true
 region_rect = Rect2(2795.0059, 158.24579, 349.86328, 306.9945)
