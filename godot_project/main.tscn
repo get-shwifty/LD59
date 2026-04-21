@@ -31,6 +31,7 @@ metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1291100322]
 bus = &"Radio"
+playback_type = 1
 
 [node name="SoundRadio" type="AudioStreamPlayer" parent="." unique_id=1111930409]
 stream = ExtResource("7_272bh")
