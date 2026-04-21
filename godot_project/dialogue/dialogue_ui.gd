@@ -31,6 +31,7 @@ const TAG_VOICE: Dictionary = {
 	"b": "res://assets/soundEffects/voices/bernard/b",
 	"c": "res://assets/soundEffects/voices/charles/Charles_Voice",
 	"j": "res://assets/soundEffects/voices/jean/jean",
+	"ship4": "res://assets/soundEffects/voices/ES/ship4",
 	"party": "res://assets/soundEffects/voices/party/party"
 }
 
@@ -55,7 +56,7 @@ const SOUND_VOLUMES: Dictionary = {
 	"res://assets/soundEffects/voices/radiofadaises/B_voice": - 1.4,
 	"radioon": 0.75,
 	"radiooff": 0,
-	"u": 0
+	#"u": 0
 	#"res://assets/soundEffects/voices/U/U2.mp3":0,
 	#"res://assets/soundEffects/voices/U/U3.mp3":0,
 	#"res://assets/soundEffects/voices/U/U4.mp3":0
@@ -200,6 +201,12 @@ func write_text_from_buffer():
 			speaker_name = ""
 			color = Color(0.0, 0.0, 0.0)
 			avatar = preload("res://assets/images/bteau_portrait.png")
+			#background_color = Color(0.814, 0.655, 0.814, 0.471)
+			#border_color = Color(0.73, 0.62, 0.687, 1.0)
+		elif tag == "ship4": #ElonSkum
+			speaker_name = ""
+			color = Color(0.0, 0.0, 0.0)
+			#avatar = preload("res://assets/images/bteau_portrait.png")
 			#background_color = Color(0.814, 0.655, 0.814, 0.471)
 			#border_color = Color(0.73, 0.62, 0.687, 1.0)
 
