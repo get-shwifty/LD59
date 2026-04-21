@@ -67,6 +67,8 @@ func send_order(direction: Vector2):
 	order_goal = global_position + direction * 500
 	has_order = true
 	request_path()
+	await get_tree().create_timer(3).timeout
+	has_pathfinder = true
 
 func clear_order():
 	order_goal = null
