@@ -226,4 +226,4 @@ func _on_accelerate_button_down() -> void:
 	get_tree().call_group("ships", "set", "maxSpeed", 70)
 
 func _on_accelerate_button_up() -> void:
-	get_tree().call_group("ships", "set", "maxSpeed", 20)
+	get_tree().call_group("ships", "set", "maxSpeed", 10)

@@ -13,7 +13,7 @@ class_name Ship
 
 @export var goals: Array[Node2D]
 @export var goal_wait_time := 4.0
-@export var maxSpeed: float = 20.0
+@export var maxSpeed: float = 10.0
 @export var acceleration: float = 900.0
 @export var arriveDistance: float = 4.0
 @export var waypointAdvance: float = 80.0
