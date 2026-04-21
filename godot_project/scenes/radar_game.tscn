@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccp12knr85kla" path="res://david/ship.tscn" id="5_jmqnr"]
 [ext_resource type="Texture2D" uid="uid://ckqcsksquvlo5" path="res://assets/images/radar_cone.png" id="5_ov4q5"]
 [ext_resource type="Texture2D" uid="uid://dhfb6qp0eqoti" path="res://assets/images/radar_cadre.png" id="6_lvoe0"]
+[ext_resource type="PackedScene" uid="uid://chlrdbtax05vm" path="res://scenes/goal.tscn" id="10_vw8ex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28otr"]
 shader = ExtResource("3_tholm")
@@ -71,6 +72,8 @@ costmapManager = NodePath("../CostmapGenerated")
 [node name="goal1" type="Node2D" parent="RadarGame/Goals" unique_id=90497074]
 position = Vector2(328, 50)
 
+[node name="Goal" parent="RadarGame/Goals/goal1" unique_id=1513875303 instance=ExtResource("10_vw8ex")]
+
 [node name="goal2" type="Node2D" parent="RadarGame/Goals" unique_id=1267842331]
 position = Vector2(-332, 49)
 
@@ -114,6 +117,7 @@ position = Vector2(-300, 46)
 position = Vector2(-324, -62)
 
 [node name="Levels" type="Node2D" parent="RadarGame" unique_id=82889980]
+visible = false
 
 [node name="level0" type="Node2D" parent="RadarGame/Levels" unique_id=555794200]
 
@@ -213,3 +217,5 @@ goals = [NodePath("../../../Goals/lvl6-1")]
 goal_wait_time = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=911944928]
+
+[editable path="RadarGame/Goals/goal1/Goal"]
