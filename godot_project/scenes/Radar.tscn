@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bnkkbmpmwhkpj" path="res://david/ship_visual.tscn" id="2_sugpd"]
 [ext_resource type="Texture2D" uid="uid://ckqcsksquvlo5" path="res://assets/images/radar_cone.png" id="2_wot2n"]
 [ext_resource type="Texture2D" uid="uid://de4bdgltuux3r" path="res://assets/images/radar_glow.png" id="3_28otr"]
+[ext_resource type="Texture2D" uid="uid://exul0712uuiw" path="res://assets/images/bouton_ping.png" id="3_q5g6y"]
 [ext_resource type="Texture2D" uid="uid://dhfb6qp0eqoti" path="res://assets/images/radar_cadre.png" id="3_t3okp"]
-[ext_resource type="Texture2D" uid="uid://cxt56ivpbqxf" path="res://assets/images/fleche_radio.png" id="8_pl08e"]
 [ext_resource type="PackedScene" uid="uid://di8o4ublrr2fj" path="res://tools/Tooltip.tscn" id="9_q5g6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5g6y"]
+size = Vector2(159.28432, 82.46051)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28otr"]
 shader = ExtResource("1_m041l")
@@ -24,12 +27,29 @@ shader_parameter/BASE_TEXTURE = ExtResource("1_v55ak")
 [sub_resource type="CircleShape2D" id="CircleShape2D_28otr"]
 radius = 350.0057
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5g6y"]
-size = Vector2(215.5, 96)
-
 [node name="Radar" type="Node2D" unique_id=192683704]
 script = ExtResource("1_28otr")
 SHIP = ExtResource("2_sugpd")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1689563421]
+position = Vector2(-14, -2)
+
+[node name="FlecheRadio" type="Sprite2D" parent="Area2D2" unique_id=127150260]
+position = Vector2(-291, -186)
+rotation = -0.18457517
+scale = Vector2(1.0460403, 1.0460403)
+texture = ExtResource("3_q5g6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=209738179]
+position = Vector2(-307.00003, -197)
+rotation = -0.85822195
+shape = SubResource("RectangleShape2D_q5g6y")
+
+[node name="Tooltip" parent="Area2D2" unique_id=396841687 instance=ExtResource("9_q5g6y")]
+visible = false
+
+[node name="TooltipText" parent="Area2D2/Tooltip" index="0" unique_id=910994966]
+text = "Click on it to view all the boat IDs ! "
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=263472440]
 show_behind_parent = true
@@ -68,26 +88,9 @@ shape = SubResource("CircleShape2D_28otr")
 
 [node name="Ships" type="Node2D" parent="." unique_id=495331757]
 
-[node name="Area2D2" type="Area2D" parent="." unique_id=1689563421]
-
-[node name="FlecheRadio" type="Sprite2D" parent="Area2D2" unique_id=127150260]
-position = Vector2(-1.0000014, -424)
-scale = Vector2(6.6875, 6.6875)
-texture = ExtResource("8_pl08e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=209738179]
-position = Vector2(6, -427)
-shape = SubResource("RectangleShape2D_q5g6y")
-
-[node name="Tooltip" parent="Area2D2" unique_id=396841687 instance=ExtResource("9_q5g6y")]
-visible = false
-
-[node name="TooltipText" parent="Area2D2/Tooltip" index="0" unique_id=910994966]
-text = "Click on it to view all the boat IDs ! "
-
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
 [connection signal="mouse_entered" from="Area2D2" to="." method="_on_tooltip_enter" binds= [NodePath("Area2D2")]]
 [connection signal="mouse_exited" from="Area2D2" to="." method="_on_tooltip_exit" binds= [NodePath("Area2D2")]]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 
 [editable path="Area2D2/Tooltip"]

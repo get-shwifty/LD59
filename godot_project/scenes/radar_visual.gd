@@ -36,7 +36,7 @@ func world_offset_to_radar(angle: float, distance: float) -> Vector2:
 	return Vector2.RIGHT.rotated(angle) * distance * _get_world_to_radar_scale()
 
 func update_labels():
-	$Area2D2.visible = false
+	# $Area2D2.visible = false
 	for ship in ship_nodes.values():
 		ship.set_show_label(true)
 	
@@ -45,7 +45,7 @@ func update_labels():
 	for ship in ship_nodes.values():
 		ship.set_show_label(false)
 	
-		$Area2D2.visible = true
+		# $Area2D2.visible = true
 	
 
 func update_ships(ships):
