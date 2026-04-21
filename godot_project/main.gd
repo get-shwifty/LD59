@@ -23,6 +23,8 @@ func _ready() -> void:
 	$Night/UI/Radio.connect("contact_boat", _contact_boat)
 	$Night.connect("switch_to_day",start_of_day)
 	$Night/UI/Radio.connect("call_from_ship",call_from_ship)
+	music_player.stream = MUSIC_NIGHT
+	music_player.play()
 	
 
 func _process(delta: float) -> void:
@@ -38,8 +40,6 @@ func _process(delta: float) -> void:
 func _story_loaded(successfully: bool):
 	if !successfully:
 		return
-	music_player.stream = MUSIC_DAY
-	music_player.play()
 	_continue_story()
 
 func select_choice(index: int):
@@ -170,3 +170,8 @@ func call_from_ship(event: String):
 			game_dialogue.visible = true
 			select_choice(c.index)
 			break
+
+func _on_timer_timeout() -> void:
+	game_dialogue.visible = true
+	music_player.stream = MUSIC_DAY
+	music_player.play()

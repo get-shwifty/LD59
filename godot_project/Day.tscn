@@ -67,7 +67,8 @@ position = Vector2(641, 360)
 texture = ExtResource("4_02umq")
 
 [node name="Foreground" type="Sprite2D" parent="." unique_id=1643895477]
-position = Vector2(640, 359)
+position = Vector2(640, 361)
+scale = Vector2(1, 1.0055555)
 texture = ExtResource("5_usacn")
 
 [node name="DayNumber" type="Label" parent="." unique_id=1854039835]
