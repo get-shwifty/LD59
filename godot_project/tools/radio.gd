@@ -1,10 +1,10 @@
 extends Node2D
 
 ################################## On Ready
-@onready var button1_map = ["A", "B", "C", "D"]
-@onready var button2_map = ["W", "X", "Y", "Z"]
-@onready var button3_map = ["1", "2", "3", "4"]
-@onready var button4_map = ["5", "6", "7", "8"]
+@onready var button1_map = ["A", "B", "C", "D", "E"]
+@onready var button2_map = ["A", "B", "C", "D", "E"]
+@onready var button3_map = ["0", "1", "2", "3", "4"]
+@onready var button4_map = ["0", "5", "6", "7", "8"]
 
 
 @onready var BUTTON_AUDIO: Dictionary = {
@@ -30,6 +30,10 @@ func _ready():
 	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
 	for i in range(4):
 		indexes[i+1] = 0
+	indexes[1] = 1
+	indexes[2] = 0
+	indexes[3] = 4
+	indexes[4] = 1
 
 func _on_button_pressed(extra_arg_0: NodePath,button: int) -> void:
 	var increment_index = 0
@@ -37,7 +41,7 @@ func _on_button_pressed(extra_arg_0: NodePath,button: int) -> void:
 		increment_index = 1
 	else:
 		increment_index = -1
-	indexes[button] = posmod(indexes[button] + increment_index, 4)
+	indexes[button] = posmod(indexes[button] + increment_index, 5)
 	
 	var btn_name = extra_arg_0.get_name(0)
 	if BUTTON_AUDIO.has(btn_name):
@@ -50,6 +54,8 @@ func _process(delta: float):
 	$Label4.text = button4_map[indexes[4]]
 	
 func _on_call_button_pressed() -> void:
+	if len(actual_call_event):
+		return
 	# On teste si la combinaison existe bien
 	var combinaison = $Label1.text + $Label2.text + $Label3.text + $Label4.text
 	if Global.POSSIBLE_BOATS.has(combinaison):
@@ -70,6 +76,7 @@ func _on_radio_button_calling_pressed() -> void:
 	$ClickToAnswer.play()
 	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
 	call_from_ship.emit(actual_call_event)
+	actual_call_event = ""
 	
 
 func _on_tooltip_enter(node: NodePath) -> void:

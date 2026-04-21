@@ -52,11 +52,15 @@ func update_ships(ships):
 	var valid_ids = []
 	for ship in ships:
 		var id = ship.ship.id
+		if ship.ship.not_visible_on_radar:
+			continue
 		valid_ids.append(id)
 		if not ship_nodes.has(id):
 			var node = SHIP.instantiate()
 			$Ships.add_child(node)
 			ship_nodes[id] = node
+			if ship.ship.should_not_cross_boats:
+				node.set_zone(ship.ship.cross_radius)
 		ship_nodes[id].position = world_offset_to_radar(ship.angle, ship.distance)
 		ship_nodes[id].set_ship_rotation(ship.rotation)
 		ship_nodes[id].set_id(ship.ship.name)
@@ -65,13 +69,6 @@ func update_ships(ships):
 		if id not in valid_ids:
 			ship_nodes[id].queue_free()
 			ship_nodes.erase(id)
-
-func _draw():
-	var game = Global.radar_game
-	if not game:
-		return
-	for ship in game.get_ships_polar():
-		draw_circle(world_offset_to_radar(ship.angle, ship.distance), 3.0, Color.CYAN)
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

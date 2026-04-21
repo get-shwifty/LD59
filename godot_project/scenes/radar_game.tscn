@@ -69,56 +69,146 @@ costmapManager = NodePath("../CostmapGenerated")
 [node name="Goals" type="Node2D" parent="RadarGame" unique_id=1684848708]
 
 [node name="goal1" type="Node2D" parent="RadarGame/Goals" unique_id=90497074]
-position = Vector2(314, 122)
+position = Vector2(328, 50)
 
 [node name="goal2" type="Node2D" parent="RadarGame/Goals" unique_id=1267842331]
-position = Vector2(136, -94)
+position = Vector2(-332, 49)
 
 [node name="goal3" type="Node2D" parent="RadarGame/Goals" unique_id=1584011087]
-position = Vector2(250, 18)
+position = Vector2(-161, -153)
 
-[node name="goal4" type="Node2D" parent="RadarGame/Goals" unique_id=758822502]
-position = Vector2(315, -4)
+[node name="spanish-goal1" type="Node2D" parent="RadarGame/Goals" unique_id=758822502]
+position = Vector2(156, -97)
 
-[node name="goal5" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
-position = Vector2(150, 128)
+[node name="lvl4-1-1" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
+position = Vector2(-294, 131)
 
-[node name="goal6" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
-position = Vector2(225, 143)
+[node name="lvl4-1-2" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
+position = Vector2(-177, -182)
 
-[node name="goal7" type="Node2D" parent="RadarGame/Goals" unique_id=802931017]
-position = Vector2(11, 294)
+[node name="lvl4-1-3" type="Node2D" parent="RadarGame/Goals" unique_id=802931017]
+position = Vector2(305, 125)
 
-[node name="goal8" type="Node2D" parent="RadarGame/Goals" unique_id=1894040346]
-position = Vector2(-181, 134)
+[node name="lvl4-2-1" type="Node2D" parent="RadarGame/Goals" unique_id=1894040346]
+position = Vector2(231, 239)
 
-[node name="goal9" type="Node2D" parent="RadarGame/Goals" unique_id=1758463692]
-position = Vector2(-242, 160)
+[node name="lvl4-3-1" type="Node2D" parent="RadarGame/Goals" unique_id=1758463692]
+position = Vector2(328, -44)
 
-[node name="goal10" type="Node2D" parent="RadarGame/Goals" unique_id=658435341]
-position = Vector2(-297, -28)
+[node name="lvl4-4-1" type="Node2D" parent="RadarGame/Goals" unique_id=658435341]
+position = Vector2(101, 271)
 
-[node name="goal11" type="Node2D" parent="RadarGame/Goals" unique_id=214321084]
-position = Vector2(-212, 0)
+[node name="lvl4-4-2" type="Node2D" parent="RadarGame/Goals" unique_id=214321084]
+position = Vector2(-205, 269)
 
-[node name="goal12" type="Node2D" parent="RadarGame/Goals" unique_id=750225057]
-position = Vector2(-157, -142)
+[node name="lvl5-1" type="Node2D" parent="RadarGame/Goals" unique_id=750225057]
+position = Vector2(55, 38)
 
-[node name="goal13" type="Node2D" parent="RadarGame/Goals" unique_id=1579020815]
-position = Vector2(-95, -84)
+[node name="lvl5-2" type="Node2D" parent="RadarGame/Goals" unique_id=1579020815]
+position = Vector2(-125, -153)
 
-[node name="goal14" type="Node2D" parent="RadarGame/Goals" unique_id=1943856183]
-position = Vector2(-69, -238)
+[node name="lvl5-3" type="Node2D" parent="RadarGame/Goals" unique_id=1943856183]
+position = Vector2(-300, 46)
+
+[node name="lvl6-1" type="Node2D" parent="RadarGame/Goals" unique_id=1867721851]
+position = Vector2(-324, -62)
 
 [node name="Levels" type="Node2D" parent="RadarGame" unique_id=82889980]
 
 [node name="level0" type="Node2D" parent="RadarGame/Levels" unique_id=555794200]
 
-[node name="B2" parent="RadarGame/Levels/level0" unique_id=998419548 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-6, -96)
-goals = [NodePath("../../../Goals/goal1"), NodePath("../../../Goals/goal2"), NodePath("../../../Goals/goal3"), NodePath("../../../Goals/goal4"), NodePath("../../../Goals/goal5"), NodePath("../../../Goals/goal6"), NodePath("../../../Goals/goal7"), NodePath("../../../Goals/goal8"), NodePath("../../../Goals/goal9"), NodePath("../../../Goals/goal10"), NodePath("../../../Goals/goal11"), NodePath("../../../Goals/goal12"), NodePath("../../../Goals/goal13"), NodePath("../../../Goals/goal14")]
+[node name="BA45" parent="RadarGame/Levels/level0" unique_id=998419548 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-347, 53)
+has_pathfinder = false
+goal_is_right = true
+goals = [NodePath("../../../Goals/goal1")]
+goal_wait_time = 0.0
 
 [node name="Level1" type="Node2D" parent="RadarGame/Levels" unique_id=1649763809]
-visible = false
+
+[node name="BA45" parent="RadarGame/Levels/Level1" unique_id=923377514 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(346, 82)
+has_pathfinder = false
+goal_is_left = true
+goals = [NodePath("../../../Goals/goal2")]
+goal_wait_time = 0.0
+
+[node name="000" parent="RadarGame/Levels/Level1" unique_id=1310344876 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(300, 298)
+not_visible_on_radar = true
+goals = [NodePath("../../../Goals/goal3")]
+goal_wait_time = 0.0
+
+[node name="level2" type="Node2D" parent="RadarGame/Levels" unique_id=1375015493]
+
+[node name="ARE YOU SPANISH" parent="RadarGame/Levels/level2" unique_id=531666670 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-267, 204)
+not_visible_on_radar = true
+goals = [NodePath("../../../Goals/spanish-goal1")]
+goal_wait_time = 0.0
+
+[node name="level3" type="Node2D" parent="RadarGame/Levels" unique_id=918690770]
+
+[node name="DE26" parent="RadarGame/Levels/level3" unique_id=1106144327 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-61, 331)
+goals = [NodePath("../../../Goals/lvl4-1-1"), NodePath("../../../Goals/lvl4-1-2"), NodePath("../../../Goals/lvl4-1-3")]
+goal_wait_time = 0.0
+
+[node name="AA48" parent="RadarGame/Levels/level3" unique_id=452675363 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-275, -135)
+goals = [NodePath("../../../Goals/lvl4-2-1")]
+goal_wait_time = 0.0
+
+[node name="CB37" parent="RadarGame/Levels/level3" unique_id=635052076 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-161, 295)
+goals = [NodePath("../../../Goals/lvl4-3-1")]
+goal_wait_time = 0.0
+
+[node name="CD09" parent="RadarGame/Levels/level3" unique_id=1804483472 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(48, 113)
+should_not_cross_boats = true
+goals = [NodePath("../../../Goals/lvl4-4-1"), NodePath("../../../Goals/lvl4-4-2")]
+goal_wait_time = 0.0
+
+[node name="level4" type="Node2D" parent="RadarGame/Levels" unique_id=524237361]
+
+[node name="DE26" parent="RadarGame/Levels/level4" unique_id=952953045 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(283, 140)
+goals = [NodePath("../../../Goals/lvl5-1")]
+goal_wait_time = 0.0
+
+[node name="AA48" parent="RadarGame/Levels/level4" unique_id=430108787 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-294, 93)
+goals = [NodePath("../../../Goals/lvl5-2")]
+goal_wait_time = 0.0
+
+[node name="CB37" parent="RadarGame/Levels/level4" unique_id=1293249914 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-120, 286)
+goals = [NodePath("../../../Goals/lvl5-3")]
+goal_wait_time = 0.0
+
+[node name="level5" type="Node2D" parent="RadarGame/Levels" unique_id=123745736]
+
+[node name="DE26" parent="RadarGame/Levels/level5" unique_id=98811982 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-94, -229)
+goals = [NodePath("../../../Goals/lvl4-1-1"), NodePath("../../../Goals/lvl4-1-2"), NodePath("../../../Goals/lvl4-1-3")]
+goal_wait_time = 0.0
+
+[node name="AA48" parent="RadarGame/Levels/level5" unique_id=1429386768 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(320, -43)
+goals = [NodePath("../../../Goals/lvl4-2-1")]
+goal_wait_time = 0.0
+
+[node name="CB37" parent="RadarGame/Levels/level5" unique_id=1338681866 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(-301, 94)
+goals = [NodePath("../../../Goals/lvl4-3-1")]
+goal_wait_time = 0.0
+
+[node name="IA" parent="RadarGame/Levels/level5" unique_id=1123067555 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
+position = Vector2(74, 81)
+not_visible_on_radar = true
+should_not_cross_boats = true
+goals = [NodePath("../../../Goals/lvl6-1")]
+goal_wait_time = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=911944928]

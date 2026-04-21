@@ -132,7 +132,7 @@ top_level = true
 position = Vector2(365, 406)
 
 [node name="UI" type="Parallax2D" parent="." unique_id=1979713735]
-z_index = 200
+z_index = 100
 scroll_scale = Vector2(0, 0)
 
 [node name="Cabin" type="Sprite2D" parent="UI" unique_id=340391364]
@@ -177,13 +177,13 @@ script = ExtResource("13_ryn8s")
 
 [node name="Radio" parent="UI" unique_id=848813022 instance=ExtResource("7_osdpk")]
 
-[node name="UPORDER" type="Button" parent="UI" unique_id=1779946342]
-offset_left = 618.0
-offset_top = 60.0
-offset_right = 672.0
-offset_bottom = 123.0
-theme_override_font_sizes/font_size = 40
-text = "^"
+[node name="RetryBtn" type="Button" parent="UI" unique_id=1849525783]
+offset_left = 626.0
+offset_top = 658.0
+offset_right = 882.0
+offset_bottom = 705.0
+theme_override_font_sizes/font_size = 28
+text = "RETRY"
 
 [node name="MusicNight" type="AudioStreamPlayer" parent="." unique_id=2106272154]
 autoplay = true
@@ -191,4 +191,4 @@ autoplay = true
 [connection signal="pressed" from="UI/NextDay" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="UI/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="UI/RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="UI/UPORDER" to="." method="_on_uporder_pressed"]
+[connection signal="pressed" from="UI/RetryBtn" to="." method="_on_retry_btn_pressed"]

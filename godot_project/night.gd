@@ -1,5 +1,7 @@
 extends Node2D
 
+signal failed()
+
 @export var SHIP_VISUAL: PackedScene
 
 ################################## On Ready
@@ -18,7 +20,7 @@ const MAX_DIST = 325.0
 
 const MIN_DIST = 60.0
 
-var ship_y_min: float = 700.0
+var ship_y_min: float = 650.0
 var ship_y_max: float = 320.0
 
 ################################## Var
@@ -28,15 +30,28 @@ var ship_visuals = {}  # ship.id -> Node2D
 ################################## Signal
 signal switch_to_day
 
+var day_end = false
+
 func _ready() -> void:
 	var vision_pct = 360 / VISION_ANGLE
 	landscape_pct = landscape.texture.get_width() / vision_pct
 	clock.connect("end_night", _on_end_night)
-	load_level(0)
+	Global.night = self
+	$UI/RetryBtn.visible = false
 	
 func load_level(level: int):
 	print("start level ", level)
 	$"radar game".load_level(level)
+	play_game()
+	$UI/RetryBtn.visible = false
+	day_end = false
+	
+	
+func pause_game():
+	$"radar game".pause()
+	
+func play_game():
+	$"radar game".play()
 
 func get_sprite_frame(rotation: float) -> int:
 	var rotation_deg = rad_to_deg(rotation)
@@ -116,6 +131,7 @@ func _process(delta: float) -> void:
 		var ship_animated_sprite = visual.get_node('ShipSprite')
 		ship_animated_sprite.frame = get_sprite_frame(ship.rotation)
 		
+		
 	# Remove visuals for ships no longer present
 	for id in ship_visuals.keys():
 		if id not in active_ids:
@@ -131,8 +147,25 @@ func _process(delta: float) -> void:
 			Global.event_to_call = ""
 			$UI/Radio.light_button_call(call_event)
 	
+			
+	if check_success():
+		next_day_button.visible = true
+	else:
+		next_day_button.visible = false
+
+
+func check_success():
+	var ships = radar_game.get_ships_polar()
+	for ship in ships:
+		if ship.ship.success and ship.ship.should_not_cross_boats:
+			return true
+	for ship in ships:
+		if ship.ship.success == false:
+			return false
+	return day_end
+
 func _on_end_night() -> void:
-	next_day_button.visible = true
+	day_end = true
 
 func _on_next_day_pressed() -> void:
 	switch_to_day.emit()
@@ -151,6 +184,21 @@ func _on_order_sent(tag: String):
 	print("Réception des ordres")
 	print("Direction %s" % tag)
 	print("Ship %s" % Global.talking_boat)
+	var direction = Vector2.ZERO
+	if tag == "N":
+		direction = Vector2.UP
+	if tag == "E":
+		direction = Vector2.RIGHT
+	if tag == "S":
+		direction = Vector2.DOWN
+	if tag == "W":
+		direction = Vector2.LEFT
+	$"radar game".send_order(Global.talking_boat, direction)
+
+func show_retry():
+	#pause_game()
+	$UI/RetryBtn.visible = true
+	
 
 func _on_uporder_pressed():
 	var id = ship_visuals.keys()[0]
@@ -159,3 +207,8 @@ func _on_uporder_pressed():
 func reset_cone_rotation_degrees():
 	$UI/Radar/Cone.rotation_degrees = sav_rotation_degrees
 	$UI/Radar/Sprite2D.material.set("shader_parameter/cone_angle", $UI/Radar/Cone.rotation_degrees - 135)
+
+
+func _on_retry_btn_pressed():
+	print('failed pressed ')
+	failed.emit()

@@ -1,9 +1,17 @@
 extends CharacterBody2D
 class_name Ship
 
+
+@export var has_pathfinder: bool = true
+@export var goal_is_right: bool = false
+@export var goal_is_left: bool = false
+@export var not_visible_on_radar: bool = false
+@export var should_not_cross_boats: bool = false
+@export var cross_radius = 50
+
 @export var goals: Array[Node2D]
 @export var goal_wait_time := 4.0
-@export var maxSpeed: float = 40.0
+@export var maxSpeed: float = 10.0
 @export var acceleration: float = 900.0
 @export var arriveDistance: float = 4.0
 @export var waypointAdvance: float = 80.0
@@ -16,7 +24,7 @@ class_name Ship
 @onready var label = $Label
 
 var goal = null
-var id = null
+@onready var id = name
 var goal_index := 0
 var path = []
 var pathIndex := 0
@@ -25,10 +33,22 @@ var facing := Vector2.RIGHT
 var started := false
 var is_waiting := false
 var is_yielding := false
+var crashed = false
 
 # Order system
 var order_goal = null
 var has_order := false
+
+var success = false
+
+func check_crossed_boat() -> bool:
+	var ships = get_parent().get_children()
+	for other in ships:
+		if other == self or not other is Ship:
+			continue
+		if other.global_position.distance_to(global_position) < cross_radius:
+			return true
+	return false
 
 func _parent_scale() -> Vector2:
 	if get_parent():
@@ -36,10 +56,15 @@ func _parent_scale() -> Vector2:
 	return Vector2.ONE
 
 func send_order(direction: Vector2):
+	if direction == Vector2.ZERO:
+		is_waiting = true
+		await get_tree().create_timer(10).timeout
+		is_waiting = false
+		return
 	# Cancel any current wait so we respond immediately
 	is_waiting = false
 	is_yielding = false
-	order_goal = global_position + direction * 50
+	order_goal = global_position + direction * 500
 	has_order = true
 	request_path()
 
@@ -90,7 +115,7 @@ func check_incoming_collision() -> bool:
 	for other in ships:
 		if other == self or not other is Ship:
 			continue
-		if other.id == null or other.id < id:
+		if other.id == null or (other.id < id and other.has_pathfinder):
 			continue
 		var to_other = other.global_position - global_position
 		var dist = to_other.length()
@@ -118,6 +143,7 @@ func update_goal():
 	else:
 		goal = null
 		started = false
+		set_success()
 	if goal:
 		request_path()
 
@@ -151,8 +177,15 @@ func request_path():
 			intermediate_path.append(point)
 		
 		set_path(intermediate_path)
-	else:
+	elif has_pathfinder:
 		set_path(Global.pathfinder.compute_path(self, get_goal_position()))
+	else:
+		var intermediate_path = []
+		for i in range(1, 5):
+			var weight = i / 4.0
+			var point = global_position.lerp(get_goal_position(), weight)
+			intermediate_path.append(point)
+			set_path(intermediate_path)
 
 func _ready():
 	desiredDir = Vector2.RIGHT
@@ -172,16 +205,31 @@ func verify_position():
 		crash()
 
 func crash():
+	crashed = true
 	started = false
 	path = []
 	modulate = Color("e30000")
 	print("crash")
+	Global.night.show_retry()
 
 func _physics_process(delta):
-	if not started or is_waiting:
+	if not started or is_waiting or success:
 		return
 		
 	verify_position()
+	
+	if should_not_cross_boats and check_crossed_boat():
+		crash()
+		return
+		
+	if has_order and has_pathfinder:
+		var look_pos = global_position + facing * collisionLookAhead
+		if Global.pathfinder.is_position_obstacle(look_pos) or check_incoming_collision():
+			clear_order()
+			if goal:
+				request_path()
+			else:
+				update_goal()
 
 	advance_waypoint()
 	if path.is_empty():
@@ -221,3 +269,22 @@ func _physics_process(delta):
 
 	$Circle.rotation = facing.angle()
 	request_path()
+
+	
+	if goal_is_right and global_position.x > 700:
+		set_success()
+		
+	if goal_is_left and global_position.x < 40:
+		set_success()
+	
+	if not crashed and position.length() > 350:
+		set_success()
+		
+func set_success():
+	if crashed:
+		success = false
+		return
+	success = true
+	$CollisionShape2D.disabled = true
+	modulate = Color("328e00ff")
+	

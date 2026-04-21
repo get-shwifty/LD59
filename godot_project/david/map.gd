@@ -4,19 +4,16 @@ extends Node2D
 @onready var SHIPS = $Ships
 
 func load_level(level: int):
-	var children = SHIPS.get_children()
-	for child in children:
+	for child in SHIPS.get_children():
 		child.free()
-	var id = 0
-	var ships = LEVELS.get_child(level)
-	if not ships:
+	var level_node = LEVELS.get_child(level)
+	if not level_node:
 		return
-	for ship in ships.get_children():
-		ship.reparent(SHIPS)
-		ship.id = id
-		ship.start()
-		id+=1
-		
+	for ship in level_node.get_children():
+		var copy = ship.duplicate()
+		SHIPS.add_child(copy)
+		copy.start()
+
 func _ready():
 	pass
 	#load_level(0)

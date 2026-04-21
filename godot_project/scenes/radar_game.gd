@@ -10,7 +10,13 @@ func _ready():
 func _process(_delta):
 	#queue_redraw()
 	pass
-
+	
+func pause():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
+func play():
+	process_mode = Node.PROCESS_MODE_INHERIT
+	
 func load_level(level: int):
 	$RadarGame.load_level(level)
 

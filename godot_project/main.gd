@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var state: String
+
 @onready var _ink_player: InkPlayer = $InkPlayer
 @onready var game_dialogue: DialogeUI = $"DialogueUi"
 @onready var dialogue = game_dialogue
@@ -14,6 +16,9 @@ const FADE_DURATION = 1
 @onready var sav_position_dialog_UI = $DialogueUi.position
 @onready var sav_size_dialog_UI = $DialogueUi.size
 @onready var sav_position_camera = $"Night/Camera2D".position
+
+var saved_state = null
+var actual_level = 5
 
 func _ready() -> void:
 	Global.game_started = true
@@ -40,6 +45,11 @@ func _story_loaded(successfully: bool):
 		return
 	music_player.stream = MUSIC_DAY
 	music_player.play()
+	
+	if state:
+		_ink_player.set_state(state)
+		end_of_day()
+	
 	_continue_story()
 
 func select_choice(index: int):
@@ -97,6 +107,8 @@ func play_music(new_stream: AudioStream) -> void:
 	music_player.play()
 
 func end_of_day():
+	print(_ink_player.get_state())
+	saved_state = _ink_player.get_state()
 	# Fin du jour
 	
 	game_dialogue.visible = false
@@ -112,7 +124,8 @@ func end_of_day():
 	night_timer.start_timer()
 	play_music(MUSIC_NIGHT)
 	print("current day: ", Global.day_number)
-	$Night.load_level(Global.day_number-1)
+	$Night.load_level(actual_level)
+	actual_level +=1
 	
 
 func start_of_day():
@@ -143,6 +156,7 @@ func _contact_boat(boat_code):
 	var found_boat = false;
 	for c in choices:
 		choice_index += 1;
+		print(c.text)
 		if (boat_code == c.text):
 			found_boat = true
 			print('contacting boat' + c.text)
@@ -153,6 +167,7 @@ func _contact_boat(boat_code):
 		return 
 	
 	game_dialogue.visible = true
+	$Night.pause_game()
 	select_choice(choice_index)
 
 func hang_up():
@@ -160,6 +175,7 @@ func hang_up():
 	dialogue.clear()
 	night_timer.restart_timer()
 	$Night/UI/Radio.quit_call()
+	$Night.play_game()
 
 func call_from_ship(event: String):
 	var choices = _ink_player.current_choices
@@ -170,3 +186,21 @@ func call_from_ship(event: String):
 			game_dialogue.visible = true
 			select_choice(c.index)
 			break
+	$Night.pause_game()
+	
+func retry():
+	_ink_player.set_state(saved_state)
+	$Night.reset_cone_rotation_degrees()
+	$Night.visible = true
+	night_timer.reset_timer()
+	night_timer.start_timer()
+	play_music(MUSIC_NIGHT)
+	print("current day: ", Global.day_number)
+	$Night.load_level(actual_level-1)
+	_ink_player.continue_story()
+	
+	
+
+
+func _on_night_failed():
+	retry()

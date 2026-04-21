@@ -3,7 +3,7 @@ extends Node2D
 @export var distance: float = 100
 
 # These must match your main scene's values
-var ship_y_min: float = 721.0 # Bottom (Closest)
+var ship_y_min: float = 650 # Bottom (Closest)
 var ship_y_max: float = 306.0 # Top (Furthest)
 const MAX_DIST = 325.0
 const MIN_DIST = 60.0
