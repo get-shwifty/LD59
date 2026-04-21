@@ -113,8 +113,9 @@ func _process(delta):
 		write_text_from_buffer()
 	elif option_buffer.size() and not is_writing:
 		write_options_from_buffer()
+		scrollbar_container.scroll_vertical = max_scroll_length
 	
-	if scrollbar_container.scroll_vertical < max_scroll_length:
+	if scrollbar_container.scroll_vertical < max_scroll_length and is_writing:
 		var value = lerp(scrollbar_container.scroll_vertical, max_scroll_length, delta * SCROLL_SPEED)
 		scrollbar_container.scroll_vertical = value
 		
