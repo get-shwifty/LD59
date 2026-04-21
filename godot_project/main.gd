@@ -112,23 +112,48 @@ func play_music(new_stream: AudioStream) -> void:
 func end_of_day():
 	#print(_ink_player.get_state())
 	saved_state = _ink_player.get_state()
-	# Fin du jour
 	
+	# Fin du jour
 	game_dialogue.visible = false
 	is_night = true
 	game_dialogue.clear()
+	
+	# Fade noir sortie du jour
+	$FadeOut.modulate.a = 0.0
+	$FadeOut.visible = true
+	var tweenout = create_tween()
+	tweenout.tween_property($FadeOut, "modulate:a", 1.0,1.1)
+	await tweenout.finished
+	
 	$Day.visible = false
 	$Day.next_day()
 	
 	# Début de la nuit
 	$Night.reset_cone_rotation_degrees()
 	$Night.visible = true
-	night_timer.reset_timer()
-	night_timer.start_timer()
+	
+	#tuto
+	if Global.day_number == 2:
+		$ImageTutoNight.visible = true
+		$Night.pause_game()
+		night_timer.pause_timer()
+	
+	# Fin Fade noir à l'entrée de la nuit
+	$FadeIn.modulate.a = 1.0
+	$FadeIn.visible = true
+	$FadeOut.visible = false
+	var tweenin = create_tween()
+	tweenin.tween_property($FadeIn, "modulate:a", 0.0,1.1)
+	await tweenin.finished
+	$FadeIn.visible = false
+	
 	play_music(MUSIC_NIGHT)
 	print("current day: ", Global.day_number)
-	$Night.load_level(actual_level)
-	actual_level +=1
+	if not $ImageTutoNight.visible:
+		night_timer.reset_timer()
+		night_timer.start_timer()
+		$Night.load_level(actual_level)
+		actual_level +=1
 
 
 func start_of_day():
@@ -146,6 +171,15 @@ func start_of_day():
 	
 	# On prépare la scène day
 	$Day.visible = true
+	
+	$FadeIn.modulate.a = 1.0
+	$FadeIn.visible = true
+	$FadeOut.visible = false
+	var tweenin = create_tween()
+	tweenin.tween_property($FadeIn, "modulate:a", 0.0,1.1)
+	await tweenin.finished
+	$FadeIn.visible = false
+	
 	for c in _ink_player.current_choices:
 		if c.text == "Finish Night":
 			select_choice(c.index)
@@ -207,3 +241,15 @@ func retry():
 
 func _on_night_failed():
 	retry()
+
+
+func _on_image_tuto_night_pressed() -> void:
+	if Global.day_number == 2 and $ImageTutoNight.visible:
+		var tweentuto = create_tween()
+		tweentuto.tween_property($ImageTutoNight, "modulate:a", 0.0, 1)
+		await tweentuto.finished
+		$ImageTutoNight.visible = false 
+		night_timer.reset_timer()
+		night_timer.start_timer()
+		$Night.load_level(actual_level)
+		actual_level +=1

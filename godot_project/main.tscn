@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bk54h47btachi" path="res://assets/story_en.ink.json" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://ckvfkususnm01" path="res://Day.tscn" id="5_lquwl"]
 [ext_resource type="AudioStream" uid="uid://bn1wbrfhyn7wg" path="res://assets/soundEffects/ChangementRadio.mp3" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://byrc5f31fbidc" path="res://assets/images/tuto.png" id="8_5vw27"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")
@@ -36,4 +37,28 @@ playback_type = 1
 stream = ExtResource("7_272bh")
 pitch_scale = 0.91
 
+[node name="FadeOut" type="ColorRect" parent="." unique_id=672866767]
+visible = false
+z_index = 51
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="FadeIn" type="ColorRect" parent="." unique_id=1664823920]
+visible = false
+z_index = 51
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="ImageTutoNight" type="TextureButton" parent="." unique_id=237524347]
+visible = false
+z_index = 49
+offset_right = 1280.0
+offset_bottom = 720.0
+texture_normal = ExtResource("8_5vw27")
+
 [connection signal="failed" from="Night" to="." method="_on_night_failed"]
+[connection signal="pressed" from="ImageTutoNight" to="." method="_on_image_tuto_night_pressed"]

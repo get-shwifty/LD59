@@ -39,15 +39,15 @@ func _ready() -> void:
 	clock.connect("end_night", _on_end_night)
 	Global.night = self
 	$UI/RetryBtn.visible = false
-	
+
 func load_level(level: int):
+	
 	print("start level ", level)
 	current_level = level
 	$"radar game".load_level(level)
 	play_game()
 	$UI/RetryBtn.visible = false
 	day_end = false
-	
 	
 func pause_game():
 	$"radar game".pause()
@@ -175,6 +175,12 @@ func _on_end_night() -> void:
 	day_end = true
 
 func _on_next_day_pressed() -> void:
+	$FadeOutNight.modulate.a = 0.0
+	$FadeOutNight.visible = true
+	var tween = create_tween()
+	tween.tween_property($FadeOutNight, "modulate:a", 1.0,1.5)
+	await tween.finished
+	$FadeOutNight.visible = false
 	switch_to_day.emit()
 
 func _on_left_button_pressed() -> void:
