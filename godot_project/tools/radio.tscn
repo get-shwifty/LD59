@@ -220,9 +220,11 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_jqlh4")
 
 [node name="Tooltip" parent="RadioButtonCalling" unique_id=396841687 instance=ExtResource("7_jqlh4")]
+visible = false
 layout_mode = 0
 
 [node name="TooltipText" parent="RadioButtonCalling/Tooltip" index="0" unique_id=910994966]
+visible = false
 text = "Flashes when someone tries to reach you. Cress to answer"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1298804061]
