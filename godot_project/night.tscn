@@ -145,6 +145,7 @@ position = Vector2(1089, 509.99997)
 scale = Vector2(0.48, 0.48)
 
 [node name="Clock" parent="UI" unique_id=2042308701 instance=ExtResource("2_h0nnu")]
+visible = false
 
 [node name="NextDay" type="Button" parent="UI" unique_id=2061017221]
 visible = false
