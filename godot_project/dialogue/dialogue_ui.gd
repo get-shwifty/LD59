@@ -182,7 +182,7 @@ func write_text_from_buffer():
 			#background_color = Color(0.574, 0.567, 0.077, 0.588)
 			#border_color = Color(0.769, 0.863, 0.145)
 		elif tag == "c":
-			speaker_name = "Me"
+			speaker_name = "Charles"
 			avatar = preload("res://assets/images/charles.png")
 			color = Color(0.701, 0.21, 0.325)
 			#background_color = Color(0.701, 0.21, 0.325, 0.588)
