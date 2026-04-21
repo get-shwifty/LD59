@@ -79,8 +79,7 @@ func send_order(direction: Vector2):
 	order_goal = global_position + direction * 150
 	has_order = true
 	request_path()
-	#await wait_time(2)
-	#has_pathfinder = true
+	
 
 func clear_order():
 	order_goal = null
@@ -215,6 +214,12 @@ func start():
 	$CollisionShape2D.disabled = false
 
 func verify_position():
+	if not has_pathfinder:
+		if (goal_is_right and global_position.x > 370) or (goal_is_left and global_position.x < 370):
+			has_pathfinder = true
+			reset_goal()
+			return
+			
 	var should_crash = Global.pathfinder.is_position_obstacle(global_position)
 	if should_crash:
 		crash()
@@ -285,15 +290,13 @@ func _physics_process(delta):
 	$Circle.rotation = facing.angle()
 	request_path()
 
-	
-	if goal_is_right and global_position.x > 700:
-		set_success()
-		
-	if goal_is_left and global_position.x < 40:
-		set_success()
-	
 	if not crashed and position.length() > 350:
-		reset_goal()
+		if goal_is_right and global_position.x > 500:
+			set_success()
+		elif goal_is_left and global_position.x < 240:
+			set_success()
+		else:
+			reset_goal()
 		
 func set_success():
 	if crashed:
