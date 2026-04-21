@@ -44,12 +44,12 @@ VAR helped_the_AI = false
 
 == Ship_Dialog (ship_transponder) ==
     Hello ship {ship_transponder}, this is the lighthouse of La Peyro. #c
-    +   [N] Head North. #N #c 
-    +   [S] Head South. #S #c
-    +   [E] Head East. #E #c
-    +   [W] Head West. #W #c
-    +   [P] Please wait. #P #c
-    +   [Keep on] Please keep on. #c
+    +   Head North. #N #c 
+    +   Head South. #S #c
+    +   Head East. #E #c
+    +   Head West. #W #c
+    +   Please wait. #P #c
+    +   Please keep on. #c
 -   Copy that.  #copythatship #ship
     +   [Hang up.] #raccroche #hang_up
 -   ->->
@@ -124,7 +124,7 @@ VAR helped_the_AI = false
 -   (intro)
     {You listening |}Charles {?|!?} #b #radiooff
     *   Hmm yes ... #c
-        __mouais ... bon, écoute_ #c
+        __mouais ... bon, écoute_ #b
     *   Sorry, just turned on the channel. #c
     *   [Say nothing] -> intro
 -   As I was saying, dispatch wants us to open our eyes for BA45. #b
@@ -167,7 +167,7 @@ VAR helped_the_AI = false
     Oh come on, Gustave, we both know it's a pipe dream. Citizens of the bay will barely see a sliver of that money ! #rf 
 -   (hub)
     *   [Switch to Radio Rêve Oeil]
-        Open your mind with Radio Rêve Oeil, _la radio qui reveille votre âme_. #radioon #rro
+        Open your mind with Radio Rêve Oeil, __la radio qui reveille votre âme_. #radioon #rro
         Today we receive Eric Esoth, a weaving specialist. He'll tell us about this ancient art and how it can improve your life. #rro
         Eric, welcome on the show ! #rro
         -> hub
@@ -180,7 +180,7 @@ VAR helped_the_AI = false
     ... I'm telling you I'm tired of this shit Bernard. #radioon #a
     *   What kind of shit ? #c
         Alain was just explaining to me how much he envied you. #b
-        __Pétard Bernard !_ You know it has nothing to do with that. #c
+        __Pétard Bernard !_ You know it has nothing to do with that. #a
     *   [Keep listening]
 -   25 years on the job. #a
     A quarter of a century of telling management our tech is outdated crap. #a
@@ -204,13 +204,13 @@ VAR helped_the_AI = false
     *   Fuck Chtooling ! #c
         Fuck Chtooling ! Fuck Corporation ! #a
         **  Fuck Corporation ! #c
-            Fuck them ! #b
+            Fuck them ! #a
         **  [Say nothing]
         --  __Bon bon, ca va les gars on a compris_ #b
 -   Regarding more serious matters. #b
     We still need to look out for BA45 tonight. #b
 -   (BA45)
-    *   Okay[.], I'll keep an eye out. #c
+    *   Okay, I'll keep an eye out for them. #c
         -> hub
     *   Didn't they fix their stuff ? #c 
         Are you surprised ? #a
@@ -521,7 +521,7 @@ VAR helped_the_AI = false
     *   Hopefully they get sent back to the sea. #c
     *   What an awful omen. #c
 -   And with the storm coming, it won't be an easy last day. Sorry about that. #b
-    *   It's not a storm, it's __un putain d'houragan Bernard !_ #c
+    *   It's not a storm, it's __un putain d'ouragan Bernard !_ #c
     *   See you on the other side. #c
 -   No need to worry too much. #b
     Look for ships sailing toward the shore. Call and redirect them before it's too late and you should be fine. #b
