@@ -290,7 +290,9 @@ func _physics_process(delta):
 	$Circle.rotation = facing.angle()
 	request_path()
 
-	if not crashed and position.length() > 350:
+	print(position.length())
+
+	if not crashed and position.length() > 320:
 		if goal_is_right and global_position.x > 500:
 			set_success()
 		elif goal_is_left and global_position.x < 240:
