@@ -147,9 +147,15 @@ VAR helped_the_AI = false
 == Night_01 ==
 
 -   (hub)
-    +   [AW15] -> Ship_Dialog("AW15") -> 
-    +   [AX25] -> Ship_Dialog("AX25") -> 
+    +   [BA45] -> Ship_Dialog("BA45") ->
     *   [Finish Night] #day_begin ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 
@@ -217,9 +223,15 @@ VAR helped_the_AI = false
 
 -   (hub)
     +   [BA45] -> Ship_Dialog("BA45") ->
-    +   [DB67] -> Ship_Dialog("DB67") ->
     *   [02h] -> call_02 ->
     *   [Finish Night] #day_begin ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 = call_02
@@ -297,9 +309,15 @@ VAR helped_the_AI = false
 == Night_03 ==
 
 -   (hub)
-    +   [BE12] -> Ship_Dialog("BE12") ->
     *   [AA00] -> call_03_gen ->
     *   [Finish Night] #day_begin ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 = call_03_gen
@@ -375,6 +393,13 @@ VAR helped_the_AI = false
     *   [01h] -> call_04_AI ->
     *   [02h] -> call_04_Ship ->
     *   [Finish Night] #day_begin ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 = call_04_AI
@@ -444,9 +469,15 @@ VAR helped_the_AI = false
 == Night_05 ==
 
 -   (hub)
-    +   [DB85] -> Ship_Dialog("DB85") ->
     *   [01h] -> call_05_IA ->
     *   [Finish Night] #day_begin #display_storm ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 = call_05_IA
@@ -504,9 +535,15 @@ VAR helped_the_AI = false
 == Night_06 ==
 
 -   (hub)
-    +   [CB65] -> Ship_Dialog("CB65") ->
     *   [01h] -> call_06_AI ->
     *   [Finish Night] #day_begin #display_whale ->->
+    +   [DE26] -> Ship_Dialog("DE26") ->
+    +   [AA48] -> Ship_Dialog("AA48") -> 
+    +   [CB37] -> Ship_Dialog("CB37") -> 
+    +   [EB13] -> Ship_Dialog("EB13") -> 
+    +   [ED38] -> Ship_Dialog("ED38") ->
+    +   [BA28] -> Ship_Dialog("BA28") -> 
+    +   [CE08] -> Ship_Dialog("CE08") -> 
 -   -> hub
 
 = call_06_AI
