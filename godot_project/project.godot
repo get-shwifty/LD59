@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://7ovo36x0usiw"
 [autoload]
 
 Global="*uid://kxyd1fpc2je"
+__InkRuntime="*uid://b18gfk5mqpwvd"
 
 [display]
 

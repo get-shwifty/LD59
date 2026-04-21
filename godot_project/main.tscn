@@ -26,6 +26,7 @@ offset_bottom = 675.0
 [node name="InkPlayer" type="Node" parent="." unique_id=343049778]
 script = ExtResource("4_7mycd")
 ink_file = ExtResource("5_272bh")
+loads_in_background = false
 metadata/_custom_type_script = "uid://b0cqw80yi5i5h"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1291100322]
