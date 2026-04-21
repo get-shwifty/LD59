@@ -20,6 +20,7 @@ expand_margin_left = 1.0
 expand_margin_right = 2.0
 
 [node name="DialogueOptions" type="PanelContainer" unique_id=1163861476]
+custom_minimum_size = Vector2(200, 0)
 offset_right = 1.0
 offset_bottom = 46.0
 mouse_default_cursor_shape = 2

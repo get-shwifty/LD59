@@ -1,10 +1,14 @@
-extends ScrollContainer
+extends PanelContainer
 class_name DialogeUI
 
 @export var center_all = false
+@export var SCROLL_SPEED: float = 3.0
 
-var max_scroll_length = 0 
-@onready var scrollbar = get_v_scroll_bar()
+var max_scroll_length: int = 0
+@onready var scrollbar_container: ScrollContainer = $ScrollContainer
+@onready var scrollbar: VScrollBar = scrollbar_container.get_v_scroll_bar()
+@onready var text_children_container: VBoxContainer = %TextVBoxContainer
+@onready var options_children_container: VBoxContainer = %OptionsVBoxContainer
 
 var text_buffer = []
 var option_buffer = []
@@ -18,6 +22,7 @@ var listener = null
 @onready var DIALOGUE = preload("res://dialogue/dialogueText.tscn")
 @onready var OPTIONS = preload("res://dialogue/dialogueOptionList.tscn")
 
+
 const TAG_VOICE: Dictionary = {
 	"rf": "res://assets/soundEffects/voices/radiofadaises/B_voice",
 	"rro": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
@@ -26,7 +31,7 @@ const TAG_VOICE: Dictionary = {
 	"b": "res://assets/soundEffects/voices/bernard/b",
 	"c": "res://assets/soundEffects/voices/charles/Charles_Voice",
 	"j": "res://assets/soundEffects/voices/jean/jean",
-	"party":"res://assets/soundEffects/voices/party/"
+	"party": "res://assets/soundEffects/voices/party/"
 }
 
 const TAG_SOUND: Dictionary = {
@@ -44,27 +49,26 @@ const TAG_SOUND: Dictionary = {
 
 const SOUND_VOLUMES: Dictionary = {
 	"res://assets/soundEffects/voices/VoixGeneriques/Jeanne": 0.0,
-	"res://assets/soundEffects/voices/Alain/Alain_Voice": -4.0,
+	"res://assets/soundEffects/voices/Alain/Alain_Voice": - 4.0,
 	"res://assets/soundEffects/voices/bernard/b": 0,
 	"res://assets/soundEffects/voices/charles/Charles_Voice": 2.75,
-	"res://assets/soundEffects/voices/radiofadaises/B_voice": -1.4,
+	"res://assets/soundEffects/voices/radiofadaises/B_voice": - 1.4,
 	"radioon": 0.75,
 	"radiooff": 0,
-	"u":0
+	"u": 0
 	#"res://assets/soundEffects/voices/U/U2.mp3":0,
 	#"res://assets/soundEffects/voices/U/U3.mp3":0,
 	#"res://assets/soundEffects/voices/U/U4.mp3":0
-} 
+}
 
 
-func _ready(): 
+func _ready():
 	scrollbar.changed.connect(handle_scrollbar_changed)
 	max_scroll_length = scrollbar.max_value
 
 func handle_scrollbar_changed():
-	if max_scroll_length != scrollbar.max_value: 
-		max_scroll_length = scrollbar.max_value 
-		self.scroll_vertical = max_scroll_length
+	if max_scroll_length != scrollbar.max_value:
+		max_scroll_length = scrollbar.max_value
 
 func select_option(option):
 	if is_waiting:
@@ -104,9 +108,13 @@ func play_sound(player: AudioStreamPlayer, path: String) -> void:
 func _process(delta):
 	if is_waiting:
 		pass
-	elif text_buffer.size() and not is_writing:
+	elif is_writing:
+		if scrollbar_container.scroll_vertical < max_scroll_length:
+			var value = lerp(scrollbar_container.scroll_vertical, max_scroll_length, delta * SCROLL_SPEED)
+			scrollbar_container.scroll_vertical = value
+	elif text_buffer.size():
 		write_text_from_buffer()
-	elif option_buffer.size() and not is_writing:
+	elif option_buffer.size():
 		write_options_from_buffer()
 
 func write_text_from_buffer():
@@ -121,17 +129,19 @@ func write_text_from_buffer():
 	dial.center_all = center_all
 	dial.tags = text_req[2]
 	tag_buffer = text_req[2]
-	dial.visible = true 
+	dial.visible = true
 	
-	if text.strip_edges(true,true).length() == 0:
+	if text.strip_edges(true, true).length() == 0:
 		dial.visible = false
 	
-	$VBoxContainer.add_child(dial)
+	text_children_container.add_child(dial)
 	
 	var speaker_name = ""
-	var border_color = Color(0.0, 0.0, 0.0)
-	var background_color = Color(0.106, 0.322, 0.451, 0.588)
-	var content_left_margin = -1
+	var color = Color(1.0, 1.0, 1.0)
+	#var border_color = Color(0.0, 0.0, 0.0)
+	#var background_color = Color(0.106, 0.322, 0.451, 0.588)
+	var align_right = false
+	var avatar: Texture
 	
 	# Si pas de tag, c'est nous qui parlons
 	#if dial.tags.is_empty():
@@ -143,36 +153,51 @@ func write_text_from_buffer():
 	for tag in dial.tags:
 		if tag == "rbr":
 			speaker_name = "Roquebrise Radio"
-			background_color = Color(0.219, 0.653, 0.438, 0.588)
-			border_color = Color(0.365, 0.91, 0.776)
-		if tag == "rf":
+			color = Color(0.219, 0.653, 0.438)
+			avatar = preload("res://assets/images/radio_portrait.png")
+			#background_color = Color(0.219, 0.653, 0.438, 0.588)
+			#border_color = Color(0.365, 0.91, 0.776)
+		elif tag == "rf":
 			speaker_name = "Radio Falaise"
-			background_color = Color(0.273, 0.401, 0.409, 0.588)
-			border_color = Color(0.391, 0.426, 0.483)
-		if tag == "rro":
+			color = Color(0.273, 0.401, 0.409)
+			avatar = preload("res://assets/images/radio_portrait.png")
+			#background_color = Color(0.273, 0.401, 0.409, 0.588)
+			#border_color = Color(0.391, 0.426, 0.483)
+		elif tag == "rro":
 			speaker_name = "Radio Rêve Oeil"
-			background_color = Color(0.377, 0.19, 0.611, 0.588)
-			border_color = Color(0.699, 0.0, 0.666)
-		if tag == "a":
+			color = Color(0.377, 0.19, 0.611)
+			avatar = preload("res://assets/images/radio_portrait.png")
+			#background_color = Color(0.377, 0.19, 0.611, 0.588)
+			#border_color = Color(0.699, 0.0, 0.666)
+		elif tag == "a":
 			speaker_name = "Alain"
-			background_color = Color(0.173, 0.408, 0.192, 0.588)
-			border_color = Color(0.176, 0.753, 0.259)
-		if tag == "b":
+			color = Color(0.173, 0.408, 0.192)
+			avatar = preload("res://assets/images/alain.png")
+			#background_color = Color(0.173, 0.408, 0.192, 0.588)
+			#border_color = Color(0.176, 0.753, 0.259)
+		elif tag == "b":
 			speaker_name = "Bernard"
-			background_color = Color(0.574, 0.567, 0.077, 0.588)
-			border_color = Color(0.769, 0.863, 0.145)
-		if tag == "c":
-			background_color = Color(0.158, 0.453, 0.568, 0.588)
-			border_color = Color(0.22, 0.481, 0.429, 1.0)
-			content_left_margin = 160
-		if tag == "j":
+			avatar = preload("res://assets/images/bernard.png")
+			color = Color(0.574, 0.567, 0.077)
+			#background_color = Color(0.574, 0.567, 0.077, 0.588)
+			#border_color = Color(0.769, 0.863, 0.145)
+		elif tag == "c":
+			speaker_name = "Me"
+			avatar = preload("res://assets/images/charles.png")
+			color = Color(0.701, 0.21, 0.325)
+			#background_color = Color(0.701, 0.21, 0.325, 0.588)
+			#border_color = Color(0.742, 0.108, 0.47, 1.0)
+			align_right = true
+		elif tag == "j":
 			speaker_name = "Jean Fume"
-			background_color = Color(0.5, 0.733, 1.0, 0.471)
-			border_color = Color(0.76, 0.825, 0.955, 1.0)
-		if tag == "party":
+			color = Color(0.5, 0.733, 1.0)
+			#background_color = Color(0.5, 0.733, 1.0, 0.471)
+			#border_color = Color(0.76, 0.825, 0.955, 1.0)
+		elif tag == "party":
 			speaker_name = "Partygoers"
-			background_color = Color(0.814, 0.655, 0.814, 0.471)
-			border_color = Color(0.73, 0.62, 0.687, 1.0)
+			color = Color(0.814, 0.655, 0.814)
+			#background_color = Color(0.814, 0.655, 0.814, 0.471)
+			#border_color = Color(0.73, 0.62, 0.687, 1.0)
 
 		if TAG_VOICE.has(tag):
 			var longueur = text.length()
@@ -193,8 +218,9 @@ func write_text_from_buffer():
 				audio_player.volume_db = 0.0
 			audio_player.play()
 	
-		dial.set_speaker_name("[b][i]"+speaker_name+"[/i][/b]")
-		dial.change_dialog_look(border_color, background_color, content_left_margin)
+		dial.set_speaker_name("[b][i]" + speaker_name + "[/i][/b]")
+		dial.change_dialog_look(color, align_right, avatar)
+		dial.grab_focus()
 
 	for tagsound in dial.tags:
 		if TAG_SOUND.has(tagsound):
@@ -214,7 +240,7 @@ func write_options_from_buffer():
 	var options = OPTIONS.instantiate()
 	options.options = option_buffer
 	options.listener = self
-	$VBoxContainer.add_child(options)
+	options_children_container.add_child(options)
 	option_buffer.clear()
 
 func write_waiting():
@@ -223,7 +249,7 @@ func write_waiting():
 	next.text = "..."
 	options.options = [next]
 	options.listener = self
-	$VBoxContainer.add_child(options)
+	options_children_container.add_child(options)
 	is_waiting = options
 
 func clear_waiting():
@@ -235,13 +261,17 @@ func add_choices(choices):
 	option_buffer = choices
 
 func clear():
-	for c in $VBoxContainer.get_children():
+	#text_buffer.clear()
+	#option_buffer.clear()
+	for c in text_children_container.get_children():
+		c.queue_free()
+	for c in options_children_container.get_children():
 		c.queue_free()
 
 func clean_text(text: String):
-	text = text.replace("__","[i]")
-	text = text.replace("_","[/i]")
-	text = text.replace("**","[b]")
-	text = text.replace("*","[/b]")
+	text = text.replace("__", "[i]")
+	text = text.replace("_", "[/i]")
+	text = text.replace("**", "[b]")
+	text = text.replace("*", "[/b]")
 
 	return text

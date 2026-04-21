@@ -1,66 +1,117 @@
 [gd_scene format=3 uid="uid://dh2bsu7uk3rkp"]
 
 [ext_resource type="Script" uid="uid://cb8vjdp6wb808" path="res://dialogue/dialogue_text.gd" id="1_rpvr2"]
+[ext_resource type="Texture2D" uid="uid://ya3er3tug6wt" path="res://assets/images/bulle_fond.png" id="2_pnmhb"]
+[ext_resource type="Texture2D" uid="uid://depmea8qei8jw" path="res://assets/images/bulle_nom.png" id="3_pnmhb"]
+[ext_resource type="Texture2D" uid="uid://dneffwar0ba3r" path="res://assets/images/bulle_portrait.png" id="4_pnmhb"]
+[ext_resource type="Texture2D" uid="uid://cv14hgim0bu1b" path="res://assets/images/alain.png" id="4_rsynh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpvr2"]
-bg_color = Color(0.972549, 0.3764706, 0.87058824, 0.5882353)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.99742264, 0, 0.5262005, 1)
-border_blend = true
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6q0a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3ymh"]
+resource_local_to_scene = true
+content_margin_left = 70.0
+content_margin_top = 30.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="DialogueText" type="PanelContainer" unique_id=1200851924]
-offset_left = 300.0
-offset_right = 900.0
-offset_bottom = 200.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rpvr2")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flgod"]
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="DialogueText" type="MarginContainer" unique_id=587767489]
+offset_right = 500.0
+offset_bottom = 250.0
+theme_override_constants/margin_right = 100
 script = ExtResource("1_rpvr2")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=935973435]
+[node name="TextMarginContainer" type="MarginContainer" parent="." unique_id=1503500171]
+custom_minimum_size = Vector2(500, 40)
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=120793730]
+[node name="NinePatchRect" type="NinePatchRect" parent="TextMarginContainer" unique_id=1559452312]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n6q0a")
+texture = ExtResource("2_pnmhb")
+region_rect = Rect2(49, 61, 300, 117)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1511908165]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1871733065]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="NameOfSpeaker" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2041413228]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextMarginContainer" unique_id=2053295571]
 clip_contents = false
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 15
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_m3ymh")
 bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam."
 fit_content = true
 scroll_active = false
+shortcut_keys_enabled = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1017608200]
+[node name="NameMarginContainer" type="MarginContainer" parent="." unique_id=1253699226]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 130
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 130
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NameMarginContainer" unique_id=1854676597]
+layout_mode = 2
+texture = ExtResource("3_pnmhb")
+region_rect = Rect2(148, 34, 191, 63)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NameMarginContainer" unique_id=430289591]
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_flgod")
 bbcode_enabled = true
+text = "John"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="AvatarMarginContainer" type="MarginContainer" parent="." unique_id=1757698639]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="AvatarMarginContainer" unique_id=663992816]
+layout_mode = 2
+texture = ExtResource("4_pnmhb")
+
+[node name="MarginContainer" type="MarginContainer" parent="AvatarMarginContainer" unique_id=994327800]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Avatar" type="TextureRect" parent="AvatarMarginContainer/MarginContainer" unique_id=667078224]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_rsynh")
+expand_mode = 3
+flip_h = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1140838329]
 wait_time = 0.05
