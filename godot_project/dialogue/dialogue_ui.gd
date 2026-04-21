@@ -24,7 +24,9 @@ const TAG_VOICE: Dictionary = {
 	"rbr": "res://assets/soundEffects/voices/VoixGeneriques/Jeanne",
 	"a": "res://assets/soundEffects/voices/Alain/Alain_Voice",
 	"b": "res://assets/soundEffects/voices/bernard/b",
-	"c": "res://assets/soundEffects/voices/charles/Charles_Voice"
+	"c": "res://assets/soundEffects/voices/charles/Charles_Voice",
+	"j": "res://assets/soundEffects/voices/jean/jean",
+	"party":"res://assets/soundEffects/voices/party/"
 }
 
 const TAG_SOUND: Dictionary = {
@@ -33,10 +35,10 @@ const TAG_SOUND: Dictionary = {
 	"hang_up": preload("res://assets/soundEffects/raccroche.mp3"),
 	"gzzz": preload("res://assets/soundEffects/voices/charles/gzzzcrchbzzcrch.mp3"),
 	"u": [
-		preload("res://assets/soundEffects/cracklingsound0.mp3"),
-		preload("res://assets/soundEffects/cracklingsound1.mp3"),
-		preload("res://assets/soundEffects/cracklingsound2.mp3"),
-		preload("res://assets/soundEffects/cracklingsound3.mp3")
+		preload("res://assets/soundEffects/voices/U/U1.mp3"),
+		preload("res://assets/soundEffects/voices/U/U2.mp3"),
+		preload("res://assets/soundEffects/voices/U/U3.mp3"),
+		preload("res://assets/soundEffects/voices/U/U4.mp3")
 	]
 }
 
@@ -49,9 +51,9 @@ const SOUND_VOLUMES: Dictionary = {
 	"radioon": 0.75,
 	"radiooff": 0.,
 	"res://assets/soundEffects/cracklingsound0.mp3":0,
-	"res://assets/soundEffects/cracklingsound1.mp3":-2.0,
-	"res://assets/soundEffects/cracklingsound2.mp3":-1.0,
-	"res://assets/soundEffects/cracklingsound3.mp3":-2.0
+	"res://assets/soundEffects/cracklingsound1.mp3":0,
+	"res://assets/soundEffects/cracklingsound2.mp3":0,
+	"res://assets/soundEffects/cracklingsound3.mp3":0
 } 
 
 
@@ -160,9 +162,15 @@ func write_text_from_buffer():
 			background_color = Color(0.574, 0.567, 0.077, 0.588)
 			border_color = Color(0.769, 0.863, 0.145)
 		if tag == "c":
-			background_color = Color(0.701, 0.21, 0.325, 0.588)
-			border_color = Color(0.742, 0.108, 0.47, 1.0)
+			background_color = Color(0.158, 0.453, 0.568, 0.588)
+			border_color = Color(0.22, 0.481, 0.429, 1.0)
 			content_left_margin = 160
+		if tag == "j":
+			background_color = Color(0.5, 0.733, 1.0, 0.471)
+			border_color = Color(0.76, 0.825, 0.955, 1.0)
+		if tag == "party":
+			background_color = Color(0.814, 0.655, 0.814, 0.471)
+			border_color = Color(0.73, 0.62, 0.687, 1.0)
 
 		if TAG_VOICE.has(tag):
 			var longueur = text.length()
