@@ -84,7 +84,7 @@ position = Vector2(-161, -153)
 position = Vector2(156, -97)
 
 [node name="lvl4-1-1" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
-position = Vector2(-294, 131)
+position = Vector2(146, -302)
 
 [node name="lvl4-1-2" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
 position = Vector2(-177, -182)
@@ -96,7 +96,7 @@ position = Vector2(305, 125)
 position = Vector2(231, 239)
 
 [node name="lvl4-3-1" type="Node2D" parent="RadarGame/Goals" unique_id=1758463692]
-position = Vector2(328, -44)
+position = Vector2(-314, 109)
 
 [node name="lvl4-4-1" type="Node2D" parent="RadarGame/Goals" unique_id=658435341]
 position = Vector2(101, 271)
@@ -117,7 +117,6 @@ position = Vector2(-300, 46)
 position = Vector2(-324, -62)
 
 [node name="Levels" type="Node2D" parent="RadarGame" unique_id=82889980]
-visible = false
 
 [node name="level0" type="Node2D" parent="RadarGame/Levels" unique_id=555794200]
 
@@ -164,12 +163,12 @@ goals = [NodePath("../../../Goals/lvl4-2-1")]
 goal_wait_time = 0.0
 
 [node name="CB37" parent="RadarGame/Levels/level3" unique_id=635052076 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-161, 295)
+position = Vector2(-153, -24)
 goals = [NodePath("../../../Goals/lvl4-3-1")]
 goal_wait_time = 0.0
 
 [node name="CD09" parent="RadarGame/Levels/level3" unique_id=1804483472 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(48, 113)
+position = Vector2(-86, 3)
 should_not_cross_boats = true
 goals = [NodePath("../../../Goals/lvl4-4-1"), NodePath("../../../Goals/lvl4-4-2")]
 goal_wait_time = 0.0
