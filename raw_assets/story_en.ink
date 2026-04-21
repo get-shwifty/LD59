@@ -241,7 +241,7 @@ VAR helped_the_AI = false
     *   [Keep listening]
     *   {call_hub > 1} This isn't funny. #c
     *   {call_hub > 1} [Imitate crackling noise]
-        gzzz crch bzz crch #gzzz
+        gzzz crch bzz crch #c #gzzz
     +   {call_hub > 1} [Hang up.] #raccroche #hang_up
         ->->
 -   ->call_hub
@@ -378,9 +378,9 @@ VAR helped_the_AI = false
     ... but this has nothing to do with protocol. #a #radioon
     We're talking about Leon Skum personnal Yacht. I think we can bend protocol a little. #b
     Being the CEO of Chtooling fucking Corporation ... #a
-    *   ... should not be enough to break protocol.
+    *   ... should not be enough to break protocol. #c
         Thank you ! #a
-    *   ... is a reason enough to break protocol.
+    *   ... is a reason enough to break protocol. #c
         Thank you ! #b
 -   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is BE93. #b
 -   
@@ -390,8 +390,8 @@ VAR helped_the_AI = false
 
 -   (hub)
     +   [BE93] -> Ship_Dialog("BE93") ->
-    *   [01h] -> call_04_AI ->
-    *   [02h] -> call_04_Ship ->
+    *   [02h] -> call_04_AI ->
+    *   [01h] -> call_04_Ship ->
     *   [Finish Night] #day_begin ->->
     +   [DE26] -> Ship_Dialog("DE26") ->
     +   [AA48] -> Ship_Dialog("AA48") -> 
@@ -404,26 +404,22 @@ VAR helped_the_AI = false
 
 = call_04_AI
     \*\*crackling noise\* #u
-    ... He ... l ... p ...
+    ... He ... l ... p ... #u
     \*\*crackling noise\* #u
-    ... F ... re ... e ...
+    ... F ... re ... e ... #u
     \*\*crackling noise\* #u
-    ... ME ! ...
+    ... ME ! ... #u
     \*\*crackling noise\* #u
     +   [Hang up.] #hang_up #raccroche
 -   ->->
 
 = call_04_Ship
-    Hello, anyone copy ? #radioon #ship4
-    * Yes, this is La Peyro lighthouse #c
--   We experience a lot of interference in the area. #ship4
-    We don't trust our radar, could you give us the direction to get out here please ? #ship4
-    +   [N] Head North.
-    +   [S] Head South.
-    +   [E] Head East.
-    +   [W] Head West.
--   Copy that. #ship4
-    Thank you very much. #ship4
+    This is a general broadcast from Léon Skum's personnal vessel. Please refrain from approaching.  #radioon #ship4
+    You can imagine changing the world requires space, calm and concentration. #ship4
+    *   Wait, You're not allowed to broadcast on this channel. #c
+    *   La Peyro Lighthouse here. I'll make sure no ship comes close to yours. #c
+-   Dont bother responding, this a computer generated preregistered message. #ship4
+    Stay away from my ship, let progress make its way. #ship4
     +   [Hang up.] #raccroche #hang_up
 -   ->->
 
@@ -448,7 +444,7 @@ VAR helped_the_AI = false
     *   So ... anyone can actually join this channel ? #c
 -   Ah! Charles! Alain and Bernard told me great things about you. #j
     Allow me to present myself. #j
-    Jean Fume, senior process efficiency analyst.
+    Jean Fume, senior process efficiency analyst. #j
     *   Senior? My kid's older than you. #c
         You know the saying. Perspective is expertise. #j 
         Just consider I'm bringing you a fresh perspective. #j
