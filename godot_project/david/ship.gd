@@ -76,16 +76,22 @@ func send_order(direction: Vector2):
 			return
 		is_waiting = false
 		return
-	order_goal = global_position + direction * 200
+	order_goal = global_position + direction * 150
 	has_order = true
 	request_path()
-	await wait_time(2)
-	has_pathfinder = true
+	#await wait_time(2)
+	#has_pathfinder = true
 
 func clear_order():
 	order_goal = null
 	has_order = false
 
+func reset_goal():
+	clear_order()
+	if goal:
+		request_path()
+	else:
+		update_goal()
 
 func get_goal_position() -> Vector2:
 	if has_order:
@@ -103,15 +109,7 @@ func wait_at_goal():
 	if not await wait_time(goal_wait_time):
 		return
 	is_waiting = false
-	if has_order:
-		clear_order()
-		# Immediately request path back to main goal
-		if goal:
-			request_path()
-		else:
-			update_goal()
-	else:
-		update_goal()
+	reset_goal()
 
 func yield_to_ship():
 	if is_yielding:
@@ -295,7 +293,7 @@ func _physics_process(delta):
 		set_success()
 	
 	if not crashed and position.length() > 350:
-		set_success()
+		reset_goal()
 		
 func set_success():
 	if crashed:
