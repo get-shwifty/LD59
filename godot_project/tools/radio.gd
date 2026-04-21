@@ -27,7 +27,7 @@ signal contact_boat
 signal call_from_ship
 
 func _ready():
-	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
+	$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 	for i in range(4):
 		indexes[i+1] = 0
 	indexes[1] = 1
@@ -59,7 +59,7 @@ func _on_call_button_pressed() -> void:
 	# On teste si la combinaison existe bien
 	var combinaison = $Label1.text + $Label2.text + $Label3.text + $Label4.text
 	if Global.POSSIBLE_BOATS.has(combinaison):
-		$CallButton.modulate = Color(0.192, 0.969, 0.0)
+		$CallButton.self_modulate = Color(0.192, 0.969, 0.0)
 		Global.talking_boat = combinaison
 		emit_signal("contact_boat", combinaison)
 		$CallBoat.play()
@@ -75,7 +75,7 @@ func _on_radio_button_calling_pressed() -> void:
 		$AnimationPlayer.stop()
 		$Call.stop()
 		$ClickToAnswer.play()
-		$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
+		$RadioButtonCalling.self_modulate = Color(0.0, 0.0, 0.0)
 		call_from_ship.emit(actual_call_event)
 		actual_call_event = ""
 	else:
@@ -91,4 +91,4 @@ func _on_tooltip_exit(node: NodePath) -> void:
 	child.visible = false
 
 func quit_call():
-	$CallButton.modulate = Color(1.0, 1.0, 1.0)
+	$CallButton.self_modulate = Color(1.0, 1.0, 1.0)

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://da2c4m662mdex" path="res://assets/images/radar_button_off.png" id="6_jqlh4"]
 [ext_resource type="AudioStream" uid="uid://dw2q2huwhmj8w" path="res://assets/soundEffects/decroche.mp3" id="6_oijbw"]
 [ext_resource type="AudioStream" uid="uid://bmd4e3us7hfcn" path="res://assets/soundEffects/SoundComBoat.mp3" id="6_ugl3s"]
+[ext_resource type="PackedScene" uid="uid://di8o4ublrr2fj" path="res://tools/Tooltip.tscn" id="7_jqlh4"]
 
 [sub_resource type="Animation" id="Animation_8q18p"]
 resource_name = "Calling_button"
@@ -17,7 +18,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RadioButtonCalling:modulate")
+tracks/0/path = NodePath("RadioButtonCalling:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -206,9 +207,16 @@ offset_left = 538.0
 offset_top = 557.0
 offset_right = 585.0
 offset_bottom = 599.0
-tooltip_text = "Click to call the boat using its ID code"
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_jqlh4")
+
+[node name="Tooltip" parent="CallButton" unique_id=396841687 instance=ExtResource("7_jqlh4")]
+visible = false
+layout_mode = 0
+
+[node name="TooltipText" parent="CallButton/Tooltip" index="0" unique_id=910994966]
+text = "Click to call the boat using its ID code
+You can't call if someone is already calling you"
 
 [node name="RadioButtonCalling" type="TextureButton" parent="." unique_id=288670630]
 modulate = Color(0.015686275, 1, 0.011764706, 1)
@@ -216,9 +224,15 @@ offset_left = 267.0
 offset_top = 441.0
 offset_right = 314.0
 offset_bottom = 483.0
-tooltip_text = "Flashes when someone tries to reach you. Press to answer."
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_jqlh4")
+
+[node name="Tooltip" parent="RadioButtonCalling" unique_id=228632405 instance=ExtResource("7_jqlh4")]
+visible = false
+layout_mode = 0
+
+[node name="TooltipText" parent="RadioButtonCalling/Tooltip" index="0" unique_id=910994966]
+text = "Click to answer to this mysterious call"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1298804061]
 libraries/ = SubResource("AnimationLibrary_oijbw")
@@ -249,5 +263,12 @@ pitch_scale = 0.85
 [connection signal="pressed" from="ButtonBAS3" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS3"), 3]]
 [connection signal="pressed" from="ButtonHAUT4" to="." method="_on_button_pressed" binds= [NodePath("ButtonHAUT4"), 4]]
 [connection signal="pressed" from="ButtonBAS4" to="." method="_on_button_pressed" binds= [NodePath("ButtonBAS4"), 4]]
+[connection signal="mouse_entered" from="CallButton" to="." method="_on_tooltip_enter" binds= [NodePath("CallButton")]]
+[connection signal="mouse_exited" from="CallButton" to="." method="_on_tooltip_exit" binds= [NodePath("CallButton")]]
 [connection signal="pressed" from="CallButton" to="." method="_on_call_button_pressed"]
+[connection signal="mouse_entered" from="RadioButtonCalling" to="." method="_on_tooltip_enter" binds= [NodePath("RadioButtonCalling")]]
+[connection signal="mouse_exited" from="RadioButtonCalling" to="." method="_on_tooltip_exit" binds= [NodePath("RadioButtonCalling")]]
 [connection signal="pressed" from="RadioButtonCalling" to="." method="_on_radio_button_calling_pressed"]
+
+[editable path="CallButton/Tooltip"]
+[editable path="RadioButtonCalling/Tooltip"]
