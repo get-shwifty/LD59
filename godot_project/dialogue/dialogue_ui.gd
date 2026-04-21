@@ -190,6 +190,7 @@ func write_text_from_buffer():
 			align_right = true
 		elif tag == "j":
 			speaker_name = "Jean Fume"
+			avatar = preload("res://assets/images/jean.png")
 			color = Color(0.5, 0.733, 1.0)
 			#background_color = Color(0.5, 0.733, 1.0, 0.471)
 			#border_color = Color(0.76, 0.825, 0.955, 1.0)
