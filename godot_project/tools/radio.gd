@@ -71,12 +71,15 @@ func light_button_call(call_event: String):
 	$Call.play()
 
 func _on_radio_button_calling_pressed() -> void:
-	$AnimationPlayer.stop()
-	$Call.stop()
-	$ClickToAnswer.play()
-	$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
-	call_from_ship.emit(actual_call_event)
-	actual_call_event = ""
+	if actual_call_event.length() != 0:
+		$AnimationPlayer.stop()
+		$Call.stop()
+		$ClickToAnswer.play()
+		$RadioButtonCalling.modulate = Color(0.0, 0.0, 0.0)
+		call_from_ship.emit(actual_call_event)
+		actual_call_event = ""
+	else:
+		return
 	
 
 func _on_tooltip_enter(node: NodePath) -> void:
