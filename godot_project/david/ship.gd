@@ -9,6 +9,8 @@ class_name Ship
 @export var should_not_cross_boats: bool = false
 @export var cross_radius = 50
 
+@export var is_green_boat = false
+
 @export var goals: Array[Node2D]
 @export var goal_wait_time := 4.0
 @export var maxSpeed: float = 10.0

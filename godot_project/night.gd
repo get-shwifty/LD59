@@ -102,6 +102,7 @@ func _process(delta: float) -> void:
 			var visuali = SHIP_VISUAL.instantiate()
 			ships_container.add_child(visuali)
 			ship_visuals[id] = visuali
+			visuali.set_green(ship.ship.is_green_boat)
 
 		# Update position, scale, z
 		var visual = ship_visuals[id]

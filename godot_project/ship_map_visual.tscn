@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmv85de0lfyt1"]
 
-[ext_resource type="Texture2D" uid="uid://b05tsjx3awwn3" path="res://assets/images/bateaux.png" id="1_hw362"]
+[ext_resource type="Texture2D" uid="uid://drdi3dnfghdc6" path="res://assets/images/bateaux.png" id="1_hw362"]
+[ext_resource type="Script" uid="uid://bopbjgq2b67xg" path="res://ship_map_visual.gd" id="1_npfmi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hw362"]
 font_size = 60
@@ -71,6 +72,7 @@ animations = [{
 }]
 
 [node name="ShipMapVisual" type="Node2D" unique_id=1736990360]
+script = ExtResource("1_npfmi")
 
 [node name="Label" type="Label" parent="." unique_id=1017368707]
 visible = false

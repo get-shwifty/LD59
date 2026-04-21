@@ -208,6 +208,7 @@ goal_wait_time = 0.0
 position = Vector2(74, 81)
 not_visible_on_radar = true
 should_not_cross_boats = true
+is_green_boat = true
 goals = [NodePath("../../../Goals/lvl6-1")]
 goal_wait_time = 0.0
 
