@@ -31,7 +31,7 @@ const TAG_VOICE: Dictionary = {
 	"b": "res://assets/soundEffects/voices/bernard/b",
 	"c": "res://assets/soundEffects/voices/charles/Charles_Voice",
 	"j": "res://assets/soundEffects/voices/jean/jean",
-	"party": "res://assets/soundEffects/voices/party/"
+	"party": "res://assets/soundEffects/voices/party/party"
 }
 
 const TAG_SOUND: Dictionary = {

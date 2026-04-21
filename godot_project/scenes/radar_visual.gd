@@ -87,6 +87,7 @@ func _on_area_2d_2_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			update_labels()
+			$sonar.play()
 			
 func _on_tooltip_enter(node: NodePath) -> void:
 	var child = get_node(str(node) + "/Tooltip")
