@@ -26,15 +26,15 @@ func _ready() -> void:
 	_ink_player.loaded.connect(_story_loaded)
 	_ink_player.create_story()
 	$Night/UI/Radio.connect("contact_boat", _contact_boat)
-	$Night.connect("switch_to_day",start_of_day)
-	$Night/UI/Radio.connect("call_from_ship",call_from_ship)
+	$Night.connect("switch_to_day", start_of_day)
+	$Night/UI/Radio.connect("call_from_ship", call_from_ship)
 	
 
 func _process(delta: float) -> void:
 	if is_night:
 		#$DialogueUi.size.y = 400
 		$DialogueUi.position.x = $Night/Camera2D.position.x - 245
-		$DialogueUi.position.y = $Night/Camera2D.position.y - 300
+		#$DialogueUi.position.y = $Night/Camera2D.position.y - 300
 		$DialogueUi.top_margin.hide()
 	else:
 		$DialogueUi.position = sav_position_dialog_UI
@@ -67,7 +67,7 @@ func execute_tags(tags):
 			end_of_day()
 		if tag == "hang_up":
 			hang_up()
-		if tag in ["N","S", "E", "W", "P"]:
+		if tag in ["N", "S", "E", "W", "P"]:
 			$Night._on_order_sent(tag)
 		if tag.contains("display_"):
 			$Day.display_object(tag)
@@ -122,7 +122,7 @@ func end_of_day():
 	$FadeOut.modulate.a = 0.0
 	$FadeOut.visible = true
 	var tweenout = create_tween()
-	tweenout.tween_property($FadeOut, "modulate:a", 1.0,1.1)
+	tweenout.tween_property($FadeOut, "modulate:a", 1.0, 1.1)
 	await tweenout.finished
 	
 	$Day.visible = false
@@ -143,7 +143,7 @@ func end_of_day():
 	$FadeIn.visible = true
 	$FadeOut.visible = false
 	var tweenin = create_tween()
-	tweenin.tween_property($FadeIn, "modulate:a", 0.0,1.1)
+	tweenin.tween_property($FadeIn, "modulate:a", 0.0, 1.1)
 	await tweenin.finished
 	$FadeIn.visible = false
 	
@@ -153,7 +153,7 @@ func end_of_day():
 		night_timer.reset_timer()
 		night_timer.start_timer()
 		$Night.load_level(actual_level)
-		actual_level +=1
+		actual_level += 1
 
 
 func start_of_day():
@@ -176,7 +176,7 @@ func start_of_day():
 	$FadeIn.visible = true
 	$FadeOut.visible = false
 	var tweenin = create_tween()
-	tweenin.tween_property($FadeIn, "modulate:a", 0.0,1.1)
+	tweenin.tween_property($FadeIn, "modulate:a", 0.0, 1.1)
 	await tweenin.finished
 	$FadeIn.visible = false
 	
@@ -201,7 +201,8 @@ func _contact_boat(boat_code):
 			break
 	
 	if (!found_boat):
-		return 
+		hang_up()
+		return
 	
 	game_dialogue.visible = true
 	$Night.pause_game()
@@ -234,10 +235,9 @@ func retry():
 	night_timer.start_timer()
 	play_music(MUSIC_NIGHT)
 	print("current day: ", Global.day_number)
-	$Night.load_level(actual_level-1)
+	$Night.load_level(actual_level - 1)
 	_ink_player.continue_story()
 		
-
 
 func _on_night_failed():
 	retry()
@@ -248,8 +248,8 @@ func _on_image_tuto_night_pressed() -> void:
 		var tweentuto = create_tween()
 		tweentuto.tween_property($ImageTutoNight, "modulate:a", 0.0, 1)
 		await tweentuto.finished
-		$ImageTutoNight.visible = false 
+		$ImageTutoNight.visible = false
 		night_timer.reset_timer()
 		night_timer.start_timer()
 		$Night.load_level(actual_level)
-		actual_level +=1
+		actual_level += 1

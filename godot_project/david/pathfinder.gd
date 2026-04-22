@@ -45,6 +45,8 @@ func update_ships_pos(ships):
 	modified_ids.clear()
 
 	for ship in ships:
+		if ship.should_not_cross_boats:
+			continue
 		var cell_radius = get_ship_cell_radius(ship)
 		var ship_cell = costmapManager.pos_to_pixel(ship.global_position)
 		for dx in range(-cell_radius, cell_radius + 1):

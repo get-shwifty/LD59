@@ -131,6 +131,8 @@ func check_incoming_collision() -> bool:
 	for other in ships:
 		if other == self or not other is Ship:
 			continue
+		if other.should_not_cross_boats:
+			continue
 		if other.id == null or (other.id < id and other.has_pathfinder):
 			continue
 		var to_other = other.global_position - global_position

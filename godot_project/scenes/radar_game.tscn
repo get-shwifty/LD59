@@ -84,25 +84,25 @@ position = Vector2(-161, -153)
 position = Vector2(156, -97)
 
 [node name="lvl4-1-1" type="Node2D" parent="RadarGame/Goals" unique_id=814883281]
-position = Vector2(146, -302)
+position = Vector2(-169, 162)
 
 [node name="lvl4-1-2" type="Node2D" parent="RadarGame/Goals" unique_id=575260078]
-position = Vector2(-177, -182)
+position = Vector2(-68, -17)
 
 [node name="lvl4-1-3" type="Node2D" parent="RadarGame/Goals" unique_id=802931017]
-position = Vector2(305, 125)
+position = Vector2(45, 113)
 
 [node name="lvl4-2-1" type="Node2D" parent="RadarGame/Goals" unique_id=1894040346]
-position = Vector2(231, 239)
+position = Vector2(60, 129)
 
 [node name="lvl4-3-1" type="Node2D" parent="RadarGame/Goals" unique_id=1758463692]
-position = Vector2(-314, 109)
+position = Vector2(-155, -208)
 
 [node name="lvl4-4-1" type="Node2D" parent="RadarGame/Goals" unique_id=658435341]
-position = Vector2(101, 271)
+position = Vector2(155, 25)
 
 [node name="lvl4-4-2" type="Node2D" parent="RadarGame/Goals" unique_id=214321084]
-position = Vector2(-205, 269)
+position = Vector2(-186, 14)
 
 [node name="lvl5-1" type="Node2D" parent="RadarGame/Goals" unique_id=750225057]
 position = Vector2(55, 38)
@@ -153,17 +153,12 @@ goal_wait_time = 0.0
 [node name="level3" type="Node2D" parent="RadarGame/Levels" unique_id=918690770]
 
 [node name="DE26" parent="RadarGame/Levels/level3" unique_id=1106144327 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-70, 320)
+position = Vector2(-31, 324)
 goals = [NodePath("../../../Goals/lvl4-1-1"), NodePath("../../../Goals/lvl4-1-2"), NodePath("../../../Goals/lvl4-1-3")]
 goal_wait_time = 0.0
 
-[node name="AA48" parent="RadarGame/Levels/level3" unique_id=452675363 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-275, -135)
-goals = [NodePath("../../../Goals/lvl4-2-1")]
-goal_wait_time = 0.0
-
 [node name="CB37" parent="RadarGame/Levels/level3" unique_id=635052076 node_paths=PackedStringArray("goals") instance=ExtResource("5_jmqnr")]
-position = Vector2(-153, -24)
+position = Vector2(289, 102)
 goals = [NodePath("../../../Goals/lvl4-3-1")]
 goal_wait_time = 0.0
 
