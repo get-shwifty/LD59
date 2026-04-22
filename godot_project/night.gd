@@ -42,7 +42,6 @@ func _ready() -> void:
 	$UI/RetryBtn.visible = false
 
 func load_level(level: int):
-	
 	print("start level ", level)
 	current_level = level
 	$"radar game".load_level(level)
@@ -177,10 +176,10 @@ func _on_next_day_pressed() -> void:
 	$FadeOutNight.modulate.a = 0.0
 	$FadeOutNight.visible = true
 	var tween = create_tween()
-	tween.tween_property($FadeOutNight, "modulate:a", 1.0,1.5)
+	tween.tween_property($FadeOutNight, "modulate:a", 1.0, 1.5)
+	switch_to_day.emit()
 	await tween.finished
 	$FadeOutNight.visible = false
-	switch_to_day.emit()
 
 func _on_left_button_pressed() -> void:
 	camera.position.x -= landscape_pct / INCREMENT_DIVIDOR

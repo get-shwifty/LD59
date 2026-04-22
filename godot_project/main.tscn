@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bk54h47btachi" path="res://assets/story_en.ink.json" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://ckvfkususnm01" path="res://Day.tscn" id="5_lquwl"]
 [ext_resource type="AudioStream" uid="uid://bn1wbrfhyn7wg" path="res://assets/soundEffects/ChangementRadio.mp3" id="7_272bh"]
-[ext_resource type="Texture2D" uid="uid://byrc5f31fbidc" path="res://assets/images/tuto.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://ku7e6ube7xqi" path="res://assets/images/tuto.png" id="8_5vw27"]
 
 [node name="Main" type="Node2D" unique_id=1388458576]
 script = ExtResource("1_0xm2m")

@@ -133,7 +133,7 @@ func end_of_day():
 	$Night.visible = true
 	
 	#tuto
-	if Global.day_number == 2:
+	if actual_level == 0:
 		$ImageTutoNight.visible = true
 		$Night.pause_game()
 		night_timer.pause_timer()
@@ -177,13 +177,13 @@ func start_of_day():
 	$FadeOut.visible = false
 	var tweenin = create_tween()
 	tweenin.tween_property($FadeIn, "modulate:a", 0.0, 1.1)
-	await tweenin.finished
-	$FadeIn.visible = false
 	
 	for c in _ink_player.current_choices:
 		if c.text == "Finish Night":
 			select_choice(c.index)
-	
+
+	await tweenin.finished
+	$FadeIn.visible = false
 	game_dialogue.visible = true
 	play_music(MUSIC_DAY)
 
@@ -244,12 +244,12 @@ func _on_night_failed():
 
 
 func _on_image_tuto_night_pressed() -> void:
-	if Global.day_number == 2 and $ImageTutoNight.visible:
+	if actual_level == 0:
+		actual_level = 1
 		var tweentuto = create_tween()
 		tweentuto.tween_property($ImageTutoNight, "modulate:a", 0.0, 1)
 		await tweentuto.finished
 		$ImageTutoNight.visible = false
 		night_timer.reset_timer()
 		night_timer.start_timer()
-		$Night.load_level(actual_level)
-		actual_level += 1
+		$Night.load_level(0)
