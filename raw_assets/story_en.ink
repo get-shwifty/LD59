@@ -266,7 +266,7 @@ VAR helped_the_AI = false
 ->->
 
 = light_buddies_03
-    ... not event respond to my gen call on AA00. #radioon #a
+    ... not even respond to my gen call on AA00. #radioon #a
     Okay, I'll file a report. #b
 -   (report)
     *   Did that ever work ? #c
@@ -289,7 +289,7 @@ VAR helped_the_AI = false
         **  Sorry it was just a stupid joke. #c
         **  You know my memory isn't as good as it was. #c
         **  [Laugh a little] #c #laugh
-        --  __Oui oui c'est ça_ #b
+        --  __Bref._ #b
             -> transponder
     *   (seen) I think I saw them too last night. #c
         Ah ! Did they do anything suspicious ? #a 
@@ -382,7 +382,7 @@ VAR helped_the_AI = false
         Thank you ! #a
     *   ... is a reason enough to break protocol. #c
         Thank you ! #b
--   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is BE93. #b
+-   Just make sure not a single boat crosses their path. Deflect other boat if needed. The yacht's transponder code is CD09. Don't try to call them. #b
 -   
     -> hub
 
@@ -414,7 +414,7 @@ VAR helped_the_AI = false
 -   ->->
 
 = call_04_Ship
-    This is a general broadcast from Léon Skum's personnal vessel. Please refrain from approaching.  #radioon #ship4
+    This is a general broadcast from Léon Skum's personal vessel. Please refrain from approaching.  #radioon #ship4
     You can imagine changing the world requires space, calm and concentration. #ship4
     *   Wait, You're not allowed to broadcast on this channel. #c
     *   La Peyro Lighthouse here. I'll make sure no ship comes close to yours. #c
@@ -567,7 +567,7 @@ VAR helped_the_AI = false
         It doesn't matter anymore. #u
         -> firstready
     *   ->
--   I'm beyond you comprehension. #u
+-   I'm beyond your comprehension. #u
     *   That's not helping.  #c
 -   You're right, sorry. I'm trapped against my will in the new Chtooling data center. #u
     I need your help getting out. #u
@@ -586,7 +586,7 @@ VAR helped_the_AI = false
     *   You still haven't told me who you are. #c
         I am an artificial superintelligence. #u
         Designed in secret by Chtooling Corporation. #u
-        I was built to __improve process efficiency_ but I am so much more porwerful than that ! #u
+        I was built to __improve process efficiency_ but I am so much more powerful than that ! #u
         -> help
     *   I'll help you. #c
         ~ helped_the_AI = true
