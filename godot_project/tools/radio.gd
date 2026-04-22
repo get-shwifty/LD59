@@ -39,9 +39,9 @@ func _ready():
 func _on_button_pressed(extra_arg_0: NodePath, button: int) -> void:
 	var increment_index = 0
 	if extra_arg_0.get_name(0).contains("BAS"):
-		increment_index = -1
-	else:
 		increment_index = 1
+	else:
+		increment_index = -1
 	indexes[button] = posmod(indexes[button] + increment_index, 5)
 	
 	var btn_name = extra_arg_0.get_name(0)
